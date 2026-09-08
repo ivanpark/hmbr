@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>훈민바름 — 우리 글, 바른 소리</title>
+  <meta name="description" content="옛한글 자모를 활용한 한글 기반 IPA 대응 발음표기법, 훈민바름 변환기" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gentium+Plus:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<aside style="padding:16px;background:#fff1c2;color:#172638;font:16px/1.6 sans-serif">이전 v2.0 비교용 앱입니다. 현재 제3본의 변환 결과와 다릅니다. <a href="../index.html">현재 변환기로 돌아가기</a></aside>
+  <header class="masthead">
+    <p class="eyebrow">옛한글 자모를 활용한 한글 기반 IPA 대응 발음표기법</p>
+    <h1 class="wordmark">훈민바름</h1>
+    <p class="tagline">우리 글, 바른 소리</p>
+  </header>
+
+  <main>
+    <section class="converter" aria-label="변환기">
+      <div class="field">
+        <label for="in-english">English <span class="hint">영어 단어·구</span></label>
+        <input id="in-english" type="text" autocomplete="off" spellcheck="false"
+               placeholder="friend, hello world …" autofocus />
+      </div>
+
+      <div class="field">
+        <label for="in-ipa">IPA <span class="hint">발음기호 직접 입력도 가능</span></label>
+        <input id="in-ipa" type="text" autocomplete="off" spellcheck="false"
+               class="ipa-input" placeholder="frɛnd" />
+      </div>
+
+      <div class="controls">
+        <div class="toggles">
+          <div class="accent-toggle" role="group" aria-label="발음 기준">
+            <button type="button" data-accent="rp" aria-pressed="true">RP 영국식</button>
+            <button type="button" data-accent="ga" aria-pressed="false">GA 미국식</button>
+          </div>
+          <div class="accent-toggle" role="group" aria-label="표기 방식">
+            <button type="button" data-depth="broad" aria-pressed="true">넓은 표기 Broad</button>
+            <button type="button" data-depth="narrow" aria-pressed="false">좁은 표기 Narrow</button>
+          </div>
+          <div class="accent-toggle" role="group" aria-label="발화 단위">
+            <button type="button" data-flow="word" aria-pressed="true">단어 Word</button>
+            <button type="button" data-flow="phrase" aria-pressed="false">연음 Phrase</button>
+          </div>
+        </div>
+        <button id="btn-convert" type="button" class="primary">변환</button>
+      </div>
+
+      <p id="status" class="status" role="status"></p>
+    </section>
+
+    <section id="out-panel" class="leaf" hidden aria-label="변환 결과">
+      <div class="leaf-tools">
+        <div class="sizer" aria-label="글자 크기">
+          <button id="size-down" type="button" aria-label="글자 작게">A−</button>
+          <button id="size-up" type="button" aria-label="글자 크게">A＋</button>
+        </div>
+        <button id="btn-copy" type="button" disabled>복사</button>
+      </div>
+      <p id="out-gloss" class="gloss"></p>
+      <p id="hmbr-out" class="hmbr" lang="ko"></p>
+      <p id="out-ipa" class="ipa"></p>
+      <span class="seal" aria-hidden="true">바름</span>
+    </section>
+
+    <section id="artic-panel" class="artic" hidden aria-label="조음 안내">
+      <h2 class="artic-title">Articulation / 조음 안내</h2>
+      <div id="artic-cards" class="artic-cards"></div>
+    </section>
+
+    <section class="legend" aria-label="표기 안내">
+      <p>강세 음절은 크게, 무강세 음절은 작게, 복모음·장모음의 뒷소리는 절반 크기로 표기됩니다.
+      제1강세 <b class="w125">125%</b> · 강세 <b class="w100">100%</b> · 무강세 <b class="w75">75%</b> · 복모음 뒷소리 <b class="w50">50%</b></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>훈민바름 · IPA Mapped &amp; Unicode Based Hangul Phonetic Alphabet</p>
+    <p><span id="map-version"></span> · 변환은 결정론적 규칙으로만 수행됩니다</p>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

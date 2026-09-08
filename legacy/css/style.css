@@ -1,0 +1,329 @@
+/* 훈민바름 — 해례본 register: 먹빛 paper, 한지 output leaf, 인주 seal. */
+
+@font-face {
+  font-family: 'HMBR Myeongjo';
+  src: url('../../fonts/NanumMyeongjo-YetHangul-hmbr.woff') format('woff');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'HMBR Gothic';
+  src: url('../../fonts/NanumBarunGothic-YetHangul-hmbr.woff') format('woff');
+  font-display: swap;
+}
+
+:root {
+  --ink: #262b3e;        /* 먹빛 paper */
+  --ink-deep: #1d2130;
+  --panel: #48597a;      /* slate panel from the deck */
+  --panel-line: #5f739a;
+  --hanji: #f1e9d8;      /* 한지 cream */
+  --hanji-line: rgba(70, 60, 40, 0.14);
+  --byeol: #a8c4ea;      /* 쪽빛 accent */
+  --byeol-dim: #7d94bb;
+  --inju: #b8402f;       /* 인주 vermilion */
+  --text: #e8e6df;
+  --hmbr-font: 'HMBR Myeongjo', 'NanumMyeongjo YetHangul', serif;
+  --body-font: 'Gowun Batang', 'Apple SD Gothic Neo', serif;
+  --ipa-font: 'Gentium Plus', 'Gentium Book Plus', serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  background-image:
+    radial-gradient(1200px 600px at 50% -10%, rgba(120, 140, 190, 0.10), transparent 70%);
+  color: var(--text);
+  font-family: var(--body-font);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { width: min(720px, 92vw); margin: 0 auto; flex: 1; }
+
+/* ── masthead ── */
+.masthead {
+  text-align: center;
+  padding: 3.2rem 1rem 2rem;
+  border-bottom: 1px solid rgba(168, 196, 234, 0.25);
+  margin-bottom: 2.2rem;
+}
+.eyebrow {
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  color: var(--byeol-dim);
+  margin: 0 0 0.6rem;
+}
+.wordmark {
+  font-family: var(--hmbr-font);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 8vw, 4rem);
+  letter-spacing: 0.08em;
+  color: var(--byeol);
+  margin: 0;
+}
+.tagline {
+  margin: 0.4rem 0 0;
+  color: var(--byeol-dim);
+  letter-spacing: 0.35em;
+  font-size: 0.95rem;
+}
+
+/* ── converter panel ── */
+.converter {
+  background: var(--panel);
+  border: 1px solid var(--panel-line);
+  border-radius: 14px;
+  padding: 1.6rem 1.7rem 1.2rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+}
+.field { margin-bottom: 1.1rem; }
+.field label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+  color: #dfe7f4;
+}
+.field .hint { color: #b9c6dc; font-size: 0.78rem; margin-left: 0.4rem; }
+.field input {
+  width: 100%;
+  font-size: 1.25rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--panel-line);
+  background: var(--ink-deep);
+  color: var(--text);
+  font-family: var(--ipa-font);
+}
+.field input:focus-visible {
+  outline: 2px solid var(--byeol);
+  outline-offset: 1px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.accent-toggle { display: flex; border: 1px solid var(--panel-line); border-radius: 8px; overflow: hidden; }
+.accent-toggle button {
+  font-family: var(--body-font);
+  font-size: 0.9rem;
+  padding: 0.5rem 0.9rem;
+  background: transparent;
+  border: 0;
+  color: #cfd9ea;
+  cursor: pointer;
+}
+.accent-toggle button[aria-pressed='true'] {
+  background: var(--ink-deep);
+  color: var(--byeol);
+}
+button.primary {
+  font-family: var(--body-font);
+  font-size: 1.05rem;
+  padding: 0.55rem 1.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--byeol-dim);
+  background: var(--ink-deep);
+  color: var(--byeol);
+  cursor: pointer;
+}
+button.primary:hover { border-color: var(--byeol); }
+button:focus-visible { outline: 2px solid var(--byeol); outline-offset: 2px; }
+
+.status { min-height: 1.4em; font-size: 0.9rem; margin: 0.8rem 0 0; color: #c9d4e6; }
+.status.warn { color: #ecd9a0; }
+.status.error { color: #f0a898; }
+.status.ok { color: #b9e2b4; }
+
+/* ── output leaf: the 언해 page ── */
+.leaf {
+  position: relative;
+  margin-top: 2rem;
+  background: var(--hanji);
+  /* faint vertical column rules, as in the 해례본 leaf */
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent 0,
+    transparent 74px,
+    var(--hanji-line) 74px,
+    var(--hanji-line) 75px
+  );
+  border-radius: 4px;
+  border: 1px solid #d9cfb8;
+  box-shadow:
+    inset 0 0 0 10px var(--hanji),
+    inset 0 0 0 11px rgba(70, 60, 40, 0.25),
+    0 14px 34px rgba(0, 0, 0, 0.35);
+  padding: 2.4rem 2.2rem 2.6rem;
+  color: #2c2a25;
+  text-align: center;
+}
+.leaf-tools {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  display: flex;
+  gap: 0.4rem;
+}
+.leaf-tools button {
+  font-family: var(--body-font);
+  font-size: 0.78rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid rgba(70, 60, 40, 0.35);
+  background: rgba(255, 253, 247, 0.65);
+  color: #4a4436;
+  cursor: pointer;
+}
+.leaf-tools button:disabled { opacity: 0.45; cursor: default; }
+
+.gloss {
+  font-family: var(--ipa-font);
+  font-size: 1rem;
+  color: #6a6252;
+  margin: 0 0 0.8rem;
+}
+.hmbr {
+  font-family: var(--hmbr-font);
+  font-size: 44px;          /* 1.0em stress reference; adjustable */
+  line-height: 1.55;
+  margin: 0;
+  word-break: keep-all;
+}
+.hmbr-word { white-space: nowrap; }
+.hmbr-primary, .hmbr-secondary { color: #191713; }
+.hmbr-diphthong { color: #4a443a; }
+.ipa {
+  font-family: var(--ipa-font);
+  color: var(--inju);
+  font-size: 1.15rem;
+  margin: 1rem 0 0;
+}
+.seal {
+  position: absolute;
+  right: 1.4rem;
+  bottom: 1.3rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  background: var(--inju);
+  color: #f6efe2;
+  font-family: var(--hmbr-font);
+  font-size: 0.9rem;
+  line-height: 1.05;
+  letter-spacing: 0.05em;
+  border-radius: 3px;
+  writing-mode: vertical-rl;
+  opacity: 0.92;
+}
+
+/* ── legend & footer ── */
+.legend {
+  margin: 1.8rem 0 0;
+  font-size: 0.85rem;
+  color: #a7b2c6;
+  text-align: center;
+}
+.legend b { font-family: var(--hmbr-font); font-weight: 400; color: var(--byeol); }
+.w125 { font-size: 1.25em; } .w100 { font-size: 1em; }
+.w75 { font-size: 0.75em; } .w50 { font-size: 0.5em; }
+
+footer {
+  margin-top: 3rem;
+  padding: 1.4rem 1rem 1.8rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: #7e88a0;
+  border-top: 1px solid rgba(168, 196, 234, 0.18);
+}
+footer p { margin: 0.15rem 0; }
+
+@media (max-width: 560px) {
+  .leaf { padding: 2rem 1.1rem 2.4rem; }
+  .hmbr { font-size: 34px; }
+  .converter { padding: 1.2rem 1.1rem 1rem; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .leaf { animation: leaf-in 0.35s ease-out; }
+  @keyframes leaf-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+/* ── articulation panel: 조음 안내 ── */
+.artic { margin-top: 2rem; }
+.artic-title {
+  font-family: var(--body-font);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  color: var(--byeol);
+  border-bottom: 1px solid rgba(168, 196, 234, 0.25);
+  padding-bottom: 0.5rem;
+  margin: 0 0 1rem;
+}
+.artic-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.8rem;
+}
+.artic-card {
+  background: var(--panel);
+  border: 1px solid var(--panel-line);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+}
+.artic-prosody { border-color: var(--byeol-dim); }
+.artic-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.45rem;
+  flex-wrap: wrap;
+}
+.artic-symbol {
+  font-family: var(--hmbr-font);
+  font-size: 1.7rem;
+  color: #f3ede0;
+  line-height: 1.1;
+}
+.artic-ipa { font-family: var(--ipa-font); color: var(--byeol); font-size: 1rem; }
+.artic-role { font-size: 0.74rem; color: #b9c6dc; letter-spacing: 0.04em; }
+.artic-inst {
+  font-family: var(--ipa-font);
+  font-size: 0.88rem;
+  color: #e4e9f2;
+  margin: 0 0 0.4rem;
+  line-height: 1.5;
+}
+.artic-warn {
+  font-size: 0.85rem;
+  color: #ecd9a0;
+  margin: 0;
+  line-height: 1.55;
+}
+.artic-warn::before { content: '⚠ '; opacity: 0.8; }
+@media (max-width: 560px) {
+  .artic-cards { grid-template-columns: 1fr; }
+}
+
+/* ── mode toggles & narrow-variant tag ── */
+.toggles { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.artic-variant {
+  margin: 0.45rem 0 0;
+  font-size: 0.76rem;
+  color: var(--byeol);
+  border-top: 1px dashed rgba(168, 196, 234, 0.3);
+  padding-top: 0.4rem;
+}
+.hmbr-link { color: var(--inju); }

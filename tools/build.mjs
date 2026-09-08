@@ -1,0 +1,11 @@
+import { mkdir, cp, rm, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+const root = fileURLToPath(new URL('../', import.meta.url));
+const dist = fileURLToPath(new URL('../dist/', import.meta.url));
+await rm(dist, { recursive: true, force: true });
+await mkdir(dist, { recursive: true });
+for (const name of ['index.html','css','js','fonts','data','docs']) await cp(root+name,dist+name,{recursive:true});
+await mkdir(dist+'legacy',{recursive:true});
+for(const name of ['index.html','css','js'])await cp(root+'legacy/'+name,dist+'legacy/'+name,{recursive:true});
+await writeFile(dist+'.nojekyll','');
+console.log('Static site ready: dist/');

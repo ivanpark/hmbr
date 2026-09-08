@@ -31,7 +31,7 @@ python3 -m http.server 8000 --directory dist
 
 ## GitHub Pages에 게시
 
-이 프로젝트의 대상 저장소는 [ivanpark/hmbr](https://github.com/ivanpark/hmbr)이다. 2026-09-08 확인 당시 비어 있는 저장소를 기준으로 첫 게시를 준비했다. 이 디렉터리의 내용을 저장소 루트에 배치한다.
+이 디렉터리의 내용을 대상 저장소의 루트에 배치한다. 기존 저장소가 있다면 해당 저장소의 지침·기존 파일과 대조한 뒤 반영한다. 이 패키지는 원격 저장소의 현재 파일을 덮어쓴 결과가 아니다.
 
 `.github/workflows/pages.yml`은 검사와 시험을 통과한 뒤 정적 파일을 만들고 Pages로 배포한다. `main`·`master`의 push와 수동 실행을 지원하며 실제 배포는 저장소의 기본 브랜치에 한정한다. PR에서는 검사·빌드만 실행한다. 기본 브랜치 이름이 다르면 workflow의 `push.branches`도 맞춘다.
 

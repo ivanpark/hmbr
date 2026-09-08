@@ -1,0 +1,11 @@
+{
+  "name": "hmbr-web",
+  "version": "3.0.0-draft.20260908",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node tools/check.mjs",
+    "build": "node tools/build.mjs"
+  }
+}

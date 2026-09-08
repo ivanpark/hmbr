@@ -1,0 +1,231 @@
+{
+  "rp": {
+    "pick": {
+      "ipa": "pɪk",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "pat": {
+      "ipa": "pæt",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "sing": {
+      "ipa": "sɪŋ",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "bank": {
+      "ipa": "bæŋk",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "milk": {
+      "ipa": "mɪlk",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "text": {
+      "ipa": "tɛkst",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "spin": {
+      "ipa": "spɪn",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "friend": {
+      "ipa": "frɛnd",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "three": {
+      "ipa": "θriː",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "play": {
+      "ipa": "pleɪ",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "boy": {
+      "ipa": "bɔɪ",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "boost": {
+      "ipa": "buːst",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "food": {
+      "ipa": "fuːd",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "cats": {
+      "ipa": "kæts",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "boots": {
+      "ipa": "buːts",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "blue": {
+      "ipa": "bluː",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "pass": {
+      "ipa": "pɑːs",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "car": {
+      "ipa": "kɑː",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "go": {
+      "ipa": "ɡəʊ",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "ask": {
+      "ipa": "ɑːsk",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "about": {
+      "ipa": "əˈbaʊt",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "very": {
+      "ipa": "ˈvɛɹi",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "flat": {
+      "ipa": "flæt",
+      "ref": "제2본 27쪽 §9.3",
+      "kind": "document-example"
+    }
+  },
+  "ga": {
+    "pick": {
+      "ipa": "pɪk",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "pat": {
+      "ipa": "pæt",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "sing": {
+      "ipa": "sɪŋ",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "bank": {
+      "ipa": "bæŋk",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "milk": {
+      "ipa": "mɪlk",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "text": {
+      "ipa": "tɛkst",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "spin": {
+      "ipa": "spɪn",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "friend": {
+      "ipa": "frɛnd",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "three": {
+      "ipa": "θriː",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "play": {
+      "ipa": "pleɪ",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "boy": {
+      "ipa": "bɔɪ",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "boost": {
+      "ipa": "buːst",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "food": {
+      "ipa": "fuːd",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "cats": {
+      "ipa": "kæts",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "boots": {
+      "ipa": "buːts",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "blue": {
+      "ipa": "bluː",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "pass": {
+      "ipa": "pæs",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "car": {
+      "ipa": "kɑɹ",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "go": {
+      "ipa": "ɡoʊ",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "about": {
+      "ipa": "əˈbaʊt",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "very": {
+      "ipa": "ˈvɛɹi",
+      "ref": "제3본 §7 직렬화 갤러리",
+      "kind": "document-example"
+    },
+    "flat": {
+      "ipa": "flæt",
+      "ref": "제2본 27쪽 §9.3",
+      "kind": "document-example"
+    }
+  }
+}
