@@ -182,7 +182,7 @@ export function convertWord(sourceIPA, { accent = 'rp', spelling = '', provenanc
     analysis: { syllabification: split.inferred ? 'inferred-maximal-onset-trial-v1' : model.blocks.length > 1 ? 'source-boundaries' : 'single-nucleus', status: issues.length ? 'unresolved' : split.inferred ? 'review-needed' : 'mapped' },
     canonicalModel: model,
     serialization: { profile: 'hmbr-broad-nfd-draft-2026-09-08', status: canonical === null ? 'unavailable' : 'available', text: canonical, codepoints: canonical === null ? [] : codepoints(canonical) },
-    display: { profile: 'linear-elements-v1', blocks: displays }, issues, warnings
+    display: { profile: 'conjoining-jamo-v1', blocks: displays }, issues, warnings
   };
 }
 

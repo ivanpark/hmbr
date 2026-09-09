@@ -41,9 +41,10 @@ function render(result) {
         block.style.fontSize = `${({primary:1.25, secondary:1, none:.75, unknown:1})[b.stress]}em`;
         block.title = `/${b.ipa}/ · ${{primary:'제1강세',secondary:'제2강세',none:'무강세',unknown:'강세 미지정'}[b.stress]}`;
         block.append(el('span', '〔', 'bracket'));
-        for (const role of ['onset','nucleus','coda']) for (const character of b[role]) {
-          block.append(el('span', character, `element${role === 'coda' && character === 'ᆺ' ? ' s-coda' : ''}`));
-        }
+        // Keep conjoining jamo in one shaping run. Per-jamo flex items
+        // prevent Hangul composition. NFC is display-only; exports retain NFD.
+        const syllable = [...b.onset, ...b.nucleus, ...b.coda].join('').normalize('NFC');
+        block.append(el('span', syllable, 'element syllable'));
         block.append(el('span', '〕', 'bracket')); display.append(block);
       }
       article.append(display);
