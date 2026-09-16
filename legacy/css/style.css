@@ -2,12 +2,12 @@
 
 @font-face {
   font-family: 'HMBR Myeongjo';
-  src: url('../../fonts/NanumMyeongjo-YetHangul-hmbr.woff') format('woff');
+  src: url('../../fonts/HMBR-Myeongjo-YetHangul.woff2') format('woff2');
   font-display: swap;
 }
 @font-face {
   font-family: 'HMBR Gothic';
-  src: url('../../fonts/NanumBarunGothic-YetHangul-hmbr.woff') format('woff');
+  src: url('../../fonts/HMBR-BarunGothic-YetHangul.woff2') format('woff2');
   font-display: swap;
 }
 

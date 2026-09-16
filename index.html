@@ -3,53 +3,86 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#122d43">
-  <meta name="description" content="훈민바름 영어확장판의 시범 변환기. 영어와 IPA를 음절블록으로 살펴보고, 원문과 자모 대응 정보를 함께 보존합니다.">
-  <title>훈민바름 · 영어 발음 변환기</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="theme-color" content="#102d3a">
+  <meta name="description" content="IPA에 대응해 세계의 소리를 한글의 원리로 기록하는 공개 연구, 훈민바름. 영어확장판 네 본과 참조 변환기를 제공합니다.">
+  <meta property="og:title" content="훈민바름 · 우리 글, 바른 소리">
+  <meta property="og:description" content="세계의 소리를 한글의 원리로 기록하는 공개 연구">
+  <meta property="og:type" content="website">
+  <title>훈민바름 · 우리 글, 바른 소리</title>
+  <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-<a class="skip" href="#converter">변환기로 바로 가기</a>
-<header class="masthead">
-  <a class="brand" href="./" aria-label="훈민바름 홈"><span class="brand-mark" aria-hidden="true">ㅎ</span><span>훈민바름<small>우리 글, 바른 소리</small></span></a>
-  <nav aria-label="주요 메뉴"><a href="#documents">제1–4본</a><a href="legacy/index.html">이전 앱 비교 <span aria-hidden="true">↗</span></a><span class="edition">영어확장판 · 시범</span></nav>
+<a class="skip" href="#main">본문으로 바로 가기</a>
+<header class="site-header">
+  <a class="site-brand" href="index.html" aria-label="훈민바름 홈"><span class="brand-seal" aria-hidden="true">ㅎ</span><span><strong>훈민바름</strong><small>HUNMIN BAREUM</small></span></a>
+  <nav aria-label="주요 메뉴"><a href="#about">소개</a><a href="#principles">원리</a><a href="#books">네 본</a><a href="#status">연구 현황</a><a class="nav-cta" href="app.html">소리 써보기</a></nav>
 </header>
-<main>
-  <div class="page-title"><div><p class="eyebrow">HUNMIN BAREUM / ENGLISH</p><h1>소리를 읽는 또 하나의 방법</h1></div><p>영어 발음을 음절마다 살펴보세요.<br>원문 IPA와 자모 대응을 함께 확인할 수 있습니다.</p></div>
-  <section id="converter" class="workspace" aria-label="영어 발음 변환기">
-    <div class="input-panel">
-      <form id="convert-form">
-        <div class="panel-heading"><span class="step">01</span><h2>소리 입력</h2></div>
-        <fieldset class="segmented"><legend class="sr-only">입력 방식</legend><label><input type="radio" name="mode" value="english" checked><span>영어로 찾기</span></label><label><input type="radio" name="mode" value="ipa"><span>IPA 직접 입력</span></label></fieldset>
-        <div id="english-field" class="field"><label for="in-english">영어 단어 또는 짧은 문장</label><textarea id="in-english" rows="3" spellcheck="false" maxlength="5000" placeholder="boost, friend, hello world">boost</textarea><p class="hint">책에 수록된 예시를 먼저 찾고, 나머지는 기존 사전을 조회합니다.</p></div>
-        <div id="ipa-field" class="field" hidden><label for="in-ipa">IPA 발음기호</label><textarea id="in-ipa" rows="3" lang="en" spellcheck="false" maxlength="5000" placeholder="/buːst/ 또는 /ə.ˈbaʊt/"></textarea><p class="hint">공백은 단어, 점(.)은 음절 경계입니다. 넓은 표기(Broad)를 입력하세요.</p></div>
-        <fieldset class="accent-field"><legend>발음 기준</legend><div class="segmented"><label><input type="radio" name="accent" value="rp" checked><span>RP <small>영국식</small></span></label><label><input type="radio" name="accent" value="ga"><span>GA <small>미국식</small></span></label></div></fieldset>
-        <button class="primary" id="btn-convert" type="submit">훈민바름으로 보기 <span aria-hidden="true">→</span></button>
-        <p id="status" class="status" role="status" aria-live="polite"></p>
-      </form>
-      <div class="examples"><h3>책 속의 예시</h3><div class="example-list"><button type="button" data-example="boost" class="selected">boost</button><button type="button" data-example="play">play</button><button type="button" data-example="friend">friend</button><button type="button" data-example="cats">cats</button><button type="button" data-example="about">about</button><button type="button" data-example="catch">catch <span>미결 예</span></button></div></div>
-      <div class="input-note"><strong>표기와 발음은 다릅니다.</strong><p>보이는 자모에 한국어의 받침 발음을 적용하지 않습니다. 종성 /s/도 독립된 소리로 읽습니다.</p></div>
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="overline">외국어 표기 연구안 · 공개 참조 구현</p>
+      <h1 id="hero-title">세계의 소리를 한글로,<br><em>한글의 원리를 다시 세계로.</em></h1>
+      <p class="hero-lead">훈민바름은 IPA에 대응해 외국어의 소리를 한글의 생성 원리로 기록하는 연구입니다. 일상의 한글 표기는 그대로 두고, 정확한 소리가 필요한 자리에서 선택할 수 있는 정밀 표기층을 제안합니다.</p>
+      <div class="hero-actions"><a class="button primary" href="app.html">소리 써보기 <span aria-hidden="true">↗</span></a><a class="button quiet" href="docs/HMBR_Books1-4_Combined_20260914.pdf">제1–4본 합본 읽기 <span aria-hidden="true">↓</span></a></div>
+      <p class="edition-note">영어확장판 · 2026.09.14 교정판 · 연구 가표본</p>
     </div>
-    <div class="result-panel" id="out-panel" aria-label="변환 결과" aria-busy="false">
-      <div class="result-heading"><div class="panel-heading"><span class="step">02</span><h2>훈민바름</h2></div><span id="result-state" class="state">입력 대기</span></div>
-      <div class="output-surface"><div id="word-results" class="word-results" aria-live="polite"><p class="empty-message">단어나 IPA를 입력하면 여기에 음절블록이 나타납니다.</p></div></div>
-      <div class="output-toolbar"><label for="font-size">글자 크기 <input id="font-size" type="range" min="28" max="76" value="48"><output id="size-value" for="font-size">48</output></label><button id="btn-copy" type="button" disabled>자모열 복사</button><button id="btn-json" type="button" disabled>전체 기록 저장</button></div>
-      <p class="result-caption">〔 〕 한 쌍이 하나의 음절입니다. 복사에는 표시용 괄호가 포함되지 않습니다.</p>
-      <div id="result-notes" class="result-notes" hidden></div>
-      <details id="record-details" class="record-details"><summary>IPA · 자모 대응 · 코드포인트</summary><div id="record-inspector"><p>변환 후 대응 정보를 확인할 수 있습니다.</p></div></details>
-      <div id="manual-copy" class="manual-copy" hidden><label for="copy-value">자동 복사가 어려우면 아래 자모열을 선택해 복사하세요.</label><textarea id="copy-value" rows="3" readonly></textarea></div>
+    <div class="hero-specimen" aria-label="훈민바름 표기 구조 예시">
+      <div class="specimen-orbit orbit-one" aria-hidden="true">ㅿ</div><div class="specimen-orbit orbit-two" aria-hidden="true">ㆍ</div>
+      <div class="specimen-card">
+        <div class="specimen-head"><span>REFERENCE SPECIMEN 01</span><span>RP</span></div>
+        <p class="word">boost</p><p class="ipa">/buːst/</p>
+        <div class="hmbr-sample" aria-label="boost의 훈민바름 예시"><span>〔</span><b><span class="specimen-core">부</span><span class="specimen-nucleus">ㅜ</span><span class="specimen-coda">ㅅㅌ</span></b><span>〕</span></div>
+        <dl><div><dt>원문</dt><dd>IPA 보존</dd></div><div><dt>구조</dt><dd>L + V+ + T*</dd></div><div><dt>출력</dt><dd>NFD 자모열</dd></div></dl>
+      </div>
+      <p class="specimen-caption">소리를 줄이지 않고, 정하지 않은 것은 채워 넣지 않습니다.</p>
     </div>
   </section>
-  <section class="reading-guide" aria-label="읽는 방법"><div><span class="guide-number">1</span><p><strong>한 음절, 한 블록</strong><br>자음군과 긴 모음도 같은 괄호 안에 놓입니다.</p></div><div><span class="guide-number">2</span><p><strong>강세는 크기로</strong><br>제1강세 125% · 제2강세 100% · 무강세 75%.</p></div><div><span class="guide-number">3</span><p><strong>미결은 그대로</strong><br>정하지 않은 부호는 만들어 넣지 않습니다.</p></div></section>
-  <section id="documents" class="documents" aria-labelledby="docs-title"><div class="section-heading"><div><p class="eyebrow">READ THE BOOKS</p><h2 id="docs-title">훈민바름 영어확장판 네 본</h2></div><a href="docs/HMBR_Books1-4_Combined_20260914.pdf">2026.09.14 교정 합본 · 164쪽 ↗</a></div><div class="book-grid">
-    <a class="book" href="docs/HMBR_Book1_Seoneonbon_20260914.pdf"><span class="book-number">01</span><span><strong>선언본</strong><small>뜻과 미래 · 36쪽</small></span><span class="book-type">PDF ↗</span></a>
-    <a class="book" href="docs/HMBR_Book2_Haeryebon_20260914.pdf"><span class="book-number">02</span><span><strong>해례본</strong><small>영어 RP·GA 정본과 음소 해례 · 59쪽</small></span><span class="book-type">PDF ↗</span></a>
-    <a class="book" href="docs/HMBR_Book3_Jeonsanbon_20260914.pdf"><span class="book-number">03</span><span><strong>전산본</strong><small>구조 · 직렬화 · 검증 · 46쪽 개정 초안</small></span><span class="book-type">PDF ↗</span></a>
-    <a class="book" href="docs/HMBR_Book4_Guhyeonbon_20260914.pdf"><span class="book-number">04</span><span><strong>구현본</strong><small>웹 사용 · 교사용 예제 · 시험 안내 · 23쪽</small></span><span class="book-type">PDF ↗</span></a>
-  </div></section>
+
+  <section id="about" class="statement section-wrap" aria-labelledby="statement-title">
+    <p class="section-index">01 · 뜻</p><div><p class="kicker">왜 훈민바름인가</p><h2 id="statement-title">보존은 동결이 아닙니다.</h2><p class="statement-lead">훈민바름은 스물넉 자를 바꾸자는 제안이 아닙니다. 훈민정음의 생성 원리를 오늘의 소리 환경에서 다시 살펴보고, 교육·사전·학술·이름·접근성처럼 정밀성이 필요한 영역에 사용할 수 있는 선택지를 만드는 일입니다.</p></div>
+  </section>
+
+  <section id="principles" class="principles section-wrap" aria-labelledby="principles-title">
+    <div class="section-intro"><p class="section-index">02 · 원리</p><div><p class="kicker">두 층, 하나의 언어생활</p><h2 id="principles-title">익숙함과 정밀함을<br>각자의 자리에 둡니다.</h2></div></div>
+    <div class="layer-grid">
+      <article class="layer-card everyday"><span class="layer-no">A</span><p class="card-eyebrow">일상 표기층</p><h3>오늘의 한글 그대로</h3><p>일반적인 외래어 표기와 일상 언어생활에는 현대 한글 스물넉 자를 사용합니다.</p><ul><li>생활 언어</li><li>일반 문서</li><li>익숙한 표기</li></ul></article>
+      <article class="layer-card precise"><span class="layer-no">B</span><p class="card-eyebrow">선택적 정밀 표기층</p><h3>소리가 필요한 곳에서</h3><p>IPA와 대응하는 확장 자모를 사용해 원래 소리의 구조와 출처를 함께 보존합니다.</p><ul><li>교육</li><li>사전·학술</li><li>이름·접근성</li></ul></article>
+    </div>
+    <div class="principle-list">
+      <article><span>01</span><h3>소리와 철자를 구별합니다.</h3><p>보이는 자모에 한국어의 음가를 덧씌우지 않고 입력된 음소의 위치와 순서를 보존합니다.</p></article>
+      <article><span>02</span><h3>문자와 표시를 구별합니다.</h3><p>정본 자모열, 컴퓨터 직렬화, 화면 렌더링을 서로 다른 층으로 기록합니다.</p></article>
+      <article><span>03</span><h3>미결을 결과로 남깁니다.</h3><p>확정하지 않은 부호는 추정해 채우지 않고 원문과 미결 상태를 함께 반환합니다.</p></article>
+    </div>
+  </section>
+
+  <section id="books" class="books section-wrap" aria-labelledby="books-title">
+    <div class="section-intro books-heading"><div><p class="section-index">03 · 네 본</p><div><p class="kicker">READ THE RESEARCH</p><h2 id="books-title">하나의 제안을 네 방향에서 읽습니다.</h2></div></div><a class="text-link" href="docs/HMBR_Books1-4_Combined_20260914.pdf">교정 합본 · 164쪽 <span aria-hidden="true">↗</span></a></div>
+    <div class="book-shelf">
+      <article class="book-card"><a class="cover-link" href="docs/HMBR_Book1_Seoneonbon_20260914.pdf"><img src="assets/books/book1.svg" width="600" height="850" alt="훈민바름 선언본 표지"></a><div class="book-copy"><p>제1본 · 36쪽</p><h3>선언본</h3><span>뜻과 미래</span><a href="docs/HMBR_Book1_Seoneonbon_20260914.pdf">PDF 읽기 ↗</a></div></article>
+      <article class="book-card"><a class="cover-link" href="docs/HMBR_Book2_Haeryebon_20260914.pdf"><img src="assets/books/book2.svg" width="600" height="850" alt="훈민바름 해례본 표지"></a><div class="book-copy"><p>제2본 · 59쪽</p><h3>해례본</h3><span>영어 RP·GA 정본과 음소 해례</span><a href="docs/HMBR_Book2_Haeryebon_20260914.pdf">PDF 읽기 ↗</a></div></article>
+      <article class="book-card"><a class="cover-link" href="docs/HMBR_Book3_Jeonsanbon_20260914.pdf"><img src="assets/books/book3.svg" width="600" height="850" alt="훈민바름 전산본 표지"></a><div class="book-copy"><p>제3본 · 46쪽</p><h3>전산본</h3><span>정본 구조·직렬화·검증</span><a href="docs/HMBR_Book3_Jeonsanbon_20260914.pdf">PDF 읽기 ↗</a></div></article>
+      <article class="book-card"><a class="cover-link" href="docs/HMBR_Book4_Guhyeonbon_20260914.pdf"><img src="assets/books/book4.svg" width="600" height="850" alt="훈민바름 구현본 표지"></a><div class="book-copy"><p>제4본 · 23쪽</p><h3>구현본</h3><span>웹 참조구현과 시험</span><a href="docs/HMBR_Book4_Guhyeonbon_20260914.pdf">PDF 읽기 ↗</a></div></article>
+    </div>
+    <div class="archive-row"><p>파일별 SHA-256과 판본 정보까지 함께 공개합니다.</p><div><a href="docs/INDEX.md">문서 색인</a><a href="SHA256SUMS.txt">체크섬</a><a href="https://github.com/ivanpark/hmbr">공개 저장소 ↗</a></div></div>
+  </section>
+
+  <section class="try section-wrap" aria-labelledby="try-title">
+    <div class="try-visual" aria-hidden="true"><span>〔</span><b>훈</b><span>〕</span><span>〔</span><b>민</b><span>〕</span><span>〔</span><b>바름</b><span>〕</span></div>
+    <div class="try-copy"><p class="section-index">04 · 참조 구현</p><p class="kicker">TRY THE SYSTEM</p><h2 id="try-title">읽는 데서 그치지 않고,<br>직접 소리를 써보세요.</h2><p>영어 단어나 IPA를 입력하면 음절블록, 원문 IPA, 자모 대응과 코드포인트를 함께 확인할 수 있습니다. 이 도구는 제3본 개정 초안의 시범 구현입니다.</p><a class="button light" href="app.html">변환기 열기 <span aria-hidden="true">→</span></a></div>
+  </section>
+
+  <section id="status" class="status-section section-wrap" aria-labelledby="status-title">
+    <div class="section-intro"><p class="section-index">05 · 현재</p><div><p class="kicker">RESEARCH STATUS</p><h2 id="status-title">완료보다 검증을 먼저 말합니다.</h2></div></div>
+    <div class="status-grid">
+      <article><strong>270</strong><span>엔진·사전·표시 자동시험</span><p>수록된 조건의 통과이며 270개 단어나 사전 전체의 정확도를 뜻하지 않습니다.</p></article>
+      <article><strong>43</strong><span>코드포인트 대조</span><p>제3본 갤러리 25개 행을 적용 모듈에 따라 나눈 하위 시험입니다.</p></article>
+      <article><strong>OPEN</strong><span>재현 가능한 공개 자료</span><p>문서, 참조 코드, 시험과 알려진 미결 사항을 함께 공개합니다.</p></article>
+    </div>
+    <div class="limits"><p><strong>현재 범위</strong> RP·GA 넓은 표기의 참조 구현</p><p><strong>계속할 일</strong> 사전 전수감사, 실환경 접근성, 학습 효과, 표시 정합성 검증</p></div>
+  </section>
+
+  <section class="closing section-wrap" aria-label="훈민바름 연구 정보"><p>우리 글, 바른 소리</p><h2>훈민바름</h2><div><span>연구·집필</span><strong>Park Il Hwan</strong></div></section>
 </main>
-<footer><p>훈민바름 · HMBR <span>가표본 연구 · 참조 실험</span></p><p>문서 2026.09.14 교정판 · 제3본 기준 시범 구현 · 원문과 미결 상태를 함께 보존합니다.</p></footer>
-<noscript><p class="noscript">변환기를 사용하려면 JavaScript를 켜 주세요. 문서 PDF는 바로 열 수 있습니다.</p></noscript>
-<script type="module" src="js/app.js"></script>
+<footer class="site-footer"><div><strong>훈민바름</strong><span>HMBR · 공개 연구 가표본</span></div><nav aria-label="하단 메뉴"><a href="app.html">소리 써보기</a><a href="docs/INDEX.md">문서 색인</a><a href="docs/SOURCE_AUDIT.md">자료 감사</a><a href="https://github.com/ivanpark/hmbr">GitHub ↗</a></nav><p>문서 2026.09.14 교정판 · 제3본 기준 시범 구현</p></footer>
 </body>
 </html>

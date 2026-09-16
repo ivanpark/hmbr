@@ -1,4 +1,5 @@
 import { convertWord, convertPhrase } from './engine.js';
+import { linearDisplayRuns } from './display.js';
 import { lookup } from './dict.js';
 import { VERSION } from './registry.js';
 const $ = id => document.getElementById(id);
@@ -41,10 +42,13 @@ function render(result) {
         block.style.fontSize = `${({primary:1.25, secondary:1, none:.75, unknown:1})[b.stress]}em`;
         block.title = `/${b.ipa}/ · ${{primary:'제1강세',secondary:'제2강세',none:'무강세',unknown:'강세 미지정'}[b.stress]}`;
         block.append(el('span', '〔', 'bracket'));
-        // Keep conjoining jamo in one shaping run. Per-jamo flex items
-        // prevent Hangul composition. NFC is display-only; exports retain NFD.
-        const syllable = [...b.onset, ...b.nucleus, ...b.coda].join('').normalize('NFC');
-        block.append(el('span', syllable, 'element syllable'));
+        // 제2본 선형 시범 조자법과 같은 모양·크기로 보인다 (js/display.js).
+        // 핵 100% · 뒤 모음 요소 50% · 독립 자음 75%. 표시 전용 규칙이며 복사·저장은 NFD 직렬화를 그대로 쓴다.
+        for (const run of linearDisplayRuns(b)) {
+          const piece = el('span', run.text, `element syllable el-${run.role}`);
+          if (run.scale !== 1) piece.style.fontSize = `${run.scale}em`;
+          block.append(piece);
+        }
         block.append(el('span', '〕', 'bracket')); display.append(block);
       }
       article.append(display);

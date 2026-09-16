@@ -1,11 +1,13 @@
 {
   "name": "hmbr-web",
-  "version": "3.0.0-draft.20260908",
+  "version": "3.0.0-draft.20260916",
   "private": true,
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
     "check": "node tools/check.mjs",
-    "build": "node tools/build.mjs"
-  }
+    "build": "node tools/build.mjs",
+    "census": "node tools/cluster_census.mjs"
+  },
+  "license": "MIT"
 }

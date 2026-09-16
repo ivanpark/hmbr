@@ -1,231 +1,941 @@
 {
-  "rp": {
-    "pick": {
-      "ipa": "pɪk",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "pat": {
-      "ipa": "pæt",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "sing": {
-      "ipa": "sɪŋ",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "bank": {
-      "ipa": "bæŋk",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "milk": {
-      "ipa": "mɪlk",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "text": {
-      "ipa": "tɛkst",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "spin": {
-      "ipa": "spɪn",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "friend": {
-      "ipa": "frɛnd",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "three": {
-      "ipa": "θriː",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "play": {
-      "ipa": "pleɪ",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "boy": {
-      "ipa": "bɔɪ",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "boost": {
-      "ipa": "buːst",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "food": {
-      "ipa": "fuːd",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "cats": {
-      "ipa": "kæts",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "boots": {
-      "ipa": "buːts",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "blue": {
-      "ipa": "bluː",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "pass": {
-      "ipa": "pɑːs",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "car": {
-      "ipa": "kɑː",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "go": {
-      "ipa": "ɡəʊ",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "ask": {
-      "ipa": "ɑːsk",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "about": {
-      "ipa": "əˈbaʊt",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "very": {
-      "ipa": "ˈvɛɹi",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "flat": {
-      "ipa": "flæt",
-      "ref": "제2본 27쪽 §9.3",
-      "kind": "document-example"
-    }
+ "rp": {
+  "pick": {
+   "ipa": "pɪk",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
   },
-  "ga": {
-    "pick": {
-      "ipa": "pɪk",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "pat": {
-      "ipa": "pæt",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "sing": {
-      "ipa": "sɪŋ",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "bank": {
-      "ipa": "bæŋk",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "milk": {
-      "ipa": "mɪlk",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "text": {
-      "ipa": "tɛkst",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "spin": {
-      "ipa": "spɪn",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "friend": {
-      "ipa": "frɛnd",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "three": {
-      "ipa": "θriː",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "play": {
-      "ipa": "pleɪ",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "boy": {
-      "ipa": "bɔɪ",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "boost": {
-      "ipa": "buːst",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "food": {
-      "ipa": "fuːd",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "cats": {
-      "ipa": "kæts",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "boots": {
-      "ipa": "buːts",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "blue": {
-      "ipa": "bluː",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "pass": {
-      "ipa": "pæs",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "car": {
-      "ipa": "kɑɹ",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "go": {
-      "ipa": "ɡoʊ",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "about": {
-      "ipa": "əˈbaʊt",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "very": {
-      "ipa": "ˈvɛɹi",
-      "ref": "제3본 §7 직렬화 갤러리",
-      "kind": "document-example"
-    },
-    "flat": {
-      "ipa": "flæt",
-      "ref": "제2본 27쪽 §9.3",
-      "kind": "document-example"
-    }
+  "pat": {
+   "ipa": "pæt",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "sing": {
+   "ipa": "sɪŋ",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "bank": {
+   "ipa": "bæŋk",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "milk": {
+   "ipa": "mɪlk",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "text": {
+   "ipa": "tɛkst",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "spin": {
+   "ipa": "spɪn",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "friend": {
+   "ipa": "frɛnd",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "three": {
+   "ipa": "θriː",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "play": {
+   "ipa": "pleɪ",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "boy": {
+   "ipa": "bɔɪ",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "boost": {
+   "ipa": "buːst",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "food": {
+   "ipa": "fuːd",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "cats": {
+   "ipa": "kæts",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "boots": {
+   "ipa": "buːts",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "blue": {
+   "ipa": "bluː",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "pass": {
+   "ipa": "pɑːs",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "car": {
+   "ipa": "kɑː",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "go": {
+   "ipa": "ɡəʊ",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "ask": {
+   "ipa": "ɑːsk",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "about": {
+   "ipa": "əˈbaʊt",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "very": {
+   "ipa": "ˈvɛɹi",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "flat": {
+   "ipa": "flæt",
+   "ref": "제2본 27쪽 §9.3",
+   "kind": "document-example"
+  },
+  "pun": {
+   "ipa": "pʌn",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "task": {
+   "ipa": "tɑːsk",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "day": {
+   "ipa": "deɪ",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "kill": {
+   "ipa": "kɪl",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "good": {
+   "ipa": "ɡʊd",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "catch": {
+   "ipa": "kætʃ",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "this": {
+   "ipa": "ðɪs",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "sun": {
+   "ipa": "sʌn",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "noise": {
+   "ipa": "nɔɪz",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "now": {
+   "ipa": "naʊ",
+   "ref": "제2본 12쪽",
+   "kind": "document-example"
+  },
+  "wood": {
+   "ipa": "wʊd",
+   "ref": "제2본 12쪽",
+   "kind": "document-example"
+  },
+  "yes": {
+   "ipa": "jɛs",
+   "ref": "제2본 12쪽",
+   "kind": "document-example"
+  },
+  "fleece": {
+   "ipa": "fliːs",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "kit": {
+   "ipa": "kɪt",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "dress": {
+   "ipa": "drɛs",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "trap": {
+   "ipa": "træp",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "strut": {
+   "ipa": "strʌt",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "foot": {
+   "ipa": "fʊt",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "goose": {
+   "ipa": "ɡuːs",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "comma": {
+   "ipa": "ˈkɒmə",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 13쪽)",
+   "kind": "document-example"
+  },
+  "nurse": {
+   "ipa": "nɜːs",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "palm": {
+   "ipa": "pɑːm",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "lot": {
+   "ipa": "lɒt",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "thought": {
+   "ipa": "θɔːt",
+   "ref": "제2본 13쪽 §4 /ɔː/",
+   "kind": "document-example"
+  },
+  "happy": {
+   "ipa": "ˈhæpi",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 19쪽)",
+   "kind": "document-example"
+  },
+  "face": {
+   "ipa": "feɪs",
+   "ref": "제2본 14쪽",
+   "kind": "document-example"
+  },
+  "price": {
+   "ipa": "praɪs",
+   "ref": "제2본 14쪽",
+   "kind": "document-example"
+  },
+  "choice": {
+   "ipa": "tʃɔɪs",
+   "ref": "제2본 14쪽",
+   "kind": "document-example"
+  },
+  "mouth": {
+   "ipa": "maʊθ",
+   "ref": "제2본 14쪽",
+   "kind": "document-example"
+  },
+  "goat": {
+   "ipa": "ɡəʊt",
+   "ref": "제2본 14쪽",
+   "kind": "document-example"
+  },
+  "near": {
+   "ipa": "nɪə",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 23쪽)",
+   "kind": "document-example"
+  },
+  "cure": {
+   "ipa": "kjʊə",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 23쪽)",
+   "kind": "document-example"
+  },
+  "soon": {
+   "ipa": "suːn",
+   "ref": "제2본 15쪽",
+   "kind": "document-example"
+  },
+  "boot": {
+   "ipa": "buːt",
+   "ref": "제2본 16쪽",
+   "kind": "document-example"
+  },
+  "soot": {
+   "ipa": "sʊt",
+   "ref": "제2본 16쪽",
+   "kind": "document-example"
+  },
+  "suit": {
+   "ipa": "suːt",
+   "ref": "제2본 16쪽",
+   "kind": "document-example"
+  },
+  "bus": {
+   "ipa": "bʌs",
+   "ref": "제2본 16쪽",
+   "kind": "document-example"
+  },
+  "hits": {
+   "ipa": "hɪts",
+   "ref": "제2본 17쪽",
+   "kind": "document-example"
+  },
+  "abates": {
+   "ipa": "əˈbeɪts",
+   "ref": "제2본 17쪽",
+   "kind": "document-example"
+  },
+  "bite": {
+   "ipa": "baɪt",
+   "ref": "제2본 17쪽",
+   "kind": "document-example"
+  },
+  "say": {
+   "ipa": "seɪ",
+   "ref": "제2본 17쪽",
+   "kind": "document-example"
+  },
+  "four": {
+   "ipa": "fɔː",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "here": {
+   "ipa": "hɪə",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "park": {
+   "ipa": "pɑːk",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "short": {
+   "ipa": "ʃɔːt",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "farm": {
+   "ipa": "fɑːm",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "better": {
+   "ipa": "ˈbɛtə",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "water": {
+   "ipa": "ˈwɔːtə",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "teacher": {
+   "ipa": "ˈtiːtʃə",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "mother": {
+   "ipa": "ˈmʌðə",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "low": {
+   "ipa": "ləʊ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 21쪽)",
+   "kind": "document-example"
+  },
+  "boat": {
+   "ipa": "bəʊt",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 21쪽)",
+   "kind": "document-example"
+  },
+  "home": {
+   "ipa": "həʊm",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 21쪽)",
+   "kind": "document-example"
+  },
+  "note": {
+   "ipa": "nəʊt",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 21쪽)",
+   "kind": "document-example"
+  },
+  "bath": {
+   "ipa": "bɑːθ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 21쪽)",
+   "kind": "document-example"
+  },
+  "dance": {
+   "ipa": "dɑːns",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 21쪽)",
+   "kind": "document-example"
+  },
+  "half": {
+   "ipa": "hɑːf",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 22쪽)",
+   "kind": "document-example"
+  },
+  "hot": {
+   "ipa": "hɒt",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 22쪽)",
+   "kind": "document-example"
+  },
+  "stop": {
+   "ipa": "stɒp",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 22쪽)",
+   "kind": "document-example"
+  },
+  "dog": {
+   "ipa": "dɒɡ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 22쪽)",
+   "kind": "document-example"
+  },
+  "long": {
+   "ipa": "lɒŋ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 22쪽)",
+   "kind": "document-example"
+  },
+  "caught": {
+   "ipa": "kɔːt",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 22쪽)",
+   "kind": "document-example"
+  },
+  "square": {
+   "ipa": "skwɛː",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 23쪽)",
+   "kind": "document-example"
+  },
+  "air": {
+   "ipa": "ɛː",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 23쪽)",
+   "kind": "document-example"
+  },
+  "light": {
+   "ipa": "laɪt",
+   "ref": "제2본 29쪽",
+   "kind": "document-example"
+  },
+  "right": {
+   "ipa": "ɹaɪt",
+   "ref": "제2본 29쪽",
+   "kind": "document-example"
+  },
+  "sky": {
+   "ipa": "skaɪ",
+   "ref": "제2본 29쪽",
+   "kind": "document-example"
+  },
+  "waits": {
+   "ipa": "weɪts",
+   "ref": "제2본 30쪽",
+   "kind": "document-example"
+  },
+  "judge": {
+   "ipa": "dʒʌdʒ",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "fish": {
+   "ipa": "fɪʃ",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "letter": {
+   "ipa": "ˈlɛtə",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 19쪽)",
+   "kind": "document-example"
   }
+ },
+ "ga": {
+  "pick": {
+   "ipa": "pɪk",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "pat": {
+   "ipa": "pæt",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "sing": {
+   "ipa": "sɪŋ",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "bank": {
+   "ipa": "bæŋk",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "milk": {
+   "ipa": "mɪlk",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "text": {
+   "ipa": "tɛkst",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "spin": {
+   "ipa": "spɪn",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "friend": {
+   "ipa": "frɛnd",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "three": {
+   "ipa": "θriː",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "play": {
+   "ipa": "pleɪ",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "boy": {
+   "ipa": "bɔɪ",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "boost": {
+   "ipa": "buːst",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "food": {
+   "ipa": "fuːd",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "cats": {
+   "ipa": "kæts",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "boots": {
+   "ipa": "buːts",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "blue": {
+   "ipa": "bluː",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "pass": {
+   "ipa": "pæs",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "car": {
+   "ipa": "kɑɹ",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "go": {
+   "ipa": "ɡoʊ",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "about": {
+   "ipa": "əˈbaʊt",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "very": {
+   "ipa": "ˈvɛɹi",
+   "ref": "제3본 §7 직렬화 갤러리",
+   "kind": "document-example"
+  },
+  "flat": {
+   "ipa": "flæt",
+   "ref": "제2본 27쪽 §9.3",
+   "kind": "document-example"
+  },
+  "pun": {
+   "ipa": "pʌn",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "day": {
+   "ipa": "deɪ",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "kill": {
+   "ipa": "kɪl",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "good": {
+   "ipa": "ɡʊd",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "catch": {
+   "ipa": "kætʃ",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "this": {
+   "ipa": "ðɪs",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "sun": {
+   "ipa": "sʌn",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "noise": {
+   "ipa": "nɔɪz",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "home": {
+   "ipa": "hoʊm",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 21쪽)",
+   "kind": "document-example"
+  },
+  "now": {
+   "ipa": "naʊ",
+   "ref": "제2본 12쪽",
+   "kind": "document-example"
+  },
+  "wood": {
+   "ipa": "wʊd",
+   "ref": "제2본 12쪽",
+   "kind": "document-example"
+  },
+  "yes": {
+   "ipa": "jɛs",
+   "ref": "제2본 12쪽",
+   "kind": "document-example"
+  },
+  "fleece": {
+   "ipa": "fliːs",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "kit": {
+   "ipa": "kɪt",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "dress": {
+   "ipa": "drɛs",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "trap": {
+   "ipa": "træp",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "strut": {
+   "ipa": "strʌt",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "foot": {
+   "ipa": "fʊt",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "goose": {
+   "ipa": "ɡuːs",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "lot": {
+   "ipa": "lɑt",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "thought": {
+   "ipa": "θɔt",
+   "ref": "제2본 13쪽",
+   "kind": "document-example"
+  },
+  "happy": {
+   "ipa": "ˈhæpi",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 19쪽)",
+   "kind": "document-example"
+  },
+  "face": {
+   "ipa": "feɪs",
+   "ref": "제2본 14쪽",
+   "kind": "document-example"
+  },
+  "price": {
+   "ipa": "praɪs",
+   "ref": "제2본 14쪽",
+   "kind": "document-example"
+  },
+  "choice": {
+   "ipa": "tʃɔɪs",
+   "ref": "제2본 14쪽",
+   "kind": "document-example"
+  },
+  "mouth": {
+   "ipa": "maʊθ",
+   "ref": "제2본 14쪽",
+   "kind": "document-example"
+  },
+  "goat": {
+   "ipa": "ɡoʊt",
+   "ref": "제2본 14쪽",
+   "kind": "document-example"
+  },
+  "soon": {
+   "ipa": "suːn",
+   "ref": "제2본 15쪽",
+   "kind": "document-example"
+  },
+  "boot": {
+   "ipa": "buːt",
+   "ref": "제2본 16쪽",
+   "kind": "document-example"
+  },
+  "soot": {
+   "ipa": "sʊt",
+   "ref": "제2본 16쪽",
+   "kind": "document-example"
+  },
+  "suit": {
+   "ipa": "suːt",
+   "ref": "제2본 16쪽",
+   "kind": "document-example"
+  },
+  "bus": {
+   "ipa": "bʌs",
+   "ref": "제2본 16쪽",
+   "kind": "document-example"
+  },
+  "hits": {
+   "ipa": "hɪts",
+   "ref": "제2본 17쪽",
+   "kind": "document-example"
+  },
+  "abates": {
+   "ipa": "əˈbeɪts",
+   "ref": "제2본 17쪽",
+   "kind": "document-example"
+  },
+  "bite": {
+   "ipa": "baɪt",
+   "ref": "제2본 17쪽",
+   "kind": "document-example"
+  },
+  "say": {
+   "ipa": "seɪ",
+   "ref": "제2본 17쪽",
+   "kind": "document-example"
+  },
+  "four": {
+   "ipa": "fɔɹ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "here": {
+   "ipa": "hɪɹ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "park": {
+   "ipa": "pɑɹk",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "short": {
+   "ipa": "ʃɔɹt",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "farm": {
+   "ipa": "fɑɹm",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "better": {
+   "ipa": "ˈbɛtɚ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "water": {
+   "ipa": "ˈwɔtɚ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "teacher": {
+   "ipa": "ˈtiːtʃɚ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "mother": {
+   "ipa": "ˈmʌðɚ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 20쪽)",
+   "kind": "document-example"
+  },
+  "low": {
+   "ipa": "loʊ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 21쪽)",
+   "kind": "document-example"
+  },
+  "boat": {
+   "ipa": "boʊt",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 21쪽)",
+   "kind": "document-example"
+  },
+  "note": {
+   "ipa": "noʊt",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 21쪽)",
+   "kind": "document-example"
+  },
+  "bath": {
+   "ipa": "bæθ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 21쪽)",
+   "kind": "document-example"
+  },
+  "dance": {
+   "ipa": "dæns",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 21쪽)",
+   "kind": "document-example"
+  },
+  "ask": {
+   "ipa": "æsk",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 22쪽)",
+   "kind": "document-example"
+  },
+  "half": {
+   "ipa": "hæf",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 22쪽)",
+   "kind": "document-example"
+  },
+  "hot": {
+   "ipa": "hɑt",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 22쪽)",
+   "kind": "document-example"
+  },
+  "stop": {
+   "ipa": "stɑp",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 22쪽)",
+   "kind": "document-example"
+  },
+  "dog": {
+   "ipa": "dɔɡ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 22쪽)",
+   "kind": "document-example"
+  },
+  "long": {
+   "ipa": "lɔŋ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 22쪽)",
+   "kind": "document-example"
+  },
+  "caught": {
+   "ipa": "kɔt",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 22쪽)",
+   "kind": "document-example"
+  },
+  "square": {
+   "ipa": "skwɛɹ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 23쪽)",
+   "kind": "document-example"
+  },
+  "near": {
+   "ipa": "nɪɹ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 23쪽)",
+   "kind": "document-example"
+  },
+  "cure": {
+   "ipa": "kjʊɹ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 23쪽)",
+   "kind": "document-example"
+  },
+  "air": {
+   "ipa": "ɛɹ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 23쪽)",
+   "kind": "document-example"
+  },
+  "close": {
+   "ipa": "kloʊz",
+   "ref": "제2본 27쪽",
+   "kind": "document-example"
+  },
+  "light": {
+   "ipa": "laɪt",
+   "ref": "제2본 29쪽",
+   "kind": "document-example"
+  },
+  "right": {
+   "ipa": "ɹaɪt",
+   "ref": "제2본 29쪽",
+   "kind": "document-example"
+  },
+  "sky": {
+   "ipa": "skaɪ",
+   "ref": "제2본 29쪽",
+   "kind": "document-example"
+  },
+  "waits": {
+   "ipa": "weɪts",
+   "ref": "제2본 30쪽",
+   "kind": "document-example"
+  },
+  "judge": {
+   "ipa": "dʒʌdʒ",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "fish": {
+   "ipa": "fɪʃ",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "measure": {
+   "ipa": "ˈmɛʒɚ",
+   "ref": "제2본 11쪽",
+   "kind": "document-example"
+  },
+  "letter": {
+   "ipa": "ˈlɛtɚ",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 19쪽)",
+   "kind": "document-example"
+  },
+  "comma": {
+   "ipa": "ˈkɑmə",
+   "ref": "제2본 §7 RP·GA 대조표 (제2본 19쪽)",
+   "kind": "document-example"
+  }
+ }
 }

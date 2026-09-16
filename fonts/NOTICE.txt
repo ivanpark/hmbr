@@ -1,0 +1,17 @@
+fonts/ — 글꼴 출처와 라이선스
+
+HMBR-Myeongjo-YetHangul.woff2
+HMBR-BarunGothic-YetHangul.woff2
+
+두 파일은 네이버가 SIL Open Font License 1.1로 공개한 「나눔명조 옛한글」과 「나눔바른고딕 옛한글」에서
+훈민바름 영어확장판이 쓰는 글자(현대 한글·옛한글 자모 U+1100–11FF·U+A960–A97F·U+D7B0–D7FF, 호환 자모,
+기본 로마자·문장부호)만 남긴 부분집합(subset) 빌드다.
+
+OFL 1.1 제3조에 따라, 원 글꼴을 수정한 판은 예약 글꼴 이름(Reserved Font Name: Nanum, NanumMyeongjo 등)을
+쓸 수 없다. 그래서 이 두 파일의 내부 이름(name ID 1·4·6·16)과 파일 이름을 HMBR Myeongjo YetHangul ·
+HMBR BarunGothic YetHangul 로 바꾸었다. 원 저작권 고지와 OFL 전문은 옆의 OFL.txt 에 그대로 있으며,
+글꼴 안의 name ID 13·14 에도 라이선스 고지와 주소를 넣었다.
+
+원 저작권: Copyright (c) 2010, NHN Corporation (http://www.nhncorp.com)
+라이선스: SIL Open Font License, Version 1.1 — https://scripts.sil.org/OFL
+이 부분집합 빌드도 같은 OFL 1.1 아래에서만 재배포할 수 있으며, 단독으로 판매할 수 없다.

@@ -1,8 +1,8 @@
-# 훈민바름 Web · 제3본 기준 시범 구현
+# 훈민바름 · 공개 연구 사이트와 제3본 기준 시범 구현
 
-영어 또는 IPA를 훈민바름 음절블록으로 살펴보는 정적 웹앱이다. 제1·2본 교정 PDF, 46쪽 제3본 전산본과 23쪽 제4본 구현본을 함께 제공한다. 사용자 제공 `hmbr-web-v2.0(2).zip`의 사전·글꼴을 계승하고, 현재 제3본과 충돌하는 변환 엔진은 새로 구현했다.
+공개 front page에서 훈민바름의 연구 범위와 네 본을 소개하고, 별도의 참조 구현에서 영어 또는 IPA를 훈민바름 음절블록으로 살펴본다. 제1·2본 교정 PDF, 46쪽 제3본 전산본과 23쪽 제4본 구현본을 함께 제공한다. 사용자 제공 `hmbr-web-v2.0(2).zip`의 사전·글꼴을 계승하고, 현재 제3본과 충돌하는 변환 엔진은 새로 구현했다.
 
-[웹앱 바로 실행](https://ivanpark.github.io/hmbr/) · [문서 바로 보기](https://ivanpark.github.io/hmbr/#documents)
+[공개 사이트](https://ivanpark.github.io/hmbr/) · [소리 써보기](https://ivanpark.github.io/hmbr/app.html) · [문서 바로 보기](https://ivanpark.github.io/hmbr/#books)
 
 ## 검증된 교정 출판 파일
 
@@ -20,6 +20,7 @@
 - **영어로 찾기:** 문서 예시를 먼저 찾고, 나머지 단어는 첨부 사전의 원문 IPA로 조회한다. 출처와 검수 상태가 결과에 표시된다.
 - **IPA 직접 입력:** 넓은 표기(Broad)를 입력한다. 공백은 단어, 점(`.`)은 음절 경계다. `/ə.ˈbaʊt/`처럼 경계를 지정할 수 있다.
 - **결과:** 괄호 하나가 한 음절블록이다. 제1강세 125%, 제2강세 100%, 무강세 75%를 적용한다. 강세 미지정은 임의로 제1강세로 바꾸지 않고 기본 크기로 표시한다.
+- **화면의 모양:** 제2본의 선형 시범 조자법과 같게 보인다(`js/display.js`, 표시 프로파일 `linear-trial-v2`). 마지막 초성·첫 중성·(단일) 첫 종성만 한 음절로 합성하고, 나머지 자모는 독립 요소로 보인다. 크기는 합성된 핵 100%, 뒤 모음 요소 50%(제2본 §14 「뒤 요소 50% 크기」), 독립 자음 75%다 — `부ㅜㅅㅌ`은 부(100) ㅜ(50) ㅅㅌ(75). 종성 /s/와 /t+s/는 언제나 독립 요소다 — 제2본 §9.4가 금지한 `팻`·`캧` 같은 모양이 화면에 나오지 않는다(`패ㅅ`·`캐ㅊ`). 이 규칙은 화면만 바꾸며 복사·저장되는 NFD 직렬화는 그대로다.
 - **자모열 복사:** NFD 조합형만 복사한다. 여러 단어의 복사는 단어별 자모열을 공백으로 연결하는 편의 기능이다. 단어 하나의 직렬화에는 공백이나 표시용 괄호가 없다.
 - **전체 기록 저장:** 원문, 발음 기준, 정규화 이력, 강세, 음소와 자모의 대응, 미결 상태를 JSON으로 저장한다. 문장 교환은 이 레코드 배열을 사용한다.
 - **이전 앱 비교:** 기존 v2.0의 좁은 표기·연음·조음 안내를 `legacy/index.html`에서 확인한다. 구버전 결과는 현재 제3본의 적합성 결과와 구별한다.
@@ -32,7 +33,13 @@
 node tools/check.mjs
 node --test tests/*.test.mjs
 node tools/build.mjs
+node tools/cluster_census.mjs      # 제3본 §21 자음군·음절핵 부호 배당 조사 재현 (--json 가능)
 ```
+
+`tools/cluster_census.mjs`는 첨부 사전에서 어두·어말 자음군과 2요소 음절핵을 전수 추출해 Unicode 겹낱자 부호 배당
+여부를 대조한다. 제3본 §21의 수치(RP 207·447종, GA 123·303종, 등록 16·38·11·31, 완전 해소 516·320종, 상위 60종 90% 남짓)가
+그대로 재현된다. 해석 표제어 수만 제3본 표기(134,297)와 1항 차이가 있으며 정규화 표의 미세한 차이다. 자모의 공식 이름은
+`data/jamo-names.json`(Unicode 문자 데이터베이스에서 옮김)을 쓴다.
 
 `dist/`가 배포 파일이다. 로컬 실행 예:
 
@@ -66,6 +73,7 @@ python3 -m http.server 8000 --directory dist
 | /ɝ/·음절자음 | 모음이나 위치형을 추정하여 채우지 않음 |
 | /ɚ/ | GA에서 원문을 남기고 /əɹ/ 분석 이력을 기록 |
 | 강세·출처 | 자모열 밖 구조화된 기록에 보존 |
+| 표시 | 제2본 선형 시범 조자법과 같은 모양. 종성 /s/·/t+s/는 합성하지 않음 (§9.4 금지형 방지) |
 
 ## 적용 범위
 
@@ -75,18 +83,29 @@ python3 -m http.server 8000 --directory dist
 
 /j,w/의 기저값 명시형은 제공하지만 모음과의 최종 결합형을 확정하지 않는다. 좁은 표기, 음절자음, 미등록 기호를 Broad 완성 출력으로 바꾸지 않는다. 평문에서 원철자·강세·출처를 자동 복원하는 역변환기나 영어 낭독 기능은 이 앱에 포함하지 않는다.
 
+## 라이선스
+
+| 자산 | 라이선스 | 파일 |
+| --- | --- | --- |
+| 소스 코드 (`js/` `tools/` `tests/` `css/` `index.html` `app.html` `review-brief-260916.html` `legacy/`) | MIT | [LICENSE](LICENSE) |
+| 문서 (`docs/` PDF·DOCX·MD, README 등) | CC BY 4.0 | [docs/LICENSE.md](docs/LICENSE.md) |
+| 글꼴 (`fonts/*.woff2`) | SIL Open Font License 1.1 (나눔 글꼴 부분집합, 이름 변경) | [fonts/OFL.txt](fonts/OFL.txt) · [fonts/NOTICE.txt](fonts/NOTICE.txt) |
+| 발음사전 (`data/dict-*.json`) | 제3자 자료 · 출처 확인 중 | [data/SOURCES.md](data/SOURCES.md) |
+
+제1본 부록 A 「공공성 원칙」의 공개·비독점·기술중립 원칙을 저장소에 그대로 적용한 것이다.
+
 ## 자료와 변경 이력
 
 - [원자료 확인 및 변경 내역](docs/SOURCE_AUDIT.md)
 - [구현 검증 보고](docs/IMPLEMENTATION.md)
 - [제1·2본 교정 내역](docs/HMBR_Corrections_20260908.md)
 - `data/book3-tables.json`: 제3본의 확인된 표를 옮긴 개발 근거.
-- `data/examples.json`: 문서 예시만 수록한 조회 자료. 일반 사전 검수를 뜻하지 않는다.
+- `data/examples.json`: 제2·3본에 실린 낱말의 RP·GA IPA (RP 94 · GA 93 항목). 제2본 §7 RP·GA 대조표와 맺음말의 다섯 낱말(car·go·pass·hot·near)을 포함하므로, 책에 나오는 낱말은 사전 품질과 무관하게 책과 같은 값이 나온다. 일반 사전 검수를 뜻하지 않는다.
 - `data/dict-ga.json`: 기존 ZIP의 125,004개 항목, 기존 설명은 CMU 계열.
 - `data/dict-rp.json`: 기존 ZIP의 135,495개 항목, 기존 설명은 2023년 일부 기계 생성·검수 전.
-- `fonts/`: 기존 ZIP의 나눔명조·나눔바른고딕 옛한글 WOFF. 제3본 핵심 부호의 글꼴 수록 여부를 확인했다.
+- `fonts/`: 나눔명조·나눔바른고딕 옛한글(SIL OFL 1.1)의 부분집합 WOFF. OFL의 예약 글꼴 이름 조항에 따라 내부 이름과 파일 이름을 `HMBR Myeongjo YetHangul`·`HMBR BarunGothic YetHangul`로 바꾸었다. 원 저작권 고지와 라이선스 전문은 `fonts/OFL.txt`·`fonts/NOTICE.txt`에 있다. 제3본 핵심 부호의 글꼴 수록 여부를 확인했다.
 
-첨부 사전과 글꼴의 원자료 식별을 유지했다. 원 ZIP에는 별도 라이선스 파일이 없었으며 이 작업에서 제3자 자산에 새로운 라이선스를 부여하지 않았다.
+사전의 출처·라이선스와 알려진 품질 문제(GA 사전의 RP형 전사)는 `data/SOURCES.md`에 적었다.
 
 ## 제4본 구현본
 
@@ -97,4 +116,3 @@ python3 -m http.server 8000 --directory dist
 - [제4본 텍스트 · 2026.09.08 이전 원고](docs/HMBR_Book4_Guhyeonbon_20260908.md)
 
 최초 공개 코드 커밋은 `1e3164ce706ad7397a7cd660e0f15f11be7e1ed7`이다. 현재 웹앱은 [GitHub Pages](https://ivanpark.github.io/hmbr/)에서 제공하며, 배포 결과는 [Actions](https://github.com/ivanpark/hmbr/actions/workflows/pages.yml)에서 확인할 수 있다.
-
