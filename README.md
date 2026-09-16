@@ -75,6 +75,17 @@ python3 -m http.server 8000 --directory dist
 
 첨부 사전과 글꼴의 원자료 식별을 유지했다. 원 ZIP에는 별도 라이선스 파일이 없었으며 이 작업에서 제3자 자산에 새로운 라이선스를 부여하지 않았다.
 
+## 검증된 교정 출판 파일
+
+2026년 9월 14일 교정판의 제1–4본과 합본을 제공합니다. 쪽수와 파일별 SHA-256은 [문서 색인](docs/INDEX.md)과 [체크섬 목록](SHA256SUMS.txt)에서 확인할 수 있습니다.
+
+- [제1본 · 선언본 · 36쪽](docs/HMBR_Book1_Seoneonbon_20260914.pdf)
+- [제2본 · 해례본 · 59쪽](docs/HMBR_Book2_Haeryebon_20260914.pdf)
+- [제3본 · 전산본 · 46쪽](docs/HMBR_Book3_Jeonsanbon_20260914.pdf)
+- [제4본 · 구현본 · 23쪽](docs/HMBR_Book4_Guhyeonbon_20260914.pdf)
+- [제1–4본 · 교정 합본 · 164쪽](docs/HMBR_Books1-4_Combined_20260914.pdf)
+- [문서 색인](docs/INDEX.md)
+
 ## 제4본 구현본
 
 웹 사용법, 교사용 활동, 개발 재현 절차, 시험 결과와 미구현 범위를 설명한다.
@@ -84,3 +95,4 @@ python3 -m http.server 8000 --directory dist
 - [제4본 텍스트 원고](docs/HMBR_Book4_Guhyeonbon_20260908.md)
 
 최초 공개 코드 커밋은 `1e3164ce706ad7397a7cd660e0f15f11be7e1ed7`이다. 해당 커밋의 검사·시험·빌드는 성공했으나 Pages 설정 조회가 실패해 웹사이트 서비스 개시는 확인되지 않았다. 저장소 Settings → Pages에서 Source를 GitHub Actions로 설정한 뒤 배포 결과를 확인한다.
+
