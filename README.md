@@ -6,13 +6,13 @@
 
 ## 검증된 교정 출판 파일
 
-2026년 9월 14일 교정판의 제1–4본과 합본을 제공합니다. 쪽수와 파일별 SHA-256은 [문서 색인](docs/INDEX.md)과 [체크섬 목록](SHA256SUMS.txt)에서 확인할 수 있습니다.
+2026년 9월 16일 교정판의 제1–4본과 합본을 제공합니다. 쪽수와 파일별 SHA-256은 [문서 색인](docs/INDEX.md)과 [체크섬 목록](SHA256SUMS.txt)에서 확인할 수 있습니다.
 
-- [제1본 · 선언본 · 36쪽](docs/HMBR_Book1_Seoneonbon_20260914.pdf)
-- [제2본 · 해례본 · 59쪽](docs/HMBR_Book2_Haeryebon_20260914.pdf)
-- [제3본 · 전산본 · 46쪽](docs/HMBR_Book3_Jeonsanbon_20260914.pdf)
-- [제4본 · 구현본 · 23쪽](docs/HMBR_Book4_Guhyeonbon_20260914.pdf)
-- [제1–4본 · 교정 합본 · 164쪽](docs/HMBR_Books1-4_Combined_20260914.pdf)
+- [제1본 · 선언본 · 36쪽](docs/HMBR_Book1_Seoneonbon_20260916.pdf)
+- [제2본 · 해례본 · 59쪽](docs/HMBR_Book2_Haeryebon_20260916.pdf)
+- [제3본 · 전산본 · 46쪽](docs/HMBR_Book3_Jeonsanbon_20260916.pdf)
+- [제4본 · 구현본 · 23쪽](docs/HMBR_Book4_Guhyeonbon_20260916.pdf)
+- [제1–4본 · 교정 합본 · 164쪽](docs/HMBR_Books1-4_Combined_20260916.pdf)
 - [문서 색인](docs/INDEX.md)
 
 ## 사용
@@ -98,7 +98,7 @@ python3 -m http.server 8000 --directory dist
 
 - [원자료 확인 및 변경 내역](docs/SOURCE_AUDIT.md)
 - [구현 검증 보고](docs/IMPLEMENTATION.md)
-- [제1·2본 교정 내역](docs/HMBR_Corrections_20260908.md)
+- [2026-09-16 편집·검증 내역](docs/HMBR_Corrections_20260916.md)
 - `data/book3-tables.json`: 제3본의 확인된 표를 옮긴 개발 근거.
 - `data/examples.json`: 제2·3본에 실린 낱말의 RP·GA IPA (RP 94 · GA 93 항목). 제2본 §7 RP·GA 대조표와 맺음말의 다섯 낱말(car·go·pass·hot·near)을 포함하므로, 책에 나오는 낱말은 사전 품질과 무관하게 책과 같은 값이 나온다. 일반 사전 검수를 뜻하지 않는다.
 - `data/dict-ga.json`: 기존 ZIP의 125,004개 항목, 기존 설명은 CMU 계열.
@@ -111,8 +111,8 @@ python3 -m http.server 8000 --directory dist
 
 웹 사용법, 교사용 활동, 개발 재현 절차, 시험 결과와 미구현 범위를 설명한다.
 
-- [제4본 교정 PDF · 2026.09.14](docs/HMBR_Book4_Guhyeonbon_20260914.pdf)
-- [제4본 DOCX · 2026.09.08 이전 원고](docs/HMBR_Book4_Guhyeonbon_20260908.docx)
-- [제4본 텍스트 · 2026.09.08 이전 원고](docs/HMBR_Book4_Guhyeonbon_20260908.md)
+- [제4본 교정 PDF · 2026.09.16](docs/HMBR_Book4_Guhyeonbon_20260916.pdf)
+- [제4본 DOCX · 2026.09.16 편집 원본](docs/HMBR_Book4_Guhyeonbon_20260916.docx)
+- [제4본 텍스트 · 2026.09.16](docs/HMBR_Book4_Guhyeonbon_20260916.md)
 
 최초 공개 코드 커밋은 `1e3164ce706ad7397a7cd660e0f15f11be7e1ed7`이다. 현재 웹앱은 [GitHub Pages](https://ivanpark.github.io/hmbr/)에서 제공하며, 배포 결과는 [Actions](https://github.com/ivanpark/hmbr/actions/workflows/pages.yml)에서 확인할 수 있다.
