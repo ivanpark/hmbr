@@ -2,6 +2,19 @@
 
 영어 또는 IPA를 훈민바름 음절블록으로 살펴보는 정적 웹앱이다. 제1·2본 교정 PDF, 46쪽 제3본 전산본과 23쪽 제4본 구현본을 함께 제공한다. 사용자 제공 `hmbr-web-v2.0(2).zip`의 사전·글꼴을 계승하고, 현재 제3본과 충돌하는 변환 엔진은 새로 구현했다.
 
+[웹앱 바로 실행](https://ivanpark.github.io/hmbr/) · [문서 바로 보기](https://ivanpark.github.io/hmbr/#documents)
+
+## 검증된 교정 출판 파일
+
+2026년 9월 14일 교정판의 제1–4본과 합본을 제공합니다. 쪽수와 파일별 SHA-256은 [문서 색인](docs/INDEX.md)과 [체크섬 목록](SHA256SUMS.txt)에서 확인할 수 있습니다.
+
+- [제1본 · 선언본 · 36쪽](docs/HMBR_Book1_Seoneonbon_20260914.pdf)
+- [제2본 · 해례본 · 59쪽](docs/HMBR_Book2_Haeryebon_20260914.pdf)
+- [제3본 · 전산본 · 46쪽](docs/HMBR_Book3_Jeonsanbon_20260914.pdf)
+- [제4본 · 구현본 · 23쪽](docs/HMBR_Book4_Guhyeonbon_20260914.pdf)
+- [제1–4본 · 교정 합본 · 164쪽](docs/HMBR_Books1-4_Combined_20260914.pdf)
+- [문서 색인](docs/INDEX.md)
+
 ## 사용
 
 - **영어로 찾기:** 문서 예시를 먼저 찾고, 나머지 단어는 첨부 사전의 원문 IPA로 조회한다. 출처와 검수 상태가 결과에 표시된다.
@@ -75,24 +88,13 @@ python3 -m http.server 8000 --directory dist
 
 첨부 사전과 글꼴의 원자료 식별을 유지했다. 원 ZIP에는 별도 라이선스 파일이 없었으며 이 작업에서 제3자 자산에 새로운 라이선스를 부여하지 않았다.
 
-## 검증된 교정 출판 파일
-
-2026년 9월 14일 교정판의 제1–4본과 합본을 제공합니다. 쪽수와 파일별 SHA-256은 [문서 색인](docs/INDEX.md)과 [체크섬 목록](SHA256SUMS.txt)에서 확인할 수 있습니다.
-
-- [제1본 · 선언본 · 36쪽](docs/HMBR_Book1_Seoneonbon_20260914.pdf)
-- [제2본 · 해례본 · 59쪽](docs/HMBR_Book2_Haeryebon_20260914.pdf)
-- [제3본 · 전산본 · 46쪽](docs/HMBR_Book3_Jeonsanbon_20260914.pdf)
-- [제4본 · 구현본 · 23쪽](docs/HMBR_Book4_Guhyeonbon_20260914.pdf)
-- [제1–4본 · 교정 합본 · 164쪽](docs/HMBR_Books1-4_Combined_20260914.pdf)
-- [문서 색인](docs/INDEX.md)
-
 ## 제4본 구현본
 
 웹 사용법, 교사용 활동, 개발 재현 절차, 시험 결과와 미구현 범위를 설명한다.
 
-- [제4본 PDF](docs/HMBR_Book4_Guhyeonbon_20260908.pdf)
-- [제4본 DOCX](docs/HMBR_Book4_Guhyeonbon_20260908.docx)
-- [제4본 텍스트 원고](docs/HMBR_Book4_Guhyeonbon_20260908.md)
+- [제4본 교정 PDF · 2026.09.14](docs/HMBR_Book4_Guhyeonbon_20260914.pdf)
+- [제4본 DOCX · 2026.09.08 이전 원고](docs/HMBR_Book4_Guhyeonbon_20260908.docx)
+- [제4본 텍스트 · 2026.09.08 이전 원고](docs/HMBR_Book4_Guhyeonbon_20260908.md)
 
-최초 공개 코드 커밋은 `1e3164ce706ad7397a7cd660e0f15f11be7e1ed7`이다. 해당 커밋의 검사·시험·빌드는 성공했으나 Pages 설정 조회가 실패해 웹사이트 서비스 개시는 확인되지 않았다. 저장소 Settings → Pages에서 Source를 GitHub Actions로 설정한 뒤 배포 결과를 확인한다.
+최초 공개 코드 커밋은 `1e3164ce706ad7397a7cd660e0f15f11be7e1ed7`이다. 현재 웹앱은 [GitHub Pages](https://ivanpark.github.io/hmbr/)에서 제공하며, 배포 결과는 [Actions](https://github.com/ivanpark/hmbr/actions/workflows/pages.yml)에서 확인할 수 있다.
 
