@@ -1,5 +1,5 @@
 // Size visible ink, not the font's em square. Each composed core or loose jamo
-// keeps its aspect ratio; its larger ink dimension fills the requested size.
+// keeps its aspect ratio; its visible height fills the requested size.
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const MEASURE_SIZE = 1000;
 
@@ -11,8 +11,7 @@ export function inkBox(metrics) {
   if (![x, y, width, height].every(Number.isFinite) || width <= 0 || height <= 0) {
     throw new Error('글자 모양의 크기를 측정하지 못했습니다. 페이지를 새로고침해 주세요.');
   }
-  const extent = Math.max(width, height);
-  return { x, y, width, height, widthEm: width / extent, heightEm: height / extent };
+  return { x, y, width, height, widthEm: width / height, heightEm: 1 };
 }
 
 export function displayUnits(run) {

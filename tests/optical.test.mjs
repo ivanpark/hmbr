@@ -4,9 +4,28 @@ import { inkBox, displayUnits } from '../js/optical.js';
 import { convertWord } from '../js/engine.js';
 import { proportionalDisplayBlocks } from '../js/display.js';
 
+test('boost visible heights are 48, 24, 36, 36 at base size 48', () => {
+  // Actual shipped-font bounds read from the live boost SVGs on 2026-09-17.
+  // These wider-than-tall jamo expose the old max(width, height) error.
+  const bounds = new Map([
+    ['부', [15.625, -812.5, 921.875, 937.5]],
+    ['ㅜ', [15.625, -406.25, 921.875, 531.25]],
+    ['ㅅ', [109.375, -609.375, 734.375, 515.625]],
+    ['ㅌ', [125, -593.75, 671.875, 484.375]],
+  ]);
+  const heights = proportionalDisplayBlocks(convertWord('buːst').display.blocks)
+    .flatMap(b => b.runs).flatMap(run => displayUnits(run).map(text => {
+      const [x, y, width, height] = bounds.get(text);
+      const box = inkBox({ actualBoundingBoxLeft: -x, actualBoundingBoxRight: x + width,
+        actualBoundingBoxAscent: -y, actualBoundingBoxDescent: y + height });
+      return box.heightEm * run.scale * 48;
+    }));
+  assert.deepEqual(heights, [48, 24, 36, 36]);
+});
+
 test('visible sizing removes font whitespace and preserves each shape', () => {
-  // A tiny low dot, a tall core and a flat vowel must all fit the same unit
-  // extent without stretching a dot or making the flat vowel enormously wide.
+  // A tiny low dot, a tall core and a flat vowel share a unit visible height.
+  // Wider glyphs retain their natural aspect ratio instead of being shrunk.
   for (const [left, ascent, right, descent] of [
     [-400, 90, 540, 20], [-50, 900, 760, 70], [-70, 300, 920, -230],
   ]) {
@@ -14,10 +33,10 @@ test('visible sizing removes font whitespace and preserves each shape', () => {
       actualBoundingBoxRight: right, actualBoundingBoxDescent: descent });
     assert.equal(b.x, -left);
     assert.equal(b.y, -ascent);
-    assert.equal(Math.max(b.widthEm, b.heightEm), 1);
+    assert.equal(b.heightEm, 1);
     assert.ok(Math.abs(b.widthEm / b.heightEm - b.width / b.height) < 1e-12);
     for (const proportion of [1, .75, .5, 1.25]) {
-      assert.equal(Math.max(b.widthEm, b.heightEm) * 48 * proportion, 48 * proportion);
+      assert.equal(b.heightEm * 48 * proportion, 48 * proportion);
     }
   }
 });
