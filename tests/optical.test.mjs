@@ -4,9 +4,10 @@ import { inkBox, displayUnits } from '../js/optical.js';
 import { convertWord } from '../js/engine.js';
 import { proportionalDisplayBlocks } from '../js/display.js';
 
-test('boost visible heights are 48, 24, 36, 36 at base size 48', () => {
+test('boost keeps its loose consonants at native 75% font size without enlargement', () => {
   // Actual shipped-font bounds read from the live boost SVGs on 2026-09-17.
-  // These wider-than-tall jamo expose the old max(width, height) error.
+  // Consonants must not be inflated to 36px ink height. At font size 36px,
+  // these glyphs naturally have ink heights of about 18px.
   const bounds = new Map([
     ['부', [15.625, -812.5, 921.875, 937.5]],
     ['ㅜ', [15.625, -406.25, 921.875, 531.25]],
@@ -17,10 +18,21 @@ test('boost visible heights are 48, 24, 36, 36 at base size 48', () => {
     .flatMap(b => b.runs).flatMap(run => displayUnits(run).map(text => {
       const [x, y, width, height] = bounds.get(text);
       const box = inkBox({ actualBoundingBoxLeft: -x, actualBoundingBoxRight: x + width,
-        actualBoundingBoxAscent: -y, actualBoundingBoxDescent: y + height });
+        actualBoundingBoxAscent: -y, actualBoundingBoxDescent: y + height }, run.role);
       return box.heightEm * run.scale * 48;
     }));
-  assert.deepEqual(heights, [48, 24, 36, 36]);
+  assert.deepEqual(heights, [48, 24, 18.5625, 17.4375]);
+});
+
+test('onsets and codas use natural font geometry while vowels keep optical sizing', () => {
+  const metrics = { actualBoundingBoxLeft: -125, actualBoundingBoxRight: 796.875,
+    actualBoundingBoxAscent: 593.75, actualBoundingBoxDescent: -109.375 };
+  for (const role of ['onset', 'coda']) {
+    const box = inkBox(metrics, role);
+    assert.equal(box.widthEm, 0.671875);
+    assert.equal(box.heightEm, 0.484375);
+  }
+  for (const role of ['core', 'nucleus']) assert.equal(inkBox(metrics, role).heightEm, 1);
 });
 
 test('visible sizing removes font whitespace and preserves each shape', () => {

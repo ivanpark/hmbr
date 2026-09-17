@@ -1,6 +1,6 @@
 import { convertWord, convertPhrase } from './engine.js';
-import { proportionalDisplayBlocks } from './display.js?v=20260917-height';
-import { prepareOpticalRenderer } from './optical.js?v=20260917-height';
+import { proportionalDisplayBlocks } from './display.js?v=20260917-consonants';
+import { prepareOpticalRenderer } from './optical.js?v=20260917-consonants';
 import { lookup } from './dict.js?v=20260917-international';
 import { VERSION } from './registry.js';
 const $ = id => document.getElementById(id);

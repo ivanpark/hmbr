@@ -1,9 +1,9 @@
-// Size visible ink, not the font's em square. Each composed core or loose jamo
-// keeps its aspect ratio; its visible height fills the requested size.
+// Core/vowel heights follow the optical display sizes. Loose consonants keep
+// their native font proportions at 75%; never enlarge them to a core's height.
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const MEASURE_SIZE = 1000;
 
-export function inkBox(metrics) {
+export function inkBox(metrics, role = 'core') {
   const x = -metrics.actualBoundingBoxLeft;
   const y = -metrics.actualBoundingBoxAscent;
   const width = metrics.actualBoundingBoxLeft + metrics.actualBoundingBoxRight;
@@ -11,7 +11,8 @@ export function inkBox(metrics) {
   if (![x, y, width, height].every(Number.isFinite) || width <= 0 || height <= 0) {
     throw new Error('글자 모양의 크기를 측정하지 못했습니다. 페이지를 새로고침해 주세요.');
   }
-  return { x, y, width, height, widthEm: width / height, heightEm: 1 };
+  const reference = role === 'onset' || role === 'coda' ? MEASURE_SIZE : height;
+  return { x, y, width, height, widthEm: width / reference, heightEm: height / reference };
 }
 
 export function displayUnits(run) {
@@ -44,8 +45,9 @@ function renderOpticalRun(run) {
   piece.dataset.scale = String(run.scale);
   piece.title = `${Math.round(run.scale * 100)}%`;
   for (const text of displayUnits(run)) {
-    if (!boxes.has(text)) boxes.set(text, inkBox(context.measureText(text)));
-    const box = boxes.get(text);
+    const key = `${run.role}:${text}`;
+    if (!boxes.has(key)) boxes.set(key, inkBox(context.measureText(text), run.role));
+    const box = boxes.get(key);
     const svg = document.createElementNS(SVG_NS, 'svg');
     svg.classList.add('ink-glyph');
     svg.setAttribute('viewBox', `${box.x} ${box.y} ${box.width} ${box.height}`);

@@ -69,4 +69,4 @@ export function proportionalDisplayBlocks(blocks) {
   }));
 }
 
-export const DISPLAY_PROFILE = 'linear-trial-v5-height';
+export const DISPLAY_PROFILE = 'linear-trial-v6-consonants';
