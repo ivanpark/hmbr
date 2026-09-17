@@ -14,7 +14,7 @@ for(const file of all){
  const re=file.endsWith('.html')?/(?:href|src)="([^"]+)"/g:/url\(['"]?([^'"\)]+)['"]?\)/g;
  for(const match of text.matchAll(re)){
   const value=match[1];if(value.startsWith('#')||/^(https?:|data:|mailto:)/.test(value))continue;
-  const target=path.resolve(path.dirname(file),value.split('#')[0]);
+  const target=path.resolve(path.dirname(file),value.split(/[?#]/)[0]);
   if(!fs.existsSync(target))throw new Error(`Missing asset: ${file}: ${value}`);references++;
  }
 }

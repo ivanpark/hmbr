@@ -1,5 +1,5 @@
 import { convertWord, convertPhrase } from './engine.js';
-import { proportionalDisplayBlocks } from './display.js';
+import { proportionalDisplayBlocks } from './display.js?v=20260917-stress';
 import { lookup } from './dict.js';
 import { VERSION } from './registry.js';
 const $ = id => document.getElementById(id);
