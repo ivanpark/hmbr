@@ -53,4 +53,20 @@ export function linearDisplay(block) {
   return linearDisplayRuns(block).map(r => r.text).join('');
 }
 
-export const DISPLAY_PROFILE = 'linear-trial-v2';
+/** Word-level stress sizes, all relative to the user's base font size.
+ *  Only a word containing secondary stress promotes its primary core to 125%.
+ *  Tails (50%) and loose consonants (75%) never inherit a stress multiplier. */
+export function proportionalDisplayBlocks(blocks) {
+  const hasSecondaryStress = blocks.some(block => block.stress === 'secondary');
+  return blocks.map(block => ({
+    ...block,
+    runs: linearDisplayRuns(block).map(run => ({
+      ...run,
+      scale: run.role !== 'core' ? run.scale
+        : block.stress === 'none' ? 0.75
+        : block.stress === 'primary' && hasSecondaryStress ? 1.25 : 1,
+    })),
+  }));
+}
+
+export const DISPLAY_PROFILE = 'linear-trial-v3';

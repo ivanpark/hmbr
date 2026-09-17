@@ -1,5 +1,5 @@
 import { convertWord, convertPhrase } from './engine.js';
-import { linearDisplayRuns } from './display.js';
+import { proportionalDisplayBlocks } from './display.js';
 import { lookup } from './dict.js';
 import { VERSION } from './registry.js';
 const $ = id => document.getElementById(id);
@@ -37,14 +37,14 @@ function render(result) {
     if (r.serialization.status === 'available') {
       const display = el('div', undefined, 'hmbr');
       display.setAttribute('aria-label', `${r.source.spelling || r.source.ipa}, ${r.canonicalModel.blocks.length}개 음절블록`);
-      for (const b of r.display.blocks) {
+      for (const b of proportionalDisplayBlocks(r.display.blocks)) {
         const block = el('span', undefined, 'block');
-        block.style.fontSize = `${({primary:1.25, secondary:1, none:.75, unknown:1})[b.stress]}em`;
         block.title = `/${b.ipa}/ · ${{primary:'제1강세',secondary:'제2강세',none:'무강세',unknown:'강세 미지정'}[b.stress]}`;
         block.append(el('span', '〔', 'bracket'));
         // 제2본 선형 시범 조자법과 같은 모양·크기로 보인다 (js/display.js).
-        // 핵 100% · 뒤 모음 요소 50% · 독립 자음 75%. 표시 전용 규칙이며 복사·저장은 NFD 직렬화를 그대로 쓴다.
-        for (const run of linearDisplayRuns(b)) {
+        // 모든 비율은 기본 글자 크기 기준. 블록에 강세 배율을 중첩하지 않는다.
+        // 표시 전용 규칙이며 복사·저장은 NFD 직렬화를 그대로 쓴다.
+        for (const run of b.runs) {
           const piece = el('span', run.text, `element syllable el-${run.role}`);
           if (run.scale !== 1) piece.style.fontSize = `${run.scale}em`;
           block.append(piece);

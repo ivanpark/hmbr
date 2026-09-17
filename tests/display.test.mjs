@@ -44,6 +44,7 @@ test('display rule leaves serialization (NFD) untouched', () => {
 });
 
 import { linearDisplayRuns } from '../js/display.js';
+import { proportionalDisplayBlocks } from '../js/display.js';
 // 크기 — 핵 100% · 뒤 모음 요소 50% (제2본 §14) · 독립 자음 75%
 test('display runs carry sizes: core 1 · nucleus tail .5 · loose consonants .75', () => {
   const runs = convertWord('buːst').display.blocks.map(linearDisplayRuns)[0];
@@ -53,4 +54,29 @@ test('display runs carry sizes: core 1 · nucleus tail .5 · loose consonants .7
   assert.deepEqual(stop.map(r => [r.text, r.role, r.scale]), [['ㅅ', 'onset', 0.75], ['톺', 'core', 1]]);
   const car = convertWord('kɑː').display.blocks.map(linearDisplayRuns)[0];
   assert.deepEqual(car.map(r => [r.text, r.scale]), [['카', 1], ['ㅏ', 0.5]]);
+});
+
+const proportions = ipa => proportionalDisplayBlocks(convertWord(ipa).display.blocks)
+  .flatMap(block => block.runs.map(run => run.scale));
+
+test('career and carrier use absolute 100/75/50 sizes without secondary stress', () => {
+  assert.deepEqual(proportions('kəˈrɪə'), [0.75, 1, 0.5]);
+  assert.deepEqual(proportions('ˈkærɪə'), [1, 0.75, 0.5]);
+  assert.deepEqual(proportions('ˈkarɪə'), [1, 0.75, 0.5]);
+});
+
+test('125% primary stress requires secondary stress in the same word', () => {
+  assert.deepEqual(proportions('ˌɪntəˈnæʃənəl'), [1, 0.75, 1.25, 0.75, 0.75]);
+  assert.deepEqual(proportions('ˈbuːst'), [1, 0.5, 0.75]);
+  // Explicit syllables exercise both stressed tails and loose consonants.
+  assert.deepEqual(proportions('ˌbuːst.əˈbaʊt'), [1, 0.5, 0.75, 0.75, 1.25, 0.5, 0.75]);
+});
+
+test('proportional display preserves source blocks and unstated stress', () => {
+  const r = convertWord('kəˈrɪə');
+  const before = JSON.stringify(r);
+  proportionalDisplayBlocks(r.display.blocks);
+  assert.equal(JSON.stringify(r), before);
+  assert.deepEqual(proportions('buːst'), [1, 0.5, 0.75]);
+  assert.deepEqual(proportions('ˌbuːst'), [1, 0.5, 0.75]);
 });
