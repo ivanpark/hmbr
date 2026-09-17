@@ -69,4 +69,4 @@ export function proportionalDisplayBlocks(blocks) {
   }));
 }
 
-export const DISPLAY_PROFILE = 'linear-trial-v3';
+export const DISPLAY_PROFILE = 'linear-trial-v4-optical';

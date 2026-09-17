@@ -1,5 +1,6 @@
 import { convertWord, convertPhrase } from './engine.js';
-import { proportionalDisplayBlocks } from './display.js?v=20260917-stress';
+import { proportionalDisplayBlocks } from './display.js?v=20260917-optical';
+import { prepareOpticalRenderer } from './optical.js?v=20260917-optical';
 import { lookup } from './dict.js?v=20260917-international';
 import { VERSION } from './registry.js';
 const $ = id => document.getElementById(id);
@@ -18,7 +19,7 @@ function invalidate() {
   $('result-state').textContent = '입력 대기'; $('result-state').className = 'state';
 }
 function addNote(text) { $('result-notes').append(el('p', text)); $('result-notes').hidden = false; }
-function render(result) {
+function render(result, renderRun) {
   bundle = result;
   const records = result.records;
   const ready = records.length > 0 && records.every(r => r.serialization.status === 'available');
@@ -41,13 +42,11 @@ function render(result) {
         const block = el('span', undefined, 'block');
         block.title = `/${b.ipa}/ · ${{primary:'제1강세',secondary:'제2강세',none:'무강세',unknown:'강세 미지정'}[b.stress]}`;
         block.append(el('span', '〔', 'bracket'));
-        // 제2본 선형 시범 조자법과 같은 모양·크기로 보인다 (js/display.js).
+        // 제2본 선형 조합을 따르며 실제 획의 외곽으로 크기를 맞춘다 (js/optical.js).
         // 모든 비율은 기본 글자 크기 기준. 블록에 강세 배율을 중첩하지 않는다.
         // 표시 전용 규칙이며 복사·저장은 NFD 직렬화를 그대로 쓴다.
         for (const run of b.runs) {
-          const piece = el('span', run.text, `element syllable el-${run.role}`);
-          if (run.scale !== 1) piece.style.fontSize = `${run.scale}em`;
-          block.append(piece);
+          block.append(renderRun(run));
         }
         block.append(el('span', '〕', 'bracket')); display.append(block);
       }
@@ -99,7 +98,10 @@ async function doConvert(event) {
       if(!found.entries.length)throw new Error('영어 단어를 입력해 주세요.');
       result={schema_version:VERSION,source_input:input,records:found.entries.map(e=>convertWord(e.ipa,{accent:selectedAccent,spelling:e.spelling,provenance:e.provenance}))};
     } else result=convertPhrase(input,{accent:selectedAccent});
-    if(id===request)render(result);
+    if(id!==request)return;
+    const renderRun=result.records.some(r=>r.serialization.status==='available')
+      ? await prepareOpticalRenderer() : null;
+    if(id===request)render(result,renderRun);
   }catch(error){if(id===request){$('word-results').replaceChildren(el('p','결과를 만들지 못했습니다. 입력을 확인해 주세요.','empty-message'));$('record-inspector').replaceChildren();$('result-notes').hidden=true;$('manual-copy').hidden=true;$('result-state').textContent='입력 확인';status(error.message,'error');}}
   finally{if(id===request)busy(false);}
 }

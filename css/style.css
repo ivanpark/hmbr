@@ -10,3 +10,9 @@
 .hint,.input-note,.result-caption,.result-notes,.reading-guide p,.reading-guide strong,.output-toolbar label,.output-toolbar button,.examples h3,.record-inspect,.record-inspect table{font-size:14px}
 .book small{font-size:13px}.book-type,.section-heading>a{font-size:13px}
 @media(max-width:420px){.masthead{gap:12px}.masthead nav{flex-direction:column;align-items:flex-end;gap:5px}.brand small{font-size:11px}.result-heading{align-items:flex-start;gap:8px}}
+
+/* Visible ink shares a bottom edge; em-square padding does not set the ratios. */
+.hmbr .block{align-items:flex-end;padding-block:.2em}
+.hmbr .element{display:inline-flex;align-items:flex-end;gap:.08em;min-width:0;line-height:0;margin:0 .04em}
+.hmbr .ink-glyph{display:block;flex:none;overflow:visible}
+.hmbr .bracket{line-height:1}
