@@ -1,6 +1,6 @@
 import { convertWord, convertPhrase } from './engine.js';
 import { proportionalDisplayBlocks } from './display.js?v=20260917-stress';
-import { lookup } from './dict.js';
+import { lookup } from './dict.js?v=20260917-international';
 import { VERSION } from './registry.js';
 const $ = id => document.getElementById(id);
 const el = (tag, text, cls) => { const e = document.createElement(tag); if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; };
@@ -32,7 +32,7 @@ function render(result) {
     const article = el('article', undefined, 'word-result');
     const label = el('p', undefined, 'word-label'); label.append(el('span', r.source.spelling || 'IPA 직접 입력'));
     const provenance = r.source.provenance;
-    label.append(el('span', provenance.kind === 'document-example' ? '문서 예시' : provenance.kind === 'supplied-dictionary' ? '사전 · 검수 전' : '직접 입력', 'source-chip'));
+    label.append(el('span', provenance.kind === 'document-example' ? '문서 예시' : provenance.kind === 'dictionary-correction' ? '사전 · 강세 교정' : provenance.kind === 'supplied-dictionary' ? '사전 · 검수 전' : '직접 입력', 'source-chip'));
     article.append(label);
     if (r.serialization.status === 'available') {
       const display = el('div', undefined, 'hmbr');
