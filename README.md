@@ -1,5 +1,7 @@
 # 훈민바름 · 공개 연구 사이트와 제3본 기준 시범 구현
 
+## [▶ 훈민바름 변환기 바로 열기](https://ivanpark.github.io/hmbr/app.html)
+
 공개 front page에서 훈민바름의 연구 범위와 네 본을 소개하고, 별도의 참조 구현에서 영어 또는 IPA를 훈민바름 음절블록으로 살펴본다. 제1·2본 교정 PDF, 46쪽 제3본 전산본과 23쪽 제4본 구현본을 함께 제공한다. 사용자 제공 `hmbr-web-v2.0(2).zip`의 사전·글꼴을 계승하고, 현재 제3본과 충돌하는 변환 엔진은 새로 구현했다.
 
 [공개 사이트](https://ivanpark.github.io/hmbr/) · [소리 써보기](https://ivanpark.github.io/hmbr/app.html) · [문서 바로 보기](https://ivanpark.github.io/hmbr/#books)
