@@ -1,5 +1,5 @@
-// Core/vowel heights follow the optical display sizes. Loose consonants keep
-// their native font proportions at 75%; never enlarge them to a core's height.
+// Composed cores follow the optical stress sizes. All loose jamo keep native
+// font proportions: vowel tails 50%, consonants 75%, without ink enlargement.
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const MEASURE_SIZE = 1000;
 
@@ -11,7 +11,7 @@ export function inkBox(metrics, role = 'core') {
   if (![x, y, width, height].every(Number.isFinite) || width <= 0 || height <= 0) {
     throw new Error('글자 모양의 크기를 측정하지 못했습니다. 페이지를 새로고침해 주세요.');
   }
-  const reference = role === 'onset' || role === 'coda' ? MEASURE_SIZE : height;
+  const reference = role === 'core' ? height : MEASURE_SIZE;
   return { x, y, width, height, widthEm: width / reference, heightEm: height / reference };
 }
 

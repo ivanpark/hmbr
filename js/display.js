@@ -69,4 +69,4 @@ export function proportionalDisplayBlocks(blocks) {
   }));
 }
 
-export const DISPLAY_PROFILE = 'linear-trial-v6-consonants';
+export const DISPLAY_PROFILE = 'linear-trial-v7-loose-jamo';
