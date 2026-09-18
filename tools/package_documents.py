@@ -53,6 +53,8 @@ def write_checksums() -> None:
         and ".git" not in path.parts
         and "tmp" not in path.parts
         and "dist" not in path.parts
+        and "__pycache__" not in path.parts
+        and path.suffix != ".pyc"
         and path.name != "SHA256SUMS.txt"
     )
     lines = []

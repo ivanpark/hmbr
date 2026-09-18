@@ -8,14 +8,15 @@
 
 ## 검증된 교정 출판 파일
 
-2026년 9월 16일 교정판의 제1–4본과 합본을 제공합니다. 쪽수와 파일별 SHA-256은 [문서 색인](docs/INDEX.md)과 [체크섬 목록](SHA256SUMS.txt)에서 확인할 수 있습니다.
+2026년 9월 16일 교정판은 제1–4본을 각각 독립된 정식 읽기 단위로 제공합니다. 쪽수와 파일별 SHA-256은 [문서 색인](docs/INDEX.md)과 [체크섬 목록](SHA256SUMS.txt)에서 확인할 수 있습니다.
 
 - [제1본 · 선언본 · 36쪽](docs/HMBR_Book1_Seoneonbon_20260916.pdf)
 - [제2본 · 해례본 · 59쪽](docs/HMBR_Book2_Haeryebon_20260916.pdf)
 - [제3본 · 전산본 · 46쪽](docs/HMBR_Book3_Jeonsanbon_20260916.pdf)
 - [제4본 · 구현본 · 23쪽](docs/HMBR_Book4_Guhyeonbon_20260916.pdf)
-- [제1–4본 · 교정 합본 · 164쪽](docs/HMBR_Books1-4_Combined_20260916.pdf)
 - [문서 색인](docs/INDEX.md)
+
+전체 연구 기록을 한 파일로 보관하거나 전달해야 할 때에는 [제1–4본 통합 보관판 · 164쪽](docs/HMBR_Books1-4_Combined_20260916.pdf)을 사용할 수 있습니다.
 
 ## 사용
 

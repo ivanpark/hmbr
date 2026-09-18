@@ -1,6 +1,6 @@
 # HMBR publication document index
 
-Verified 2026-09-16 corrected publication files. The individual books appear in canonical order; the combined PDF follows the same order and contains four top-level bookmarks.
+Verified 2026-09-16 corrected publication files. The four individual books are the canonical reading units. The archival combined PDF preserves the same order and contains four top-level bookmarks.
 
 | 순서 | 문서 | 쪽수 | 파일 |
 | --- | --- | ---: | --- |
@@ -8,7 +8,9 @@ Verified 2026-09-16 corrected publication files. The individual books appear in 
 | 제2본 | 해례본 | 59 | [HMBR_Book2_Haeryebon_20260916.pdf](HMBR_Book2_Haeryebon_20260916.pdf) |
 | 제3본 | 전산본 | 46 | [HMBR_Book3_Jeonsanbon_20260916.pdf](HMBR_Book3_Jeonsanbon_20260916.pdf) |
 | 제4본 | 구현본 | 23 | [HMBR_Book4_Guhyeonbon_20260916.pdf](HMBR_Book4_Guhyeonbon_20260916.pdf) |
-| 합본 | 제1–4본 · 교정 합본 | 164 | [HMBR_Books1-4_Combined_20260916.pdf](HMBR_Books1-4_Combined_20260916.pdf) |
+| 보관판 | 제1–4본 · 통합 보관판 | 164 | [HMBR_Books1-4_Combined_20260916.pdf](HMBR_Books1-4_Combined_20260916.pdf) |
+
+통합 보관판은 전체 연구 기록을 한 파일로 보존·전달하기 위한 보조판이며, 위 네 개별본이 정식 읽기 단위다.
 
 ## 편집 원본
 
