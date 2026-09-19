@@ -32,7 +32,7 @@ No LCP, FCP, INP, CLS, Lighthouse score or field Core Web Vitals result was coll
 
 ### Conversion engine
 
-Node 22, `convertPhrase`, RP `/buːst/` repeated, 20 warm-up runs then 200 measured runs per length using `performance.now()`. Median is sorted sample 101; p95 is sample 190. This excludes dictionary download, font preparation, DOM rendering and user-device speed.
+Node 24.19.0, `convertPhrase`, RP `/buːst/` repeated, 20 warm-up runs then 200 measured runs per length using `performance.now()`. Median is sorted sample 101; p95 is sample 190. This excludes dictionary download, font preparation, DOM rendering and user-device speed.
 
 | Words | Median | p95 |
 |---:|---:|---:|
