@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#122d43">
   <meta name="description" content="훈민바름 영어확장판의 시범 변환기. 영어와 IPA를 음절블록으로 살펴보고, 원문과 자모 대응 정보를 함께 보존합니다.">
   <title>소리 써보기 · 훈민바름</title>
-  <link rel="stylesheet" href="css/style.css?v=20260917-optical">
+  <link rel="stylesheet" href="css/style.css?v=20260919-ux">
 </head>
 <body>
 <a class="skip" href="#converter">변환기로 바로 가기</a>
@@ -21,9 +21,10 @@
       <form id="convert-form">
         <div class="panel-heading"><span class="step">01</span><h2>소리 입력</h2></div>
         <fieldset class="segmented"><legend class="sr-only">입력 방식</legend><label><input type="radio" name="mode" value="english" checked><span>영어로 찾기</span></label><label><input type="radio" name="mode" value="ipa"><span>IPA 직접 입력</span></label></fieldset>
-        <div id="english-field" class="field"><label for="in-english">영어 단어 또는 짧은 문장</label><textarea id="in-english" rows="3" spellcheck="false" maxlength="5000" placeholder="boost, friend, hello world">boost</textarea><p class="hint">책에 수록된 예시를 먼저 찾고, 나머지는 기존 사전을 조회합니다.</p></div>
-        <div id="ipa-field" class="field" hidden><label for="in-ipa">IPA 발음기호</label><textarea id="in-ipa" rows="3" lang="en" spellcheck="false" maxlength="5000" placeholder="/buːst/ 또는 /ə.ˈbaʊt/"></textarea><p class="hint">공백은 단어, 점(.)은 음절 경계입니다. 넓은 표기(Broad)를 입력하세요.</p></div>
+        <div id="english-field" class="field"><label for="in-english">영어 단어 또는 짧은 문장</label><textarea id="in-english" aria-describedby="english-hint input-limits status" rows="3" spellcheck="false" maxlength="5000" placeholder="boost, friend, hello world">boost</textarea><p id="english-hint" class="hint">책에 수록된 예시를 먼저 찾고, 나머지는 기존 사전을 조회합니다.</p></div>
+        <div id="ipa-field" class="field" hidden><label for="in-ipa">IPA 발음기호</label><textarea id="in-ipa" aria-describedby="ipa-hint input-limits status" rows="3" lang="en" spellcheck="false" maxlength="5000" placeholder="/buːst/ 또는 /ə.ˈbaʊt/"></textarea><p id="ipa-hint" class="hint">공백은 단어, 점(.)은 음절 경계입니다. 넓은 표기(Broad)를 입력하세요.</p></div>
         <fieldset class="accent-field"><legend>발음 기준</legend><div class="segmented"><label><input type="radio" name="accent" value="rp" checked><span>RP <small>영국식</small></span></label><label><input type="radio" name="accent" value="ga"><span>GA <small>미국식</small></span></label></div></fieldset>
+        <p id="input-limits" class="hint">최대 100단어 · 5,000자. Ctrl/⌘ + Enter로 변환합니다.</p>
         <button class="primary" id="btn-convert" type="submit">훈민바름으로 보기 <span aria-hidden="true">→</span></button>
         <p id="status" class="status" role="status" aria-live="polite"></p>
       </form>
@@ -50,7 +51,7 @@
 </main>
 <footer><p><a href="review-brief-260916.html">검토 안내</a> · <a href="legacy/index.html" title="현재 책과 다른 규칙을 사용하는 구버전">이전 앱(v2.0) 비교</a></p><p>훈민바름 · HMBR <span>가표본 연구 · 참조 실험</span></p><p>문서 2026.09.17 개정판 · 제3본 기준 시범 구현 · 원문과 미결 상태를 함께 보존합니다.</p></footer>
 <noscript><p class="noscript">변환기를 사용하려면 JavaScript를 켜 주세요. 문서 PDF는 바로 열 수 있습니다.</p></noscript>
-<script type="module" src="js/app.js?v=20260917-vowel-carrier"></script>
+<script type="module" src="js/app.js?v=20260919-ux"></script>
 </body>
 </html>
 

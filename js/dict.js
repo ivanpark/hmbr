@@ -2,10 +2,16 @@ const cache = new Map();
 export async function loadJSON(relative) {
   if (!cache.has(relative)) {
     const url = new URL(relative, import.meta.url);
-    cache.set(relative, fetch(url).then(r => {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 20000);
+    cache.set(relative, fetch(url, {signal: controller.signal}).then(r => {
       if (!r.ok) throw new Error('사전 파일을 불러오지 못했습니다. 연결 상태를 확인하고 다시 시도해 주세요.');
       return r.json();
-    }).catch(error => { cache.delete(relative); throw error; }));
+    }).catch(error => {
+      cache.delete(relative);
+      if (controller.signal.aborted) throw new Error('사전 응답이 늦어지고 있습니다. 연결 상태를 확인하고 다시 시도해 주세요.');
+      throw error;
+    }).finally(() => clearTimeout(timer)));
   }
   return cache.get(relative);
 }

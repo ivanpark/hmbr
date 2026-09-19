@@ -1,7 +1,7 @@
 import { convertWord, convertPhrase } from './engine.js';
 import { proportionalDisplayBlocks } from './display.js?v=20260917-vowel-carrier';
 import { prepareOpticalRenderer } from './optical.js?v=20260917-vowel-carrier';
-import { lookup } from './dict.js?v=20260917-international';
+import { lookup } from './dict.js?v=20260919-ux';
 import { VERSION } from './registry.js';
 const $ = id => document.getElementById(id);
 const el = (tag, text, cls) => { const e = document.createElement(tag); if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; };
@@ -60,13 +60,20 @@ function render(result, renderRun) {
     $('word-results').append(article);
     for (const msg of [...r.issues, ...r.warnings]) notes.add(`${r.source.spelling || r.source.ipa}: ${msg.message}`);
     if (provenance.review_status === 'unreviewed') notes.add(provenance.note + '. 사전의 IPA가 올바른지는 별도로 확인해 주세요.');
-    renderInspector(r);
   }
+  if ($('record-details').open) renderInspectors();
   for (const note of notes) addNote(note);
   if (!ready) addNote('미결 단어가 포함되어 자모열 전체 복사를 제공하지 않습니다. 전체 기록에는 모든 단어의 상태가 함께 저장됩니다.');
   $('btn-copy').disabled = !ready; $('btn-json').disabled = false;
   status(!ready ? '변환 가능한 항목과 미결 사유를 확인해 주세요.' : '변환했습니다.', !ready ? '' : 'ok');
 }
+function renderInspectors() {
+  $('record-inspector').replaceChildren();
+  for (const record of bundle?.records || []) renderInspector(record);
+}
+$('record-details').addEventListener('toggle', () => {
+  if ($('record-details').open && !$('record-inspector').querySelector('.record-inspect')) renderInspectors();
+});
 function renderInspector(r) {
   const section = el('section', undefined, 'record-inspect'); section.append(el('h3', r.source.spelling || r.source.ipa));
   const dl = el('dl');
@@ -77,8 +84,9 @@ function renderInspector(r) {
   const caption = el('caption','음소와 자모 요소의 대응');caption.className='sr-only'; table.append(caption);
   const head = el('tr');for (const title of ['입력 음소','자모값','자리별 코드']) { const th = el('th',title); th.scope='col';head.append(th); }
   const thead=el('thead');thead.append(head);table.append(thead);const body=el('tbody');
+  const tokens = new Map(r.canonicalModel.phonemeTokens.map(t => [t.id, t.ipa]));
   for (const m of r.canonicalModel.mappingUnits) {
-    const row=el('tr');const sounds=m.token_ids.map(id=>r.canonicalModel.phonemeTokens.find(t=>t.id===id).ipa).join(' + ') || '무음 초성';
+    const row=el('tr');const sounds=m.token_ids.map(id=>tokens.get(id)).join(' + ') || '무음 초성';
     row.append(el('td',sounds),el('td',m.jamo_values.join(' + ') || '미결'),el('td',m.codepoints.map(c=>c ? `U+${c}`:'미배당').join(' ') || '미결'));body.append(row);
   }
   table.append(body);scroll.append(table);section.append(scroll);
@@ -127,6 +135,6 @@ $('btn-copy').addEventListener('click',async()=>{
   catch{if(id!==request)return;$('copy-value').value=text;$('manual-copy').hidden=false;$('copy-value').focus();$('copy-value').select();status('아래 자모열을 선택해 직접 복사해 주세요.');}
 });
 $('btn-json').addEventListener('click',()=>{
-  if(!bundle)return;const blob=new Blob([JSON.stringify(bundle,null,2)+'\n'],{type:'application/json;charset=utf-8'});const url=URL.createObjectURL(blob);const a=el('a');a.href=url;a.download='hmbr-records.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);status('원문·강세·대응·미결 상태를 담은 기록을 저장했습니다.','ok');
+  if(!bundle)return;const blob=new Blob([JSON.stringify(bundle,null,2)+'\n'],{type:'application/json;charset=utf-8'});const url=URL.createObjectURL(blob);const a=el('a');a.href=url;a.download='hmbr-records.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);status('기록 다운로드를 요청했습니다. 브라우저의 다운로드 목록을 확인해 주세요.','ok');
 });
 doConvert();

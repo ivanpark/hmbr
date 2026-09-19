@@ -16,3 +16,10 @@
 .hmbr .element{display:inline-flex;align-items:flex-end;gap:.08em;min-width:0;line-height:0;margin:0 .04em}
 .hmbr .ink-glyph{display:block;flex:none;overflow:visible}
 .hmbr .bracket{line-height:1}
+
+/* Assessment: readable small text, resilient long content and touch targets. */
+.field textarea::placeholder,.empty-message,.source-chip,.result-caption,.step{color:#526573}
+.word-label,.record-inspect h3,.result-notes{overflow-wrap:anywhere}
+.masthead nav a{display:inline-flex;align-items:center;min-height:32px}
+.output-toolbar input{min-height:28px}
+@media(pointer:coarse){.example-list button,.output-toolbar button,.record-details summary{min-height:44px}.segmented span{min-height:44px}}
