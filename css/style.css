@@ -18,8 +18,10 @@
 .hmbr .bracket{line-height:1}
 
 /* Assessment: readable small text, resilient long content and touch targets. */
-.field textarea::placeholder,.empty-message,.source-chip,.result-caption,.step{color:#526573}
+.field textarea::placeholder,.empty-message,.source-chip,.result-caption,.step,.book-type,.book-number,.guide-number,footer{color:#526573}
 .word-label,.record-inspect h3,.result-notes{overflow-wrap:anywhere}
 .masthead nav a{display:inline-flex;align-items:center;min-height:32px}
 .output-toolbar input{min-height:28px}
 @media(pointer:coarse){.example-list button,.output-toolbar button,.record-details summary{min-height:44px}.segmented span{min-height:44px}}
+
+.hmbr .bracket{color:#526573}

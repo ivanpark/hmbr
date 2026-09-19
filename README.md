@@ -131,3 +131,7 @@ python3 -m http.server 8000 --directory dist
 최초 공개 코드 커밋은 `1e3164ce706ad7397a7cd660e0f15f11be7e1ed7`이다. 현재 웹앱은 [GitHub Pages](https://ivanpark.github.io/hmbr/)에서 제공하며, 배포 결과는 [Actions](https://github.com/ivanpark/hmbr/actions/workflows/pages.yml)에서 확인할 수 있다.
 
 2026-09-17 저자 결정: 뒤 모음의 읽기용 무음 초성 ㅇ을 앱과 제2–4본에 반영했다. 제1본은 9월 16일 판을 유지한다. [수정·검증 내역](docs/HMBR_Corrections_20260917.md).
+
+### 성능·사용성 점검 (2026-09-19)
+
+[성능·UX 평가 기록](docs/PERFORMANCE_UX_20260919.md): 실제 점검 범위, 측정값, 수정 사항과 모바일·보조기술·다운로드 검증의 남은 한계를 구분합니다.

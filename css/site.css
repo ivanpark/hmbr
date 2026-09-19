@@ -27,3 +27,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--copper);outline-off
 @media print{.review-page{background:white;color:#111}.review-shell{max-width:none;padding:0}.review-section{padding:22px 0;grid-template-columns:130px 1fr;gap:20px}.review-top h1{font-size:30px}.review-card,.review-books a{break-inside:avoid;box-shadow:none}.review-top nav,.skip{display:none}.review-section h2{font-size:22px}.review-actions{margin-top:12px}.review-section p,.review-section li{font-size:11pt}}
 
 .review-section h2{word-break:keep-all}
+
+/* Assessment contrast corrections on dark panels and the review paper. */
+.layer-card.everyday .card-eyebrow{color:#d5e0e2}
+.try .section-index,.try .kicker,.try-copy>p:not(.section-index):not(.kicker),.try-visual span{color:#fff}
+.review-page{--muted:#526573}
+.hmbr-sample>span{color:#526573}
