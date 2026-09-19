@@ -1,5 +1,5 @@
-// Composed cores follow the optical stress sizes. All loose jamo keep native
-// font proportions: vowel tails 50%, consonants 75%, without ink enlargement.
+// Composed cores follow the optical stress sizes. Vowel tails and loose consonants
+// keep native font proportions: 50% and 75%, without ink enlargement.
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const MEASURE_SIZE = 1000;
 
@@ -16,9 +16,9 @@ export function inkBox(metrics, role = 'core') {
 }
 
 export function displayUnits(run) {
-  // Keep old-Hangul shaping intact inside the core. Loose letters each receive
-  // their own size, so two consonants are not squeezed into one 75% box.
-  return run.role === 'core' ? [run.text] : Array.from(run.text);
+  // Keep both the core and each silent-carrier vowel shaped as a unit.
+  // Loose consonants still receive their own 75% font size.
+  return run.role === 'core' || run.role === 'nucleus' ? [run.text] : Array.from(run.text);
 }
 
 let context;

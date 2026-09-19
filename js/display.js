@@ -1,12 +1,13 @@
 // 표시층 · 제2본의 선형 시범 조자법(§3·§6·§7·§9.4)과 같은 모양으로 한 음절블록을 보인다.
 // 이 함수는 화면 표시만 바꾼다. 층 2 직렬화(NFD 조합형 자모 연쇄)와 복사·저장 값은 건드리지 않는다.
 //
-// 규칙 (제2본 정본 예에서 읽어 낸 것)
+// 규칙 (제2본 정본 예 및 2026-09-17 저자 결정)
 //  1. 마지막 초성 + 첫 중성 (+ 첫 종성) 만 한 음절로 합성한다.        예 뱅ㅋ · 홑 · ㅅ톺
-//  2. 음절핵에 모음 요소가 둘 이상이면 종성은 합성하지 않는다.          예 파ㅏㅋ · 보ᆍᇀ
+//  2. 음절핵에 모음 요소가 둘 이상이면 종성은 합성하지 않는다.          예 파아ㅋ · 보ᄋᆍㅌ
 //  3. 종성 /s/(ᆺ)와 /t+s/(ᆾ)는 언제나 합성하지 않는다 — §9.4 금지형 방지.  예 패ㅅ · 캐ㅊ (팻·캧이 아님)
-//  4. 합성하지 않는 자모는 호환 자모가 있으면 그것으로, 없으면 조합형 그대로 보인다.  예 ㅋ ㅅ ㅌ ㅏ ㅜ / ᆝ ᆍ ᆞ ퟛ
-//  5. 크기 — 합성된 핵 100% · 뒤 모음 요소 50% (제2본 §14 「뒤 요소 50% 크기」) · 독립 자음 75%.  예 부ㅜㅅㅌ = 부(100) ㅜ(50) ㅅㅌ(75)
+//  4. 독립 자음은 호환 자모가 있으면 그것으로, 없으면 조합형 그대로 보인다.  예 ㅋ ㅅ ㅌ / ퟛ
+//  5. 2026-09-17 저자 결정: 뒤 모음에는 읽기용 무음 초성 ㅇ을 붙인다.
+//     같은 핵의 요소이며 새 음소·음절이 아니다. 부우ㅅㅌ = 부(100) 우(50) ㅅㅌ(75).
 
 const NO_COMPOSE_CODA = new Set(['ᆺ', 'ᆾ']);   // ᆺ /s/ · ᆾ /t+s/
 
@@ -43,7 +44,9 @@ export function linearDisplayRuns(block) {
   }
   // NFC는 현대 완성자 범위에서만 합성되며, 옛한글 자모는 셰이핑 단계에서 합성된다.
   push(core.normalize('NFC'), 'core');
-  push(nucleus.slice(1).map(loose).join(''), 'nucleus');
+  // Keep each carrier + vowel together, including uncomposed old Hangul.
+  // One run per tail also preserves separate elements in longer nuclei.
+  for (const vowel of nucleus.slice(1)) push(('ᄋ' + vowel).normalize('NFC'), 'nucleus');
   push(coda.slice(codaStart).map(loose).join(''), 'coda');
   return runs;
 }
@@ -69,4 +72,4 @@ export function proportionalDisplayBlocks(blocks) {
   }));
 }
 
-export const DISPLAY_PROFILE = 'linear-trial-v7-loose-jamo';
+export const DISPLAY_PROFILE = 'linear-trial-v8-vowel-carrier';

@@ -47,3 +47,7 @@
 - [사용자 지정 GitHub Pages workflow](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 
 공개 사이트는 `https://ivanpark.github.io/hmbr/`, 배포 이력은 저장소의 `pages.yml` Actions에서 확인한다.
+
+## 2026-09-17 저자 결정에 따른 후속 감사
+
+2026-09-16 제1–4본 PDF의 전체 텍스트, 제3·4본 DOCX, 제4본 Markdown과 앱 표시·렌더링 코드를 열어 뒤 모음·무음 초성·강세 표시 관련 문언을 대조했다. 제1본은 해당 수정이 없으며 제2–4본을 개정했다. 제2본은 최신 DOCX 없이 기존 PDF를 수정했고 제3·4본은 DOCX에서 다시 내보냈다. PDF의 옛한글 문자 추출 한계와 벡터 보존 방식, 정확한 수정·검증 범위는 [9월 17일 수정 내역](HMBR_Corrections_20260917.md)에 기록했다.

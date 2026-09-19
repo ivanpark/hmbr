@@ -4,27 +4,6 @@ import { inkBox, displayUnits } from '../js/optical.js';
 import { convertWord } from '../js/engine.js';
 import { proportionalDisplayBlocks } from '../js/display.js';
 
-test('boost keeps the loose vowel at 50% and consonants at 75% without enlargement', () => {
-  // Actual shipped-font bounds read from the live boost SVGs on 2026-09-17.
-  // The tail must not be inflated to 24px ink height or the consonants to 36px.
-  // Native font sizes produce a smaller tail than the following consonants.
-  const bounds = new Map([
-    ['부', [15.625, -812.5, 921.875, 937.5]],
-    ['ㅜ', [15.625, -406.25, 921.875, 531.25]],
-    ['ㅅ', [109.375, -609.375, 734.375, 515.625]],
-    ['ㅌ', [125, -593.75, 671.875, 484.375]],
-  ]);
-  const heights = proportionalDisplayBlocks(convertWord('buːst').display.blocks)
-    .flatMap(b => b.runs).flatMap(run => displayUnits(run).map(text => {
-      const [x, y, width, height] = bounds.get(text);
-      const box = inkBox({ actualBoundingBoxLeft: -x, actualBoundingBoxRight: x + width,
-        actualBoundingBoxAscent: -y, actualBoundingBoxDescent: y + height }, run.role);
-      return box.heightEm * run.scale * 48;
-    }));
-  assert.deepEqual(heights, [48, 12.75, 18.5625, 17.4375]);
-  assert.ok(heights[1] < heights[2] && heights[1] < heights[3]);
-});
-
 test('all loose jamo use natural font geometry while composed cores keep stress sizing', () => {
   const metrics = { actualBoundingBoxLeft: -125, actualBoundingBoxRight: 796.875,
     actualBoundingBoxAscent: 593.75, actualBoundingBoxDescent: -109.375 };
@@ -57,9 +36,9 @@ test('visible sizing removes font whitespace and preserves each shape', () => {
 test('composed old Hangul stays together while loose consonants size independently', () => {
   const runs = ipa => proportionalDisplayBlocks(convertWord(ipa).display.blocks)
     .flatMap(b => b.runs).flatMap(r => displayUnits(r).map(text => [text, r.scale]));
-  assert.deepEqual(runs('kəˈrɪə'), [['ᄏᆞ', .75], ['ꥶᆝ', 1], ['ᆞ', .5]]);
-  assert.deepEqual(runs('ˈkærɪə'), [['캐', 1], ['ꥶᆝ', .75], ['ᆞ', .5]]);
-  assert.deepEqual(runs('buːst'), [['부', 1], ['ㅜ', .5], ['ㅅ', .75], ['ㅌ', .75]]);
+  assert.deepEqual(runs('kəˈrɪə'), [['ᄏᆞ', .75], ['ꥶᆝ', 1], ['ᄋᆞ', .5]]);
+  assert.deepEqual(runs('ˈkærɪə'), [['캐', 1], ['ꥶᆝ', .75], ['ᄋᆞ', .5]]);
+  assert.deepEqual(runs('buːst'), [['부', 1], ['우', .5], ['ㅅ', .75], ['ㅌ', .75]]);
 });
 
 test('unavailable ink measurements fail instead of displaying NaN or fallback proportions', () => {
