@@ -1,5 +1,7 @@
 # HMBR publication document index
 
+처음 검토하시는 분은 [5분 검토 안내](../review-brief-260916.html)에서 제안·시연·근거를 순서대로 확인할 수 있습니다.
+
 2026-09-17 publication: Books II–IV incorporate the author’s silent-vowel-carrier decision; Book I retains its 2026-09-16 edition. The four individual books are the canonical reading units. The archival combined PDF preserves the same order and contains four top-level bookmarks.
 
 | 순서 | 문서 | 쪽수 | 파일 |

@@ -5,36 +5,65 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#102d3a">
+  <meta name="description" content="훈민바름 검토 안내: 제안의 범위, 5분 시연, 네 본의 근거와 현재 검증 범위를 한눈에 확인합니다.">
   <title>훈민바름 · 검토용 빠른 안내</title>
   <link rel="stylesheet" href="css/site.css">
 </head>
 <body class="review-page">
-<main class="review-shell">
+<a class="skip" href="#review-main">검토 안내로 바로 가기</a>
+<main id="review-main" class="review-shell">
   <header class="review-top">
-    <span class="review-notice">검토용 임시 페이지 · 검색 제외 요청</span>
+    <a class="text-link" href="index.html">← 훈민바름 공개 사이트</a>
     <p class="kicker">HUNMIN BAREUM / REVIEW BRIEF</p>
     <h1>훈민바름을 검토하는<br>가장 짧은 경로</h1>
-    <p>이 페이지는 네 본과 참조 구현을 빠르게 검토하기 위한 안내입니다. 원문의 주장과 현재 구현이 증명하는 범위를 구별해 표시합니다.</p>
-    <div class="review-actions"><a href="app.html">참조 구현 열기 ↗</a><a href="docs/INDEX.md">네 본 문서 색인 ↗</a></div>
+    <p>제안의 범위를 읽고, 작동하는 예시를 확인한 뒤, 네 본의 근거를 대조할 수 있습니다. 원문의 주장과 현재 구현이 확인하는 범위를 구별해 표시합니다.</p>
+    <span class="review-notice">안내 갱신 2026.09.19 · 제1본 09.16 / 제2–4본 09.17</span>
+    <div class="hero-actions"><a class="button primary" href="app.html">변환기 바로 열기 <span aria-hidden="true">→</span></a><a class="button quiet" href="#documents">네 본과 근거 보기 <span aria-hidden="true">↓</span></a></div>
+    <p class="review-access">설치·로그인·API 키 없이 확인할 수 있습니다. 변환기는 JavaScript를 사용하며, PDF는 별도로 열 수 있습니다.</p>
+    <nav class="review-actions" aria-label="검토 순서"><a href="#proposal">1분 요약</a><a href="#walkthrough">5분 검토</a><a href="#evidence">검증 자료</a><a href="#limits">현재 범위</a></nav>
   </header>
-  <section class="review-section">
-    <h2>1분 요약</h2>
-    <div class="review-card"><h3>제안</h3><p>일상의 한글 표기를 유지하면서 교육·사전·학술·이름·접근성 등 정밀성이 필요한 영역에 IPA 대응 외국어 표기층을 선택적으로 둡니다.</p><h3>구현</h3><p>영어 RP·GA 넓은 표기를 음절블록의 NFD 자모열과 구조화된 기록으로 변환하는 공개 참조 구현을 제공합니다.</p><h3>현재 단계</h3><p>연구 가표본과 시범 구현입니다. 국가 표준의 채택, 사전 전체의 정확도, 학습 효과를 완료된 결과로 주장하지 않습니다.</p></div>
+  <section id="proposal" class="review-section" aria-labelledby="proposal-title">
+    <h2 id="proposal-title">1분 요약</h2>
+    <div class="review-card"><h3>제안</h3><p>일상의 한글 표기를 유지하면서 교육·사전·학술·이름·접근성 등 정밀성이 필요한 영역에 IPA 대응 외국어 표기층을 선택적으로 둡니다. 제1본은 일반 표기와 정밀 표기의 목적을 구분하고 적용 범위를 합리화하는 방안을 제안합니다. <a href="docs/HMBR_Book1_Seoneonbon_20260916.pdf#page=23">제1본 23쪽</a></p><h3>구현</h3><p>영어 RP·GA 넓은 표기를 음절블록으로 보여 주고 원문 IPA, NFD 자모열과 구조화된 기록을 함께 확인하는 공개 참조 구현입니다.</p><h3>현재 단계</h3><p>연구 가표본과 시범 구현입니다. 국가 표준의 채택, 사전 전체의 정확도와 학습 효과는 완료된 결과로 제시하지 않습니다.</p></div>
   </section>
-  <section class="review-section">
-    <h2>5분 검토</h2>
-    <div><ol><li><strong>범위 확인:</strong> 제1본 23–30쪽에서 두 표기층과 단계별 적용 방안을 확인합니다.</li><li><strong>규칙 확인:</strong> 제2본에서 RP·GA 음소 대응과 미결 항목을 확인합니다.</li><li><strong>전산 구조 확인:</strong> 제3본에서 정본·직렬화·표시를 구별하는 이유를 확인합니다.</li><li><strong>재현 범위 확인:</strong> 제4본 14–16쪽에서 시험의 분모와 미구현 범위를 확인합니다.</li><li><strong>직접 시험:</strong> 참조 구현에서 boost, friend, cats와 미결 예 catch를 비교합니다.</li></ol><div class="review-actions"><a href="docs/HMBR_Book1_Seoneonbon_20260916.pdf#page=23">제1본 23쪽 ↗</a><a href="docs/HMBR_Book3_Jeonsanbon_20260916.pdf#page=28">제3본 28쪽 ↗</a><a href="docs/HMBR_Book4_Guhyeonbon_20260916.pdf#page=14">제4본 14쪽 ↗</a></div></div>
+  <section id="walkthrough" class="review-section" aria-labelledby="walkthrough-title">
+    <h2 id="walkthrough-title">5분 검토</h2>
+    <div>
+      <ol class="review-steps">
+        <li><strong>제안의 범위 읽기</strong><p><a href="docs/HMBR_Book1_Seoneonbon_20260916.pdf#page=23">제1본 23쪽</a>의 두 표기층과 적용 범위를 먼저 확인합니다.</p></li>
+        <li><strong>장모음과 자음군 확인 · boost</strong><p><a href="app.html">변환기</a>를 열면 기본 예시가 표시됩니다. <b>부우ㅅㅌ</b>에서 뒤 모음의 ‘ㅇ’은 읽기용 표시이며 새 음소나 음절이 아닙니다. ‘IPA · 자모 대응 · 코드포인트’를 펼치면 원문과 저장되는 자모열을 대조할 수 있습니다. <a href="docs/HMBR_Book2_Haeryebon_20260917.pdf#page=16">제2본 16쪽</a></p></li>
+        <li><strong>발음 기준 비교 · pass</strong><p>예시 버튼 <b>pass</b>를 누르고 <b>RP 영국식 / GA 미국식</b>을 바꿉니다. IPA와 결과가 함께 바뀌는지 확인합니다. 일반 사전 검색과 구별되는 ‘문서 예시’ 출처도 표시됩니다.</p></li>
+        <li><strong>미결 처리 확인 · catch</strong><p><b>catch · 종성 /tʃ/ 미배당</b> 버튼을 누릅니다. ‘직렬화 미결’이 표시되고 자모열 복사는 제공되지 않습니다. 원문·음소 구조·미결 사유는 전체 기록에 보존됩니다. 이는 정하지 않은 부호를 추정해 채우지 않는 동작입니다.</p></li>
+        <li><strong>근거와 한계 대조</strong><p><a href="docs/HMBR_Book3_Jeonsanbon_20260917.pdf#page=28">제3본 28쪽</a>에서 문자부호·표시·적용 규범의 구분을, <a href="docs/HMBR_Book4_Guhyeonbon_20260917.pdf#page=14">제4본 14–16쪽</a>에서 시험의 분모와 남은 구현 과제를 확인합니다.</p></li>
+      </ol>
+      <p class="review-help">원하는 일반 단어가 조회되지 않으면 ‘IPA 직접 입력’을 사용할 수 있습니다. 미검수 사전 결과에는 검토 필요 상태가 표시됩니다.</p>
+      <div class="review-actions"><a href="app.html">직접 확인하기 ↗</a><a href="https://github.com/ivanpark/hmbr/issues">오류·검토 의견 남기기 ↗</a></div>
+    </div>
   </section>
-  <section class="review-section">
-    <h2>검증 자료</h2>
-    <div><div class="review-card"><h3>문서</h3><p>2026년 9월 16일 교정판 제1–4본 164쪽. 파일별 체크섬과 판본 색인을 함께 제공합니다.</p></div><div class="review-card"><h3>자동시험</h3><p>엔진·사전·표시 시험 270건 안에 제3본 갤러리를 모듈별로 나눈 43개 코드포인트 대조가 포함됩니다. 이는 270개 단어의 정확도나 사전 전수감사가 아닙니다.</p></div><div class="review-card"><h3>공개 코드</h3><p>변환 엔진, 등록부, 시험 벡터, 빌드 절차와 알려진 미결 사항을 저장소에 공개합니다.</p></div><div class="review-actions"><a href="docs/INDEX.md">문서 색인 ↗</a><a href="SHA256SUMS.txt">SHA-256 ↗</a><a href="docs/IMPLEMENTATION.md">구현 검증 ↗</a><a href="https://github.com/ivanpark/hmbr">GitHub ↗</a></div></div>
+  <section id="documents" class="review-section" aria-labelledby="documents-title">
+    <h2 id="documents-title">네 본의 근거</h2>
+    <div>
+      <p>네 개별본이 정식 읽기 단위입니다. 아래 링크는 현재 공개 판본의 PDF를 바로 엽니다. 쪽수는 PDF 뷰어 기준입니다.</p>
+      <div class="review-books">
+        <a href="docs/HMBR_Book1_Seoneonbon_20260916.pdf"><strong>제1본 · 선언본</strong><span>왜 필요한가 · 뜻과 미래</span><small>36쪽 · 2026.09.16 · PDF 0.7 MB ↗</small></a>
+        <a href="docs/HMBR_Book2_Haeryebon_20260917.pdf"><strong>제2본 · 해례본</strong><span>어떻게 적고 읽는가 · RP·GA 음소 해례</span><small>59쪽 · 2026.09.17 · PDF 14.3 MB ↗</small></a>
+        <a href="docs/HMBR_Book3_Jeonsanbon_20260917.pdf"><strong>제3본 · 전산본</strong><span>어떻게 보존·처리하는가 · 구조와 직렬화</span><small>46쪽 · 2026.09.17 · PDF 2.0 MB ↗</small></a>
+        <a href="docs/HMBR_Book4_Guhyeonbon_20260917.pdf"><strong>제4본 · 구현본</strong><span>어떻게 작동하고 검증되는가 · 웹 참조구현과 시험</span><small>23쪽 · 2026.09.17 · PDF 0.9 MB ↗</small></a>
+      </div>
+      <div class="review-actions"><a href="docs/HMBR_Books1-4_Combined_20260917.pdf">통합 보관판 · 164쪽 · 16.4 MB ↗</a><a href="https://github.com/ivanpark/hmbr/blob/main/docs/INDEX.md">판본 색인·편집 원본 ↗</a></div>
+      <p class="review-help">제1본은 9월 16일 판을 유지하며, 제2–4본은 9월 17일 무음 초성 결정을 반영합니다. 통합판에는 네 본의 시작 위치를 가리키는 책갈피가 있습니다.</p>
+    </div>
   </section>
-  <section class="review-section">
-    <h2>판단할 질문</h2>
-    <div><ul><li>선택적 정밀 표기층이라는 범위가 실제 문제에 비례하는가?</li><li>제안된 자모 대응이 음성학적으로 일관되고 학습 가능한가?</li><li>정본·직렬화·표시의 구분이 교환과 보존에 충분한가?</li><li>현재의 기술 검증 뒤에 어떤 사용자·교육 실험이 필요한가?</li><li>제도 개선이 필요하다면 정확히 어느 규정과 절차를 다뤄야 하는가?</li></ul></div>
+  <section id="evidence" class="review-section" aria-labelledby="evidence-title">
+    <h2 id="evidence-title">검증 자료</h2>
+    <div><div class="review-card"><h3>문서의 동일성</h3><p>네 본과 통합판의 최종 바이트에 대한 SHA-256 체크섬을 제공합니다. 9월 19일 공개 PDF 다섯 파일의 다운로드와 체크섬 일치를 확인했습니다. <a href="SHA256SUMS.txt">체크섬 목록</a></p></div><div class="review-card"><h3>자동시험 · 280/280</h3><p>2026년 9월 19일 엔진·사전·표시 시험 280건이 통과했습니다. 제3본 갤러리를 모듈별로 나눈 43개 코드포인트 대조가 포함됩니다. 이는 280개 단어의 정확도나 사전 전수감사가 아닙니다.</p><p>제4본 14쪽의 270건은 9월 16일 실행 기록입니다. 이후 표시 규칙 시험이 추가된 현재 결과와 구별합니다.</p></div><div class="review-card"><h3>공개 코드와 재현</h3><p>변환 엔진, 등록부, 시험 벡터, 빌드 절차와 알려진 미결 사항을 공개합니다. 각 커밋의 시험·배포 결과는 GitHub Actions에서 확인할 수 있습니다.</p></div><div class="review-actions"><a href="https://github.com/ivanpark/hmbr/blob/main/docs/IMPLEMENTATION.md">구현 검증 기록 ↗</a><a href="https://github.com/ivanpark/hmbr/actions/workflows/pages.yml">시험·배포 이력 ↗</a><a href="https://github.com/ivanpark/hmbr/blob/main/docs/SOURCE_AUDIT.md">원자료·판본 감사 ↗</a><a href="https://github.com/ivanpark/hmbr/blob/main/data/SOURCES.md">사전 출처와 한계 ↗</a></div></div>
   </section>
-  <section class="review-section"><h2>명시한 한계</h2><div class="review-card"><p>현행 한국어 KS 원문의 구속 범위, 최신 사전 전체의 발음 정확도, 실브라우저·화면낭독기·클립보드 호환성, 비교 학습 효과는 추가 검증 과제입니다. 자동시험 통과를 이 범위 밖의 적합성으로 확대하지 않습니다.</p></div></section>
-  <footer class="review-foot"><p>훈민바름 영어확장판 · Park Il Hwan · 2026.09.16 교정판</p><p><a href="index.html">공개 사이트로 돌아가기</a></p></footer>
+  <section class="review-section" aria-labelledby="questions-title">
+    <h2 id="questions-title">판단할 질문</h2>
+    <div><p>공개 검토를 돕기 위한 질문입니다.</p><ul><li>선택적 정밀 표기층이라는 범위가 실제 문제에 비례하는가?</li><li>제안된 자모 대응이 음성학적으로 일관되고 학습 가능한가?</li><li>정본·직렬화·표시의 구분이 교환과 보존에 충분한가?</li><li>현재의 기술 검증 뒤에 어떤 사용자·교육 실험이 필요한가?</li><li>제도 개선이 필요하다면 정확히 어느 규정과 절차를 다뤄야 하는가?</li></ul></div>
+  </section>
+  <section id="limits" class="review-section" aria-labelledby="limits-title"><h2 id="limits-title">현재 범위</h2><div class="review-card"><p><strong>확인할 수 있는 것:</strong> 선택한 영어 RP·GA Broad 예시의 변환, 원문·자모 대응 기록, 미결 처리와 수록된 자동시험의 재현.</p><p><strong>추가 검증이 필요한 것:</strong> 현행 한국어 KS 원문의 구속 범위, 사전 전체의 발음 정확도, 여러 브라우저·화면낭독기·클립보드 환경의 호환성과 비교 학습 효과.</p><p>자동시험 통과를 이 범위 밖의 적합성으로 확대하지 않습니다. 영어 낭독이나 사용자용 역변환기는 현재 앱에 포함되지 않습니다.</p></div></section>
+  <footer class="review-foot"><p>훈민바름 영어확장판 · Park Il Hwan · 검토 안내 2026.09.19</p><p><a href="index.html">공개 사이트</a> · <a href="app.html">변환기</a> · <a href="https://github.com/ivanpark/hmbr">GitHub</a></p></footer>
 </main>
 </body>
 </html>

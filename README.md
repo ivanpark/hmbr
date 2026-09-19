@@ -6,6 +6,16 @@
 
 [공개 사이트](https://ivanpark.github.io/hmbr/) · [소리 써보기](https://ivanpark.github.io/hmbr/app.html) · [문서 바로 보기](https://ivanpark.github.io/hmbr/#books)
 
+## 처음 검토하시는 분께
+
+**[5분 검토 안내 열기](https://ivanpark.github.io/hmbr/review-brief-260916.html)** — 제안의 범위, 직접 확인할 예시, 네 본의 해당 쪽과 검증 근거를 한 페이지에 모았습니다. 별도 설치·로그인·API 키 없이 열 수 있습니다.
+
+1. **제안과 적용 범위:** [제1본 23쪽](https://ivanpark.github.io/hmbr/docs/HMBR_Book1_Seoneonbon_20260916.pdf#page=23)에서 일상 표기층과 선택적 정밀 표기층의 구분을 확인합니다.
+2. **직접 확인:** [변환기](https://ivanpark.github.io/hmbr/app.html)에서 `boost` → `pass`의 RP·GA 비교 → `catch`의 미결 처리를 살펴봅니다.
+3. **근거 확인:** 아래 네 본과 [구현 검증 기록](docs/IMPLEMENTATION.md), [시험·배포 이력](https://github.com/ivanpark/hmbr/actions/workflows/pages.yml)을 대조합니다.
+
+현재 앱은 영어 RP·GA 넓은 표기의 연구 가표본입니다. **2026-09-19 확인: 자동시험 280/280 통과.** 이는 수록된 시험 조건의 결과이며 사전 전수 검수나 학습 효과 검증을 뜻하지 않습니다. 문서에 기록된 9월 16일의 270건과 현재 시험 수는 확인 시점이 다릅니다.
+
 ## 검증된 교정 출판 파일
 
 2026년 9월 17일 개정판은 제1–4본을 각각 독립된 정식 읽기 단위로 제공합니다. 제2–4본은 저자의 무음 초성 결정을 반영하며, 제1본은 9월 16일 판을 유지합니다. 쪽수와 파일별 SHA-256은 [문서 색인](docs/INDEX.md)과 [체크섬 목록](SHA256SUMS.txt)에서 확인할 수 있습니다.
