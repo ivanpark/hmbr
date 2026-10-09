@@ -17,21 +17,21 @@
     <p class="kicker">HUNMIN BAREUM / REVIEW BRIEF</p>
     <h1>훈민바름을 검토하는<br>가장 짧은 경로</h1>
     <p>제안의 범위를 읽고, 작동하는 예시를 확인한 뒤, 네 본의 근거를 대조할 수 있습니다. 원문의 주장과 현재 구현이 확인하는 범위를 구별해 표시합니다.</p>
-    <span class="review-notice">안내 갱신 2026.10.09 · 제1본 09.16 / 제2본 09.17 / 제3·4본 10.09</span>
+    <span class="review-notice">안내 갱신 2026.10.09 · 제1–4본 10.09 교정판</span>
     <div class="hero-actions"><a class="button primary" href="app.html">변환기 바로 열기 <span aria-hidden="true">→</span></a><a class="button quiet" href="#documents">네 본과 근거 보기 <span aria-hidden="true">↓</span></a></div>
     <p class="review-access">설치·로그인·API 키 없이 확인할 수 있습니다. 변환기는 JavaScript를 사용하며, PDF는 별도로 열 수 있습니다.</p>
     <nav class="review-actions" aria-label="검토 순서"><a href="#proposal">1분 요약</a><a href="#walkthrough">5분 검토</a><a href="#evidence">검증 자료</a><a href="#limits">현재 범위</a></nav>
   </header>
   <section id="proposal" class="review-section" aria-labelledby="proposal-title">
     <h2 id="proposal-title">1분 요약</h2>
-    <div class="review-card"><h3>제안</h3><p>일상의 한글 표기를 유지하면서 교육·사전·학술·이름·접근성 등 정밀성이 필요한 영역에 IPA 대응 외국어 표기층을 선택적으로 둡니다. 제1본은 일반 표기와 정밀 표기의 목적을 구분하고 적용 범위를 합리화하는 방안을 제안합니다. <a href="docs/HMBR_Book1_Seoneonbon_20260916.pdf#page=23">제1본 23쪽</a></p><h3>구현</h3><p>영어 RP·GA 넓은 표기를 음절블록으로 보여 주고 원문 IPA, NFD 자모열과 구조화된 기록을 함께 확인하는 공개 참조 구현입니다.</p><h3>현재 단계</h3><p>연구 가표본과 시범 구현입니다. 국가 표준의 채택, 사전 전체의 정확도와 학습 효과는 완료된 결과로 제시하지 않습니다.</p></div>
+    <div class="review-card"><h3>제안</h3><p>일상의 한글 표기를 유지하면서 교육·사전·학술·이름·접근성 등 정밀성이 필요한 영역에 IPA 대응 외국어 표기층을 선택적으로 둡니다. 제1본은 일반 표기와 정밀 표기의 목적을 구분하고 적용 범위를 합리화하는 방안을 제안합니다. <a href="docs/HMBR_Book1_Seoneonbon_20261009.pdf#page=23">제1본 23쪽</a></p><h3>구현</h3><p>영어 RP·GA 넓은 표기를 음절블록으로 보여 주고 원문 IPA, NFD 자모열과 구조화된 기록을 함께 확인하는 공개 참조 구현입니다.</p><h3>현재 단계</h3><p>연구 가표본과 시범 구현입니다. 국가 표준의 채택, 사전 전체의 정확도와 학습 효과는 완료된 결과로 제시하지 않습니다.</p></div>
   </section>
   <section id="walkthrough" class="review-section" aria-labelledby="walkthrough-title">
     <h2 id="walkthrough-title">5분 검토</h2>
     <div>
       <ol class="review-steps">
-        <li><strong>제안의 범위 읽기</strong><p><a href="docs/HMBR_Book1_Seoneonbon_20260916.pdf#page=23">제1본 23쪽</a>의 두 표기층과 적용 범위를 먼저 확인합니다.</p></li>
-        <li><strong>장모음과 자음군 확인 · boost</strong><p><a href="app.html">변환기</a>를 열면 기본 예시가 표시됩니다. <b>부우ㅅㅌ</b>에서 뒤 모음의 ‘ㅇ’은 읽기용 표시이며 새 음소나 음절이 아닙니다. ‘IPA · 자모 대응 · 코드포인트’를 펼치면 원문과 저장되는 자모열을 대조할 수 있습니다. <a href="docs/HMBR_Book2_Haeryebon_20260917.pdf#page=16">제2본 16쪽</a></p></li>
+        <li><strong>제안의 범위 읽기</strong><p><a href="docs/HMBR_Book1_Seoneonbon_20261009.pdf#page=23">제1본 23쪽</a>의 두 표기층과 적용 범위를 먼저 확인합니다.</p></li>
+        <li><strong>장모음과 자음군 확인 · boost</strong><p><a href="app.html">변환기</a>를 열면 기본 예시가 표시됩니다. <b>부우ㅅㅌ</b>에서 뒤 모음의 ‘ㅇ’은 읽기용 표시이며 새 음소나 음절이 아닙니다. ‘IPA · 자모 대응 · 코드포인트’를 펼치면 원문과 저장되는 자모열을 대조할 수 있습니다. <a href="docs/HMBR_Book2_Haeryebon_20261009.pdf#page=16">제2본 16쪽</a></p></li>
         <li><strong>발음 기준 비교 · pass</strong><p>예시 버튼 <b>pass</b>를 누르고 <b>RP 영국식 / GA 미국식</b>을 바꿉니다. IPA와 결과가 함께 바뀌는지 확인합니다. 일반 사전 검색과 구별되는 ‘문서 예시’ 출처도 표시됩니다.</p></li>
         <li><strong>미결 처리 확인 · catch</strong><p><b>catch · 종성 /tʃ/ 미배당</b> 버튼을 누릅니다. ‘직렬화 미결’이 표시되고 자모열 복사는 제공되지 않습니다. 원문·음소 구조·미결 사유는 전체 기록에 보존됩니다. 이는 정하지 않은 부호를 추정해 채우지 않는 동작입니다.</p></li>
         <li><strong>근거와 한계 대조</strong><p><a href="docs/HMBR_Book3_Jeonsanbon_20261009.pdf#page=28">제3본 28쪽</a>에서 문자부호·표시·적용 규범의 구분을, <a href="docs/HMBR_Book4_Guhyeonbon_20261009.pdf#page=14">제4본 14–16쪽</a>에서 당시 시험의 분모와 구현 과제를, <a href="docs/HMBR_Book4_Guhyeonbon_20261009.pdf#page=24">24쪽 부록 D</a>에서 10월 9일 구현 상태를 확인합니다.</p></li>
@@ -45,19 +45,19 @@
     <div>
       <p>네 개별본이 정식 읽기 단위입니다. 아래 링크는 현재 공개 판본의 PDF를 바로 엽니다. 쪽수는 PDF 뷰어 기준입니다.</p>
       <div class="review-books">
-        <a href="docs/HMBR_Book1_Seoneonbon_20260916.pdf"><strong>제1본 · 선언본</strong><span>왜 필요한가 · 뜻과 미래</span><small>36쪽 · 2026.09.16 · PDF 0.7 MB ↗</small></a>
-        <a href="docs/HMBR_Book2_Haeryebon_20260917.pdf"><strong>제2본 · 해례본</strong><span>어떻게 적고 읽는가 · RP·GA 음소 해례</span><small>59쪽 · 2026.09.17 · PDF 14.3 MB ↗</small></a>
-        <a href="docs/HMBR_Book3_Jeonsanbon_20261009.pdf"><strong>제3본 · 전산본</strong><span>어떻게 보존·처리하는가 · 구조와 직렬화</span><small>46쪽 · 2026.10.09 · PDF 2.6 MB ↗</small></a>
-        <a href="docs/HMBR_Book4_Guhyeonbon_20261009.pdf"><strong>제4본 · 구현본</strong><span>어떻게 작동하고 검증되는가 · 웹 참조구현과 시험</span><small>24쪽 · 2026.10.09 · PDF 1.1 MB ↗</small></a>
+        <a href="docs/HMBR_Book1_Seoneonbon_20261009.pdf"><strong>제1본 · 선언본</strong><span>왜 필요한가 · 뜻과 미래</span><small>36쪽 · 2026.10.09 · PDF 0.7 MB ↗</small></a>
+        <a href="docs/HMBR_Book2_Haeryebon_20261009.pdf"><strong>제2본 · 해례본</strong><span>어떻게 적고 읽는가 · RP·GA 음소 해례</span><small>59쪽 · 2026.10.09 · PDF 14.6 MB ↗</small></a>
+        <a href="docs/HMBR_Book3_Jeonsanbon_20261009.pdf"><strong>제3본 · 전산본</strong><span>어떻게 보존·처리하는가 · 구조와 직렬화</span><small>46쪽 · 2026.10.09 · PDF 3.0 MB ↗</small></a>
+        <a href="docs/HMBR_Book4_Guhyeonbon_20261009.pdf"><strong>제4본 · 구현본</strong><span>어떻게 작동하고 검증되는가 · 웹 참조구현과 시험</span><small>24쪽 · 2026.10.09 · PDF 1.0 MB ↗</small></a>
       </div>
-      <div class="review-actions"><a href="docs/HMBR_Books1-4_Combined_20261009.pdf">통합 보관판 · 165쪽 · 17.0 MB ↗</a><a href="https://github.com/ivanpark/hmbr/blob/main/docs/INDEX.md">판본 색인·편집 원본 ↗</a></div>
-      <p class="review-help">제1본은 9월 16일 판, 제2본은 9월 17일 판을 유지하며, 제3·4본은 10월 9일 교정판입니다. 제2–4본은 9월 17일 무음 초성 결정을 반영합니다. 통합판에는 네 본의 시작 위치를 가리키는 책갈피가 있습니다.</p>
+      <div class="review-actions"><a href="docs/HMBR_Books1-4_Combined_20261009.pdf">통합 보관판 · 165쪽 · 17.8 MB ↗</a><a href="https://github.com/ivanpark/hmbr/blob/main/docs/INDEX.md">판본 색인·편집 원본 ↗</a></div>
+      <p class="review-help">네 본 모두 10월 9일 교정판입니다. 제2–4본은 9월 17일 무음 초성 결정을 반영합니다. 통합판에는 네 본의 시작 위치를 가리키는 책갈피가 있습니다.</p>
     </div>
   </section>
   <section id="book-status" class="review-section" aria-labelledby="book-status-title">
     <h2 id="book-status-title">10월 9일 상태 검토</h2>
-    <div><p>네 본은 모두 공개되었습니다. 상태 검토에서 확인한 제3·4본의 정정은 10월 9일 교정판에 반영했습니다. 9월 판 PDF는 저장소에 이력으로 남깁니다.</p>
-      <div class="review-card"><h3>제1·2본 · 공개 연구 판본</h3><p>제1본은 목적과 적용 범위를, 제2본은 RP·GA 음소 대응을 설명합니다. 제2본에는 뒤 모음의 읽기용 무음 ㅇ 결정이 반영되어 있습니다. 최종 압축 조자, 일부 활음 조합과 /ɝ/ 등은 미결입니다.</p></div>
+    <div><p>네 본은 모두 10월 9일 교정판으로 공개되었습니다. 상태 검토에서 확인한 정정과 전권 문언 교정을 반영했습니다. 9월 판 PDF는 저장소에 이력으로 남깁니다.</p>
+      <div class="review-card"><h3>제1·2본 · 10월 9일 문언 교정</h3><p>제1본은 목적과 적용 범위를, 제2본은 RP·GA 음소 대응을 설명합니다. 제1본은 날짜·띄어쓰기·어법을, 제2본은 비교 범위, soon·dog 설명, SQUARE 교차 참조와 Narrow [ˈwɔɾəɹ] 예시를 교정했습니다. 제2본에는 뒤 모음의 읽기용 무음 ㅇ 결정이 반영되어 있습니다. 최종 압축 조자, 일부 활음 조합과 /ɝ/ 등은 미결입니다.</p></div>
       <div class="review-card"><h3>제3본 · 37쪽 표시 설명 정정 반영</h3><p>9월 판의 ‘복합 핵의 무초성 연쇄’라는 표시 설명을 39쪽의 무음 초성 설명에 맞추어 ‘복합 핵의 뒤 모음에 읽기용 무음 초성 ㅇ을 붙이는 선형 표시(저장 V 배열에는 미포함)’로 바로잡았습니다. 현재 앱은 뒤 모음에 읽기용 ㅇ을 표시하되 저장 V 배열에는 넣지 않습니다. 새 음소나 음절을 추가하지 않는 표시 규칙입니다.</p><p><a href="docs/HMBR_Book3_Jeonsanbon_20261009.pdf#page=37">37쪽 상태 표</a> · <a href="docs/HMBR_Book3_Jeonsanbon_20261009.pdf#page=39">39쪽 표시 결정</a></p></div>
       <div class="review-card"><h3>제4본 · 16쪽 구현 상태 갱신 반영</h3><p>16쪽 장모음 행에 뒤 모음 50% 크기와 읽기용 무음 ㅇ 표시가 구현되었음을 적고, 남은 과제를 문서의 length 속성과 실제 데이터 필드의 대응 명시로 좁혔습니다. 9월 16일의 270건 시험 기록은 당시 기록으로 유지하고, 24쪽 부록 D에 10월 9일의 283건 시험과 남은 검증 범위를 따로 적었습니다.</p><p><a href="docs/HMBR_Book4_Guhyeonbon_20261009.pdf#page=16">16쪽 남은 과제 표</a> · <a href="docs/HMBR_Book4_Guhyeonbon_20261009.pdf#page=24">24쪽 부록 D</a></p></div>
       <div class="review-actions"><a href="https://github.com/ivanpark/hmbr/blob/main/docs/BOOK_STATUS_20261009.md">검토 범위·정확한 교체 문구·남은 과제 ↗</a></div>
@@ -65,7 +65,7 @@
   </section>
   <section id="evidence" class="review-section" aria-labelledby="evidence-title">
     <h2 id="evidence-title">검증 자료</h2>
-    <div><div class="review-card"><h3>문서의 동일성</h3><p>네 본과 통합판의 최종 바이트에 대한 SHA-256 체크섬을 제공합니다. 10월 9일 공개 PDF 다섯 파일의 다운로드와 체크섬 일치를 확인했습니다. <a href="SHA256SUMS.txt">체크섬 목록</a></p></div><div class="review-card"><h3>자동시험 · 283/283</h3><p>2026년 10월 9일 엔진·사전·표시 시험 283건이 통과했습니다. 제3본 갤러리를 모듈별로 나눈 43개 코드포인트 대조가 포함됩니다. 이는 283개 단어의 정확도나 사전 전수감사가 아닙니다.</p><p>제4본 14쪽의 270건은 9월 16일 실행 기록입니다. 이후 표시 규칙과 사전 로딩 시험이 추가된 현재 결과와 구별합니다.</p></div><div class="review-card"><h3>공개 코드와 재현</h3><p>변환 엔진, 등록부, 시험 벡터, 빌드 절차와 알려진 미결 사항을 공개합니다. 각 커밋의 시험·배포 결과는 GitHub Actions에서 확인할 수 있습니다.</p></div><div class="review-actions"><a href="https://github.com/ivanpark/hmbr/blob/main/docs/IMPLEMENTATION.md">구현 검증 기록 ↗</a><a href="https://github.com/ivanpark/hmbr/actions/workflows/pages.yml">시험·배포 이력 ↗</a><a href="https://github.com/ivanpark/hmbr/blob/main/docs/SOURCE_AUDIT.md">원자료·판본 감사 ↗</a><a href="https://github.com/ivanpark/hmbr/blob/main/data/SOURCES.md">사전 출처와 한계 ↗</a></div></div>
+    <div><div class="review-card"><h3>문서의 동일성</h3><p>네 본과 통합판의 최종 바이트에 대한 SHA-256 체크섬을 제공합니다. 공개 PDF와 저장소 파일의 체크섬 일치는 배포 후 다시 확인합니다. <a href="SHA256SUMS.txt">체크섬 목록</a></p></div><div class="review-card"><h3>자동시험 · 283/283</h3><p>2026년 10월 9일 엔진·사전·표시 시험 283건이 통과했습니다. 제3본 갤러리를 모듈별로 나눈 43개 코드포인트 대조가 포함됩니다. 이는 283개 단어의 정확도나 사전 전수감사가 아닙니다.</p><p>제4본 14쪽의 270건은 9월 16일 실행 기록입니다. 이후 표시 규칙과 사전 로딩 시험이 추가된 현재 결과와 구별합니다.</p></div><div class="review-card"><h3>공개 코드와 재현</h3><p>변환 엔진, 등록부, 시험 벡터, 빌드 절차와 알려진 미결 사항을 공개합니다. 각 커밋의 시험·배포 결과는 GitHub Actions에서 확인할 수 있습니다.</p></div><div class="review-actions"><a href="https://github.com/ivanpark/hmbr/blob/main/docs/IMPLEMENTATION.md">구현 검증 기록 ↗</a><a href="https://github.com/ivanpark/hmbr/actions/workflows/pages.yml">시험·배포 이력 ↗</a><a href="https://github.com/ivanpark/hmbr/blob/main/docs/SOURCE_AUDIT.md">원자료·판본 감사 ↗</a><a href="https://github.com/ivanpark/hmbr/blob/main/data/SOURCES.md">사전 출처와 한계 ↗</a></div></div>
   </section>
   <section class="review-section" aria-labelledby="questions-title">
     <h2 id="questions-title">판단할 질문</h2>

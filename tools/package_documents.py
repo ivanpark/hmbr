@@ -13,8 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 DATE = "20261009"
 BOOKS = [
-    ("제1본 · 선언본", DOCS / "HMBR_Book1_Seoneonbon_20260916.pdf"),
-    ("제2본 · 해례본", DOCS / "HMBR_Book2_Haeryebon_20260917.pdf"),
+    ("제1본 · 선언본", DOCS / f"HMBR_Book1_Seoneonbon_{DATE}.pdf"),
+    ("제2본 · 해례본", DOCS / f"HMBR_Book2_Haeryebon_{DATE}.pdf"),
     ("제3본 · 전산본", DOCS / f"HMBR_Book3_Jeonsanbon_{DATE}.pdf"),
     ("제4본 · 구현본", DOCS / f"HMBR_Book4_Guhyeonbon_{DATE}.pdf"),
 ]
@@ -37,7 +37,7 @@ def package() -> None:
         {
             "/Title": "훈민바름 영어확장판 제1–4본 교정 합본",
             "/Author": "박일환",
-            "/Subject": "제1본 2026-09-16 · 제2본 2026-09-17 · 제3·4본 2026-10-09 교정판",
+            "/Subject": "제1–4본 2026-10-09 교정판",
             "/Keywords": "훈민바름, 영어확장판, 선언본, 해례본, 전산본, 구현본",
         }
     )
