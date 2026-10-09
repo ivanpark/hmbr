@@ -1,6 +1,6 @@
 # HMBR four-book status review
 
-> **후속 반영 (2026-10-09):** 아래 정정 1·2와 날짜 표기 제안 3은 제3본·제4본 2026-10-09 교정판([제3본](HMBR_Book3_Jeonsanbon_20261009.pdf) 46쪽, [제4본](HMBR_Book4_Guhyeonbon_20261009.pdf) 24쪽, 부록 D 추가)에 반영되었다. 통합 보관판은 [165쪽 판](HMBR_Books1-4_Combined_20261009.pdf)으로 다시 만들었다. 이 검토 본문은 9월 판을 대상으로 한 당시 기록으로 그대로 둔다. 제3·4본 10월 교정판의 DOCX·Markdown 편집 원본은 아직 저장소에 없다.
+> **후속 반영 (2026-10-09):** 아래 정정 1·2와 날짜 표기 제안 3은 제3본·제4본 2026-10-09 교정판([제3본](HMBR_Book3_Jeonsanbon_20261009.pdf) 46쪽, [제4본](HMBR_Book4_Guhyeonbon_20261009.pdf) 24쪽, 부록 D 추가)에 반영되었다. 통합 보관판은 [165쪽 판](HMBR_Books1-4_Combined_20261009.pdf)으로 다시 만들었다. 이 검토 본문은 9월 판을 대상으로 한 당시 기록으로 그대로 둔다. 제3·4본 DOCX와 제4본 Markdown 편집 원본도 같은 날짜 판으로 맞췄다.
 
 ## Revised assessment - 9 October 2026
 

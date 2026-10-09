@@ -18,11 +18,11 @@
 
 ## 편집 원본
 
-- [제3본 DOCX · 2026-09-17](HMBR_Book3_Jeonsanbon_20260917.docx)
-- [제4본 DOCX · 2026-09-17](HMBR_Book4_Guhyeonbon_20260917.docx)
-- [제4본 Markdown · 2026-09-17](HMBR_Book4_Guhyeonbon_20260917.md)
+- [제3본 DOCX · 2026-10-09](HMBR_Book3_Jeonsanbon_20261009.docx)
+- [제4본 DOCX · 2026-10-09](HMBR_Book4_Guhyeonbon_20261009.docx)
+- [제4본 Markdown · 2026-10-09](HMBR_Book4_Guhyeonbon_20261009.md)
 
-제3·4본 2026-10-09 교정판의 DOCX·Markdown은 아직 저장소에 추가되지 않았다. 위 편집 원본은 9월 17일 판 기준이다.
+10월 9일 편집 원본은 9월 17일 원본에 교정판 PDF와 같은 변경(표지 날짜, 제3본 37쪽 표, 제4본 16쪽 표·차례·C.6·부록 D)만 적용한 것이다. 9월 17일 원본은 이력으로 남긴다.
 
 제1·2본의 최신 편집 원본은 확보되지 않아 기준 PDF에 검증된 교정 영역을 적용했다. 자세한 판본 관계는 [편집·검증 내역](HMBR_Corrections_20260916.md)과 [원자료 감사](SOURCE_AUDIT.md)에 기록했다.
 

@@ -125,14 +125,14 @@ python3 -m http.server 8000 --directory dist
 웹 사용법, 교사용 활동, 개발 재현 절차, 시험 결과와 미구현 범위를 설명한다.
 
 - [제4본 교정 PDF · 2026.10.09 · 24쪽](docs/HMBR_Book4_Guhyeonbon_20261009.pdf)
-- [제4본 DOCX · 2026.09.17 편집 원본](docs/HMBR_Book4_Guhyeonbon_20260917.docx) · 10월 9일 교정판의 DOCX·Markdown은 아직 저장소에 없습니다.
-- [제4본 텍스트 · 2026.09.17](docs/HMBR_Book4_Guhyeonbon_20260917.md)
+- [제4본 DOCX · 2026.10.09 편집 원본](docs/HMBR_Book4_Guhyeonbon_20261009.docx)
+- [제4본 텍스트 · 2026.10.09](docs/HMBR_Book4_Guhyeonbon_20261009.md)
 
 최초 공개 코드 커밋은 `1e3164ce706ad7397a7cd660e0f15f11be7e1ed7`이다. 현재 웹앱은 [GitHub Pages](https://ivanpark.github.io/hmbr/)에서 제공하며, 배포 결과는 [Actions](https://github.com/ivanpark/hmbr/actions/workflows/pages.yml)에서 확인할 수 있다.
 
 2026-09-17 저자 결정: 뒤 모음의 읽기용 무음 초성 ㅇ을 앱과 제2–4본에 반영했다. 제1본은 9월 16일 판을 유지한다. [수정·검증 내역](docs/HMBR_Corrections_20260917.md).
 
-2026-10-09 교정판: [상태 검토](docs/BOOK_STATUS_20261009.md)에서 확인한 제3본 37쪽·제4본 16쪽 정정을 반영한 제3·4본 PDF를 추가하고 통합 보관판(165쪽)을 다시 만들었다. 9월 판 PDF는 이력으로 남긴다.
+2026-10-09 교정판: [상태 검토](docs/BOOK_STATUS_20261009.md)에서 확인한 제3본 37쪽·제4본 16쪽 정정을 반영한 제3·4본 PDF를 추가하고 통합 보관판(165쪽)을 다시 만들었다. 제3·4본 DOCX와 제4본 Markdown 편집 원본도 같은 날짜로 맞췄다. 9월 판 파일은 이력으로 남긴다.
 
 ### 성능·사용성 점검 (2026-09-19)
 
