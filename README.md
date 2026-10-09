@@ -2,7 +2,7 @@
 
 ## [▶ 훈민바름 변환기 바로 열기](https://ivanpark.github.io/hmbr/app.html)
 
-공개 front page에서 훈민바름의 연구 범위와 네 본을 소개하고, 별도의 참조 구현에서 영어 또는 IPA를 훈민바름 음절블록으로 살펴본다. 제1·2본 교정 PDF, 46쪽 제3본 전산본과 23쪽 제4본 구현본을 함께 제공한다. 사용자 제공 `hmbr-web-v2.0(2).zip`의 사전·글꼴을 계승하고, 현재 제3본과 충돌하는 변환 엔진은 새로 구현했다.
+공개 front page에서 훈민바름의 연구 범위와 네 본을 소개하고, 별도의 참조 구현에서 영어 또는 IPA를 훈민바름 음절블록으로 살펴본다. 제1·2본 교정 PDF, 46쪽 제3본 전산본과 24쪽 제4본 구현본을 함께 제공한다. 사용자 제공 `hmbr-web-v2.0(2).zip`의 사전·글꼴을 계승하고, 현재 제3본과 충돌하는 변환 엔진은 새로 구현했다.
 
 [공개 사이트](https://ivanpark.github.io/hmbr/) · [소리 써보기](https://ivanpark.github.io/hmbr/app.html) · [문서 바로 보기](https://ivanpark.github.io/hmbr/#books)
 
@@ -18,15 +18,15 @@
 
 ## 검증된 교정 출판 파일
 
-2026년 9월 17일 개정판은 제1–4본을 각각 독립된 정식 읽기 단위로 제공합니다. 제2–4본은 저자의 무음 초성 결정을 반영하며, 제1본은 9월 16일 판을 유지합니다. 쪽수와 파일별 SHA-256은 [문서 색인](docs/INDEX.md)과 [체크섬 목록](SHA256SUMS.txt)에서 확인할 수 있습니다.
+제1–4본을 각각 독립된 정식 읽기 단위로 제공합니다. 제1본은 2026-09-16 판, 제2본은 2026-09-17 판을 유지하며, 제3·4본은 2026-10-09 교정판입니다. 제3본 37쪽의 표시 상태 설명과 제4본 16쪽의 장모음 행을 바로잡았고, 제4본에는 부록 D「2026-10-09 구현 상태 갱신」(24쪽)을 더했습니다. 쪽수와 파일별 SHA-256은 [문서 색인](docs/INDEX.md)과 [체크섬 목록](SHA256SUMS.txt)에서 확인할 수 있습니다.
 
 - [제1본 · 선언본 · 36쪽](docs/HMBR_Book1_Seoneonbon_20260916.pdf)
 - [제2본 · 해례본 · 59쪽](docs/HMBR_Book2_Haeryebon_20260917.pdf)
-- [제3본 · 전산본 · 46쪽](docs/HMBR_Book3_Jeonsanbon_20260917.pdf)
-- [제4본 · 구현본 · 23쪽](docs/HMBR_Book4_Guhyeonbon_20260917.pdf)
+- [제3본 · 전산본 · 46쪽 · 2026.10.09](docs/HMBR_Book3_Jeonsanbon_20261009.pdf)
+- [제4본 · 구현본 · 24쪽 · 2026.10.09](docs/HMBR_Book4_Guhyeonbon_20261009.pdf)
 - [문서 색인](docs/INDEX.md)
 
-전체 연구 기록을 한 파일로 보관하거나 전달해야 할 때에는 [제1–4본 통합 보관판 · 164쪽](docs/HMBR_Books1-4_Combined_20260917.pdf)을 사용할 수 있습니다.
+전체 연구 기록을 한 파일로 보관하거나 전달해야 할 때에는 [제1–4본 통합 보관판 · 165쪽](docs/HMBR_Books1-4_Combined_20261009.pdf)을 사용할 수 있습니다.
 
 ## 사용
 
@@ -124,13 +124,15 @@ python3 -m http.server 8000 --directory dist
 
 웹 사용법, 교사용 활동, 개발 재현 절차, 시험 결과와 미구현 범위를 설명한다.
 
-- [제4본 교정 PDF · 2026.09.17](docs/HMBR_Book4_Guhyeonbon_20260917.pdf)
-- [제4본 DOCX · 2026.09.17 편집 원본](docs/HMBR_Book4_Guhyeonbon_20260917.docx)
+- [제4본 교정 PDF · 2026.10.09 · 24쪽](docs/HMBR_Book4_Guhyeonbon_20261009.pdf)
+- [제4본 DOCX · 2026.09.17 편집 원본](docs/HMBR_Book4_Guhyeonbon_20260917.docx) · 10월 9일 교정판의 DOCX·Markdown은 아직 저장소에 없습니다.
 - [제4본 텍스트 · 2026.09.17](docs/HMBR_Book4_Guhyeonbon_20260917.md)
 
 최초 공개 코드 커밋은 `1e3164ce706ad7397a7cd660e0f15f11be7e1ed7`이다. 현재 웹앱은 [GitHub Pages](https://ivanpark.github.io/hmbr/)에서 제공하며, 배포 결과는 [Actions](https://github.com/ivanpark/hmbr/actions/workflows/pages.yml)에서 확인할 수 있다.
 
 2026-09-17 저자 결정: 뒤 모음의 읽기용 무음 초성 ㅇ을 앱과 제2–4본에 반영했다. 제1본은 9월 16일 판을 유지한다. [수정·검증 내역](docs/HMBR_Corrections_20260917.md).
+
+2026-10-09 교정판: [상태 검토](docs/BOOK_STATUS_20261009.md)에서 확인한 제3본 37쪽·제4본 16쪽 정정을 반영한 제3·4본 PDF를 추가하고 통합 보관판(165쪽)을 다시 만들었다. 9월 판 PDF는 이력으로 남긴다.
 
 ### 성능·사용성 점검 (2026-09-19)
 
