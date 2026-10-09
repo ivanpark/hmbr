@@ -1,5 +1,7 @@
 # HMBR publication document index
 
+**2026-10-09 상태 재검토:** [네 본의 현재 상태와 정오·후속 갱신 목록](BOOK_STATUS_20261009.md). 공개 판본은 아래 9월 판을 유지하며, 상태 검토일과 책의 개정일을 구분합니다.
+
 처음 검토하시는 분은 [5분 검토 안내](../review-brief-260916.html)에서 제안·시연·근거를 순서대로 확인할 수 있습니다.
 
 2026-09-17 publication: Books II–IV incorporate the author’s silent-vowel-carrier decision; Book I retains its 2026-09-16 edition. The four individual books are the canonical reading units. The archival combined PDF preserves the same order and contains four top-level bookmarks.
