@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#122d43">
   <meta name="description" content="훈민바름 영어확장판의 시범 변환기. 영어와 IPA를 음절블록으로 살펴보고, 원문과 자모 대응 정보를 함께 보존합니다.">
   <title>소리 써보기 · 훈민바름</title>
-  <link rel="stylesheet" href="css/style.css?v=20260919-ux2">
+  <link rel="stylesheet" href="css/style.css?v=20261009-status">
 </head>
 <body>
 <a class="skip" href="#converter">변환기로 바로 가기</a>
@@ -21,7 +21,7 @@
       <form id="convert-form">
         <div class="panel-heading"><span class="step">01</span><h2>소리 입력</h2></div>
         <fieldset class="segmented"><legend class="sr-only">입력 방식</legend><label><input type="radio" name="mode" value="english" checked><span>영어로 찾기</span></label><label><input type="radio" name="mode" value="ipa"><span>IPA 직접 입력</span></label></fieldset>
-        <div id="english-field" class="field"><label for="in-english">영어 단어 또는 짧은 문장</label><textarea id="in-english" aria-describedby="english-hint input-limits status" rows="3" spellcheck="false" maxlength="5000" placeholder="boost, friend, hello world">boost</textarea><p id="english-hint" class="hint">책에 수록된 예시를 먼저 찾고, 나머지는 기존 사전을 조회합니다.</p></div>
+        <div id="english-field" class="field"><label for="in-english">영어 단어 또는 짧은 문장</label><textarea id="in-english" aria-describedby="english-hint input-limits status" rows="3" spellcheck="false" maxlength="5000" placeholder="boost, friend, hello world">boost</textarea><p id="english-hint" class="hint">책의 예시를 우선 조회합니다. 일반 사전은 검수 전이며, GA 선택만으로 미국식 발음의 정확도가 보장되지는 않습니다.</p></div>
         <div id="ipa-field" class="field" hidden><label for="in-ipa">IPA 발음기호</label><textarea id="in-ipa" aria-describedby="ipa-hint input-limits status" rows="3" lang="en" spellcheck="false" maxlength="5000" placeholder="/buːst/ 또는 /ə.ˈbaʊt/"></textarea><p id="ipa-hint" class="hint">공백은 단어, 점(.)은 음절 경계입니다. 넓은 표기(Broad)를 입력하세요.</p></div>
         <fieldset class="accent-field"><legend>발음 기준</legend><div class="segmented"><label><input type="radio" name="accent" value="rp" checked><span>RP <small>영국식</small></span></label><label><input type="radio" name="accent" value="ga"><span>GA <small>미국식</small></span></label></div></fieldset>
         <p id="input-limits" class="hint">최대 100단어 · 5,000자. Ctrl/⌘ + Enter로 변환합니다.</p>
@@ -35,21 +35,22 @@
       <div class="result-heading"><div class="panel-heading"><span class="step">02</span><h2>훈민바름</h2></div><span id="result-state" class="state">입력 대기</span></div>
       <div class="output-surface"><div id="word-results" class="word-results" aria-live="polite"><p class="empty-message">단어나 IPA를 입력하면 여기에 음절블록이 나타납니다.</p></div></div>
       <div class="output-toolbar"><label for="font-size">글자 크기 <input id="font-size" type="range" min="28" max="76" value="48"><output id="size-value" for="font-size">48</output></label><button id="btn-copy" type="button" disabled>자모열 복사</button><button id="btn-json" type="button" disabled>전체 기록 저장</button></div>
-      <p class="result-caption">〔 〕 한 쌍이 하나의 음절입니다. 복사에는 표시용 괄호가 포함되지 않습니다.</p>
+      <p class="result-caption">〔 〕 한 쌍이 하나의 음절입니다. 뒤 모음의 읽기용 ㅇ은 새 음소·음절이 아닙니다. 자모열 복사에는 이 표시용 ㅇ과 괄호가 들어가지 않습니다. 전체 기록(JSON)은 원문·강세·출처·미결 상태를 함께 보존합니다.</p>
       <div id="result-notes" class="result-notes" hidden></div>
       <details id="record-details" class="record-details"><summary>IPA · 자모 대응 · 코드포인트</summary><div id="record-inspector"><p>변환 후 대응 정보를 확인할 수 있습니다.</p></div></details>
       <div id="manual-copy" class="manual-copy" hidden><label for="copy-value">자동 복사가 어려우면 아래 자모열을 선택해 복사하세요.</label><textarea id="copy-value" rows="3" readonly></textarea></div>
     </div>
   </section>
-  <section class="reading-guide" aria-label="읽는 방법"><div><span class="guide-number">1</span><p><strong>한 음절, 한 블록</strong><br>자음군과 긴 모음도 같은 괄호 안에 놓입니다.</p></div><div><span class="guide-number">2</span><p><strong>강세는 크기로</strong><br>강세 100% · 무강세 75% · 뒤 모음 요소 50%.<br>같은 단어에 제2강세가 있을 때만 제1강세 125% · 제2강세 100%.</p></div><div><span class="guide-number">3</span><p><strong>미결은 그대로</strong><br>정하지 않은 부호는 만들어 넣지 않습니다.</p></div></section>
-  <section id="documents" class="documents" aria-labelledby="docs-title"><div class="section-heading"><div><p class="eyebrow">READ THE BOOKS</p><h2 id="docs-title">훈민바름 영어확장판 네 본</h2></div><a href="docs/INDEX.md">네 본 문서 색인 ↗</a></div><div class="book-grid">
-    <a class="book" href="docs/HMBR_Book1_Seoneonbon_20260916.pdf"><span class="book-number">01</span><span><strong>선언본</strong><small>뜻과 미래 · 36쪽</small></span><span class="book-type">PDF ↗</span></a>
-    <a class="book" href="docs/HMBR_Book2_Haeryebon_20260917.pdf"><span class="book-number">02</span><span><strong>해례본</strong><small>영어 RP·GA 정본과 음소 해례 · 59쪽</small></span><span class="book-type">PDF ↗</span></a>
-    <a class="book" href="docs/HMBR_Book3_Jeonsanbon_20260917.pdf"><span class="book-number">03</span><span><strong>전산본</strong><small>구조 · 직렬화 · 검증 · 46쪽 개정 초안</small></span><span class="book-type">PDF ↗</span></a>
-    <a class="book" href="docs/HMBR_Book4_Guhyeonbon_20260917.pdf"><span class="book-number">04</span><span><strong>구현본</strong><small>웹 사용 · 교사용 예제 · 시험 안내 · 23쪽</small></span><span class="book-type">PDF ↗</span></a>
-  </div></section>
+  <section class="reading-guide" aria-label="읽는 방법"><div><span class="guide-number">1</span><p><strong>한 음절, 한 블록</strong><br>자음군과 긴 모음도 같은 괄호 안에 놓입니다.</p></div><div><span class="guide-number">2</span><p><strong>강세는 크기로</strong><br>강세 100% · 무강세 75% · 뒤 모음 요소 50% · 독립 자음 75%.<br>같은 단어에 제2강세가 있을 때만 제1강세 125% · 제2강세 100%.</p></div><div><span class="guide-number">3</span><p><strong>미결은 그대로</strong><br>정하지 않은 부호는 만들어 넣지 않습니다.</p></div></section>
+  <section id="documents" class="documents" aria-labelledby="docs-title"><div class="section-heading"><div><p class="eyebrow">READ THE BOOKS</p><h2 id="docs-title">훈민바름 영어확장판 네 본</h2></div><a href="review-brief-260916.html#documents">판본과 정정 안내 ↗</a></div><div class="book-grid">
+    <a class="book" href="docs/HMBR_Book1_Seoneonbon_20260916.pdf"><span class="book-number">01</span><span><strong>선언본</strong><small>뜻과 미래 · 36쪽 · 2026.09.16</small></span><span class="book-type">PDF ↗</span></a>
+    <a class="book" href="docs/HMBR_Book2_Haeryebon_20260917.pdf"><span class="book-number">02</span><span><strong>해례본</strong><small>영어 RP·GA 정본과 음소 해례 · 59쪽 · 2026.09.17</small></span><span class="book-type">PDF ↗</span></a>
+    <a class="book" href="docs/HMBR_Book3_Jeonsanbon_20260917.pdf"><span class="book-number">03</span><span><strong>전산본</strong><small>구조 · 직렬화 · 검증 · 46쪽 · 2026.09.17</small></span><span class="book-type">PDF ↗</span></a>
+    <a class="book" href="docs/HMBR_Book4_Guhyeonbon_20260917.pdf"><span class="book-number">04</span><span><strong>구현본</strong><small>웹 사용 · 교사용 예제 · 시험 안내 · 23쪽 · 2026.09.17</small></span><span class="book-type">PDF ↗</span></a>
+  </div><p class="publication-note">네 본 모두 공개된 연구 판본입니다. 제3본 37쪽의 표시 설명과 제4본 16쪽의 남은 과제 표는 정정이 필요합니다. <a href="review-brief-260916.html#book-status">2026.10.09 상태 검토와 정정 내용</a>을 함께 읽어 주세요.</p></section>
+  <section class="support-scope" aria-labelledby="scope-title"><h2 id="scope-title">현재 앱에서 할 수 있는 일</h2><p>영어 RP·GA Broad 입력의 시범 변환, 음절블록 표시, NFD 자모열 복사와 전체 기록(JSON) 저장을 지원합니다. 뒤 모음의 50% 크기와 읽기용 무음 ㅇ 표시는 구현되어 있습니다.</p><details><summary>미지원 기능과 검토할 사항</summary><p>Narrow 입력, 외부 JSON 불러오기와 사용자용 역변환은 지원하지 않습니다. 미배당 음소와 미결 규칙을 추정해 채우지 않습니다.</p><p>일반 사전의 발음·출처 검수, 실제 모바일·화면낭독기 검증과 학습 효과 검증은 남아 있습니다. 문서 예시와 일반 사전 결과의 출처 표시를 구별해 주세요. <a href="https://github.com/ivanpark/hmbr/blob/main/data/SOURCES.md">사전 출처와 알려진 문제 ↗</a></p></details></section>
 </main>
-<footer><p><a href="review-brief-260916.html">검토 안내</a> · <a href="legacy/index.html" title="현재 책과 다른 규칙을 사용하는 구버전">이전 앱(v2.0) 비교</a></p><p>훈민바름 · HMBR <span>가표본 연구 · 참조 실험</span></p><p>문서 2026.09.17 개정판 · 제3본 기준 시범 구현 · 원문과 미결 상태를 함께 보존합니다.</p></footer>
+<footer><p><a href="review-brief-260916.html">검토 안내</a> · <a href="legacy/index.html" title="현재 책과 다른 규칙을 사용하는 구버전">이전 앱(v2.0) 비교</a></p><p>훈민바름 · HMBR <span>가표본 연구 · 참조 실험</span></p><p>앱 안내 2026.10.09 · 제1본 09.16 / 제2–4본 09.17 · 제3본 기준 시범 구현 · 원문과 미결 상태를 함께 보존합니다.</p></footer>
 <noscript><p class="noscript">변환기를 사용하려면 JavaScript를 켜 주세요. 문서 PDF는 바로 열 수 있습니다.</p></noscript>
 <script type="module" src="js/app.js?v=20260919-ux"></script>
 </body>
