@@ -18,13 +18,15 @@
 
 ## 편집 원본
 
+- [제1본 DOCX · 2026-10-09](HMBR_Book1_Seoneonbon_20261009.docx)
+- [제2본 DOCX · 2026-10-09](HMBR_Book2_Haeryebon_20261009.docx)
 - [제3본 DOCX · 2026-10-09](HMBR_Book3_Jeonsanbon_20261009.docx)
 - [제4본 DOCX · 2026-10-09](HMBR_Book4_Guhyeonbon_20261009.docx)
 - [제4본 Markdown · 2026-10-09](HMBR_Book4_Guhyeonbon_20261009.md)
 
-10월 9일 DOCX·Markdown은 1차 10월 교정(제3본 37쪽, 제4본 16쪽·C.6·부록 D)까지만 반영한다. 최종 PDF의 후속 문언 교정(제3본 5·15·34·45쪽, 제4본 2–24쪽 일부)은 아직 반영되지 않았으므로 내용은 PDF를 기준으로 한다. 최종 PDF와 일치하는 편집 원본을 받으면 교체한다. 9월 17일 원본은 이력으로 남긴다.
+네 DOCX는 2026-10-09 최종 PDF와 본문 텍스트가 일치한다(쪽 머리말·꼬리말 제외). 제4본 Markdown은 이 DOCX를 pandoc으로 변환해 만들었다. 제1·2본 DOCX는 Navi가 2026-10-09 교정판에 맞춰 제공한 편집용 파일이다. 저자의 최초 원고를 회수한 것인지, PDF를 바탕으로 다시 만든 것인지는 확인되지 않았다. 내용은 최종 PDF와 일치하나 줄바꿈 등 조판은 PDF와 다를 수 있으므로, 고정 쪽수의 기준은 PDF다. 9월 17일 원본은 이력으로 남긴다.
 
-제1·2본의 최신 편집 원본은 확보되지 않아 기준 PDF에 검증된 교정 영역을 적용했다. 자세한 판본 관계는 [편집·검증 내역](HMBR_Corrections_20260916.md)과 [원자료 감사](SOURCE_AUDIT.md)에 기록했다.
+9월 판까지 제1·2본은 편집 원본이 없어 기준 PDF에 검증된 교정 영역을 적용했다. 자세한 판본 관계는 [편집·검증 내역](HMBR_Corrections_20260916.md)과 [원자료 감사](SOURCE_AUDIT.md)에 기록했다.
 
 Checksums for these final PDF bytes are listed in [`SHA256SUMS.txt`](../SHA256SUMS.txt).
 
