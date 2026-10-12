@@ -1,5 +1,5 @@
-@font-face{font-family:HMBR;src:url('../fonts/HMBR-Myeongjo-YetHangul.woff2') format('woff2');font-display:swap}
-@font-face{font-family:HMBRGothic;src:url('../fonts/HMBR-BarunGothic-YetHangul.woff2') format('woff2');font-display:swap}
+@font-face{font-family:HMBR;src:url('../fonts/HMBR-Myeongjo-YetHangul-Full.woff2?v=20261012-ttf') format('woff2');font-display:swap}
+@font-face{font-family:HMBRGothic;src:url('../fonts/HMBR-BarunGothic-YetHangul-Full.woff2?v=20261012') format('woff2');font-display:swap}
 :root{color-scheme:light;--ink:#102d3a;--ink-soft:#284550;--paper:#f5f2ea;--white:#fffefa;--blue:#2f6680;--copper:#a75d32;--line:#cfd7d5;--muted:#617076;--max:1240px}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:95px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 HMBRGothic,-apple-system,BlinkMacSystemFont,"Noto Sans KR",sans-serif}a{color:inherit;text-underline-offset:.22em}a,button{touch-action:manipulation}.skip{position:fixed;left:20px;top:-80px;background:#fff;padding:10px 15px;z-index:100}.skip:focus{top:16px}
 .site-header{height:82px;display:flex;align-items:center;justify-content:space-between;gap:30px;padding:0 max(28px,calc((100vw - var(--max))/2));position:sticky;top:0;z-index:20;background:#f5f2eaef;border-bottom:1px solid #bdc9c680;backdrop-filter:blur(14px)}.site-brand{display:flex;align-items:center;gap:12px;text-decoration:none}.site-brand>span:last-child{display:grid}.site-brand strong{font:600 20px/1.25 HMBR,serif;letter-spacing:.02em}.site-brand small{font:9px/1.5 ui-sans-serif,sans-serif;letter-spacing:.18em;color:var(--muted)}.brand-seal{width:42px;height:42px;border:1px solid #567785;border-radius:50%;display:grid;place-items:center;font:28px/1 HMBR,serif}.site-header nav{display:flex;align-items:center;gap:27px;font-size:13px}.site-header nav a{text-decoration:none}.site-header nav a:hover{text-decoration:underline}.nav-cta{border:1px solid var(--ink);padding:7px 13px;border-radius:100px}
@@ -33,3 +33,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--copper);outline-off
 .try .section-index,.try .kicker,.try-copy>p:not(.section-index):not(.kicker),.try-visual span{color:#fff}
 .review-page{--muted:#526573}
 .hmbr-sample>span{color:#526573}
+
+/* Reading copy uses full Myeongjo; navigation uses full BarunGothic. */
+body{font-family:HMBR,serif}
+.site-header nav,.site-footer nav,.button,.text-link,.review-actions,.site-brand small{font-family:HMBRGothic,sans-serif}
