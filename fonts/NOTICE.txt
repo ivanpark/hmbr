@@ -2,10 +2,11 @@ fonts/ — 글꼴 출처와 라이선스
 
 HMBR-Myeongjo-YetHangul-Full.woff2
 
-이 파일은 제2본 HMBR_Book2_Haeryebon_20261009.docx에 전체본으로 포함된 「나눔명조OTF 옛한글」을
-WOFF2 형식으로 변환한 2026-10-12 웹폰트다. 글자를 삭제하지 않았으며 23,113개 문자와 GSUB·GPOS를
-보존한다. 변환 전 원 글꼴 SHA-256:
-c2e3217e63456a8cdcfce5670692d5ec78d7b1d1396f6968bef70ddbf72dc1bb
+이 파일은 네이버 공식 배포본 「나눔명조 옛한글」 TTF를 WOFF2 형식으로 변환한 2026-10-12 웹폰트다.
+출처: https://hangeul.naver.com/hangeul_static/webfont/zips/NanumMyeongjoYetHangul.zip
+글자를 삭제하지 않았으며 23,114개 문자와 GSUB·GPOS를 보존한다. OpenType Sanitizer로 글리프
+경계 상자와 메타데이터를 정리하고 최종 WOFF2의 브라우저용 검사를 통과했다. 변환 전 TTF SHA-256:
+2da006402121ca2efb5ddbd213bd05adb2917733346705f13a09d260a739b569
 형식 변환도 수정판에 해당하므로 내부 이름을 HMBR Myeongjo YetHangul Full로 바꾸었다.
 원 저작권과 OFL 1.1 고지는 글꼴과 OFL.txt에 보존한다.
 현재 변환기의 본문·조음 해례·훈민바름 출력은 이 전체본을 사용한다.
