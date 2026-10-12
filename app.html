@@ -6,7 +6,8 @@
   <meta name="theme-color" content="#122d43">
   <meta name="description" content="훈민바름 영어확장판의 시범 변환기. 영어와 IPA를 음절블록으로 살펴보고, 원문과 자모 대응 정보를 함께 보존합니다.">
   <title>소리 써보기 · 훈민바름</title>
-  <link rel="stylesheet" href="css/style.css?v=20261009-status">
+  <link rel="preload" href="fonts/HMBR-Myeongjo-YetHangul-Full.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=20261012-haerye">
 </head>
 <body>
 <a class="skip" href="#converter">변환기로 바로 가기</a>
@@ -37,6 +38,11 @@
       <div class="output-toolbar"><label for="font-size">글자 크기 <input id="font-size" type="range" min="28" max="76" value="48"><output id="size-value" for="font-size">48</output></label><button id="btn-copy" type="button" disabled>자모열 복사</button><button id="btn-json" type="button" disabled>전체 기록 저장</button></div>
       <p class="result-caption">〔 〕 한 쌍이 하나의 음절입니다. 뒤 모음의 읽기용 ㅇ은 새 음소·음절이 아닙니다. 자모열 복사에는 이 표시용 ㅇ과 괄호가 들어가지 않습니다. 전체 기록(JSON)은 원문·강세·출처·미결 상태를 함께 보존합니다.</p>
       <div id="result-notes" class="result-notes" hidden></div>
+      <section id="articulation-panel" class="articulation-panel" aria-labelledby="articulation-title" hidden>
+        <h3 id="articulation-title">훈민정음식 조음법 해례</h3>
+        <p class="artic-intro">자모를 입술·혀·목청의 움직임으로 읽어 보세요. <a href="docs/HMBR_Book2_Haeryebon_20261009.pdf#page=38">제2본 해례본의 현대 조음 설명</a>을 각 표기에 연결했습니다.</p>
+        <div id="articulation-results"></div>
+      </section>
       <details id="record-details" class="record-details"><summary>IPA · 자모 대응 · 코드포인트</summary><div id="record-inspector"><p>변환 후 대응 정보를 확인할 수 있습니다.</p></div></details>
       <div id="manual-copy" class="manual-copy" hidden><label for="copy-value">자동 복사가 어려우면 아래 자모열을 선택해 복사하세요.</label><textarea id="copy-value" rows="3" readonly></textarea></div>
     </div>
@@ -50,9 +56,9 @@
   </div><p class="publication-note">네 본 모두 2026.10.09 교정판으로 공개된 연구 판본입니다. 제3본 37쪽의 표시 설명과 제4본 16쪽의 장모음 행을 바로잡고 네 본의 문언을 교정했습니다. <a href="review-brief-260916.html#book-status">2026.10.09 상태 검토와 정정 내용</a>을 함께 읽어 주세요.</p></section>
   <section class="support-scope" aria-labelledby="scope-title"><h2 id="scope-title">현재 앱에서 할 수 있는 일</h2><p>영어 RP·GA Broad 입력의 시범 변환, 음절블록 표시, NFD 자모열 복사와 전체 기록(JSON) 저장을 지원합니다. 뒤 모음의 50% 크기와 읽기용 무음 ㅇ 표시는 구현되어 있습니다.</p><details><summary>미지원 기능과 검토할 사항</summary><p>Narrow 입력, 외부 JSON 불러오기와 사용자용 역변환은 지원하지 않습니다. 미배당 음소와 미결 규칙을 추정해 채우지 않습니다.</p><p>일반 사전의 발음·출처 검수, 실제 모바일·화면낭독기 검증과 학습 효과 검증은 남아 있습니다. 문서 예시와 일반 사전 결과의 출처 표시를 구별해 주세요. <a href="https://github.com/ivanpark/hmbr/blob/main/data/SOURCES.md">사전 출처와 알려진 문제 ↗</a></p></details></section>
 </main>
-<footer><p><a href="review-brief-260916.html">검토 안내</a> · <a href="legacy/index.html" title="현재 책과 다른 규칙을 사용하는 구버전">이전 앱(v2.0) 비교</a></p><p>훈민바름 · HMBR <span>가표본 연구 · 참조 실험</span></p><p>앱 안내 2026.10.09 · 제1–4본 10.09 교정판 · 제3본 기준 시범 구현 · 원문과 미결 상태를 함께 보존합니다.</p></footer>
+<footer><p><a href="review-brief-260916.html">검토 안내</a> · <a href="legacy/index.html" title="현재 책과 다른 규칙을 사용하는 구버전">이전 앱(v2.0) 비교</a></p><p>훈민바름 · HMBR <span>가표본 연구 · 참조 실험</span></p><p>앱 개정 2026.10.12 · 조음 해례·나눔명조옛한글 전체본 · 제1–4본 10.09 교정판</p></footer>
 <noscript><p class="noscript">변환기를 사용하려면 JavaScript를 켜 주세요. 문서 PDF는 바로 열 수 있습니다.</p></noscript>
-<script type="module" src="js/app.js?v=20260919-ux"></script>
+<script type="module" src="js/app.js?v=20261012-haerye"></script>
 </body>
 </html>
 

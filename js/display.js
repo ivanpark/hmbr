@@ -27,6 +27,7 @@ const COMPAT = new Map([
 ]);
 
 const loose = ch => COMPAT.get(ch) ?? ch;
+export const isolatedJamoDisplay = loose;
 
 export const SCALE = { core: 1, onset: 0.75, nucleus: 0.5, coda: 0.75 };
 

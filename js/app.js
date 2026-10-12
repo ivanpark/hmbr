@@ -1,8 +1,9 @@
 import { convertWord, convertPhrase } from './engine.js';
-import { proportionalDisplayBlocks } from './display.js?v=20260917-vowel-carrier';
+import { proportionalDisplayBlocks } from './display.js?v=20261012-haerye';
 import { prepareOpticalRenderer } from './optical.js?v=20260917-vowel-carrier';
 import { lookup } from './dict.js?v=20260919-ux';
 import { VERSION } from './registry.js';
+import { articulationCards, ARTICULATION_SOURCE } from './articulation.js?v=20261012-haerye';
 const $ = id => document.getElementById(id);
 const el = (tag, text, cls) => { const e = document.createElement(tag); if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; };
 let request = 0, bundle = null;
@@ -14,6 +15,7 @@ function invalidate() {
   request++; bundle = null; busy(false); status();
   $('btn-copy').disabled = true; $('btn-json').disabled = true;
   $('manual-copy').hidden = true; $('result-notes').hidden = true;
+  clearArticulation();
   $('word-results').replaceChildren(el('p', '입력을 바꿨습니다. 변환하면 새 결과가 나타납니다.', 'empty-message'));
   $('record-inspector').replaceChildren(el('p', '변환 후 대응 정보를 확인할 수 있습니다.'));
   $('result-state').textContent = '입력 대기'; $('result-state').className = 'state';
@@ -62,10 +64,63 @@ function render(result, renderRun) {
     if (provenance.review_status === 'unreviewed') notes.add(provenance.note + '. 사전의 IPA가 올바른지는 별도로 확인해 주세요.');
   }
   if ($('record-details').open) renderInspectors();
+  renderArticulation(records);
   for (const note of notes) addNote(note);
   if (!ready) addNote('미결 단어가 포함되어 자모열 전체 복사를 제공하지 않습니다. 전체 기록에는 모든 단어의 상태가 함께 저장됩니다.');
   $('btn-copy').disabled = !ready; $('btn-json').disabled = false;
   status(!ready ? '변환 가능한 항목과 미결 사유를 확인해 주세요.' : '변환했습니다.', !ready ? '' : 'ok');
+}
+function clearArticulation() {
+  $('articulation-panel').hidden = true;
+  $('articulation-results').replaceChildren();
+}
+function renderArticulation(records) {
+  clearArticulation();
+  records.forEach((record, index) => {
+    const cards = articulationCards(record);
+    if (!cards.length) return;
+    const word = el('details', undefined, 'articulation-word');
+    const summary = el('summary');
+    summary.append(el('strong', record.source.spelling || 'IPA 직접 입력'),
+      el('span', `/${record.source.ipa.replace(/^\/|\/$/g, '')}/`, 'artic-ipa'),
+      el('span', `${cards.length}개 조음 설명`, 'artic-count'));
+    word.append(summary);
+    const list = el('ol', undefined, 'articulation-cards');
+    let populated = false;
+    const populate = () => {
+      if (populated) return;
+      populated = true;
+      for (const card of cards) {
+        const item = el('li', undefined, 'artic-card');
+        const heading = el('div', undefined, 'artic-head');
+        const symbol = el('span', undefined, 'artic-symbol'); symbol.lang = 'ko';
+        if (card.glyphs.length) card.glyphs.forEach((glyph, i) => {
+          if (i) symbol.append(el('span', ' + ', 'artic-plus'));
+          symbol.append(el('span', glyph));
+        });
+        else symbol.append(el('span', '미배당', 'artic-unresolved'));
+        const sound = el('strong', card.sounds.map(s => `/${s}/`).join(' + '), 'artic-ipa');
+        heading.append(symbol, sound);
+        item.append(heading, el('p', `${card.syllable}번째 음절 · ${{onset:'초성',nucleus:'음절핵',coda:'종성'}[card.position]}${card.note ? ' · '+card.note.role : ''}`, 'artic-position'));
+        if (card.note) {
+          item.append(el('p', card.note.haerye, 'artic-haerye'));
+          if (card.note.practice) item.append(el('p', '입으로 익히기. '+card.note.practice, 'artic-practice'));
+          if (card.note.adapted) item.append(el('p', card.note.sourceNote, 'artic-source-note'));
+          const source = el('a', `제2본 ${card.note.page}쪽`, 'artic-source');
+          source.href = `${ARTICULATION_SOURCE.path}#page=${card.note.page}`; item.append(source);
+        } else item.append(el('p', '현재 해례본에 독립 조음 설명이 없는 입력입니다. 원문을 보존하며 미결 대응을 임의로 채우지 않습니다.', 'artic-source-note'));
+        if (card.unresolved) item.append(el('p', '현재 입력의 자리별 자형은 미배당·미결입니다.', 'artic-source-note'));
+        list.append(item);
+      }
+      word.append(list);
+    };
+    word.addEventListener('toggle', () => { if (word.open) populate(); });
+    // The first word is immediately readable; long phrases build other cards
+    // only when opened, while retaining an explanation for every result.
+    if (index === 0) { word.open = true; populate(); }
+    $('articulation-results').append(word);
+  });
+  $('articulation-panel').hidden = !$('articulation-results').children.length;
 }
 function renderInspectors() {
   $('record-inspector').replaceChildren();
@@ -110,7 +165,7 @@ async function doConvert(event) {
     const renderRun=result.records.some(r=>r.serialization.status==='available')
       ? await prepareOpticalRenderer() : null;
     if(id===request)render(result,renderRun);
-  }catch(error){if(id===request){$('word-results').replaceChildren(el('p','결과를 만들지 못했습니다. 입력을 확인해 주세요.','empty-message'));$('record-inspector').replaceChildren();$('result-notes').hidden=true;$('manual-copy').hidden=true;$('result-state').textContent='입력 확인';status(error.message,'error');}}
+  }catch(error){if(id===request){clearArticulation();$('word-results').replaceChildren(el('p','결과를 만들지 못했습니다. 입력을 확인해 주세요.','empty-message'));$('record-inspector').replaceChildren();$('result-notes').hidden=true;$('manual-copy').hidden=true;$('result-state').textContent='입력 확인';status(error.message,'error');}}
   finally{if(id===request)busy(false);}
 }
 $('convert-form').addEventListener('submit',doConvert);
