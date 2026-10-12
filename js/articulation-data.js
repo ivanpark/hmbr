@@ -1,8 +1,8 @@
 // 제2본 2026-10-09 §§19–31: 원문 해례와 입으로 익히기.
 // Generated from the published DOCX; transcription rules are not copied from legacy.
 export const ARTICULATION_SOURCE = {
-  "title": "제2본 해례본 · 2026.10.09",
-  "path": "docs/HMBR_Book2_Haeryebon_20261009.pdf",
+  "title": "제2본 해례본 · 2026.10.12 (10월 9일 본문 계승)",
+  "path": "docs/HMBR_Book2_Haeryebon_20261012.pdf",
   "docx_sha256": "77507c7f6b42e9723aa5a33d27c096155b06c3bf3da90017f9f6f50b97bfc47c"
 };
 

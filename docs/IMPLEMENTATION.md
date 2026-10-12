@@ -88,3 +88,7 @@ node tools/cluster_census.mjs
 ## 2026-09-17 읽기용 무음 초성
 
 저자 결정에 따라 표시 프로파일을 `linear-trial-v8-vowel-carrier`로 갱신했다. 뒤 모음 요소마다 표시용 U+110B를 붙이고 옛한글 조합을 하나의 렌더링 단위로 유지한다. `부우ㅅㅌ`의 비율은 100·50·75·75이며 원 모델과 NFD 직렬화는 그대로다. 현재 자동시험은 280개다. [문서 개정 및 검증](HMBR_Corrections_20260917.md).
+
+## 2026-10-12 GA t 표면형 확장
+
+`js/t-variants.js`가 n 뒤 t 탈락, 성문음화, button형 [ʔn̩], 미파열 [t̚] 후보를 만든다. `connected.js`의 같은 t 선택 그룹에서 마지막 선택만 유지한다. 새 `surface_annotations`는 원형 토큰 ID를 보존하며 미결 음은 Broad 정본에 삽입하지 않는다. 단일 GA 단어도 후보가 있으면 UI와 JSON의 연습층을 제공한다. 강세·쉼·속도 조건과 한계는 [규칙 문서](CONNECTED_SPEECH.md)를 따른다. 자동시험은 307개가 통과했다. 네 본의 최신 부록과 [상태](BOOK_STATUS_20261012.md)를 동기화했다. TTS는 미구현이다.

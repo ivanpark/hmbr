@@ -75,3 +75,9 @@ button,.segmented{font-family:HMBR,serif}
 .connected-comparison{margin-top:22px;border-top:1px solid #c0d2dc}.connected-comparison>div{padding:12px 0}.connected-comparison h4{margin:0 0 8px;font-weight:400;font-size:14px;color:#35536a}.connected-comparison .ipa{font-size:23px;line-height:1.8;overflow-wrap:anywhere;margin:0 0 12px}.connected-current{border-top:1px solid var(--line)}
 #connected-hmbr{--output-size:32px;display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:8px 0}.connected-render-word{display:inline-flex;max-width:100%}.connected-join{font-family:'Doulos SIL',serif;font-size:28px;color:#ac581f}.connected-panel .hint{font-size:12px;margin-bottom:0}
 @media(max-width:680px){.connected-panel{padding:16px;margin-inline:-8px}.connected-heading{flex-direction:column}.connected-actions button{flex:1}.connected-actions label{flex-basis:100%}.connected-panel h3{font-size:21px}#connected-hmbr{--output-size:28px}.connection-choice{font-size:14px}.connected-comparison .ipa{font-size:21px}}
+
+.connected-render-word{flex-direction:column;align-items:center}.connected-reference{display:block;font-size:12px;color:#825321;font-family:HMBR,serif;line-height:1.6;max-width:190px}.t-guide td{white-space:normal;min-width:100px;font-size:13px}.t-guide table{table-layout:fixed}.t-guide th{white-space:normal}
+
+.conversion-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}.conversion-actions .primary{flex:1}.speech-connect{padding:12px 20px;border:1px solid var(--ink);border-radius:8px;background:#e7f1ee;color:#174f40;font-weight:700}.speech-connect span{display:block;font-size:11px;font-weight:400;margin-top:3px}.connected-panel{scroll-margin-top:30px}
+
+.conversion-actions .primary{width:auto;min-width:180px}.speech-connect:focus-visible{outline:3px solid #168db1;outline-offset:4px}

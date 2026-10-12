@@ -1,8 +1,8 @@
-import { connectedController } from './connected-ui.js?v=20261012-connected';
+import { connectedController } from './connected-ui.js?v=20261012-t-variants';
 import { convertWord, convertPhrase } from './engine.js';
 import { proportionalDisplayBlocks } from './display.js?v=20261012-haerye';
 import { prepareOpticalRenderer } from './optical.js?v=20260917-vowel-carrier';
-import { lookup } from './dict.js?v=20261012-connected';
+import { lookup } from './dict.js?v=20261012-t-variants';
 import { VERSION } from './registry.js';
 import { articulationCards, ARTICULATION_SOURCE } from './articulation.js?v=20261012-haerye';
 const $ = id => document.getElementById(id);
@@ -12,7 +12,7 @@ let request = 0, bundle = null;
 const mode = () => document.querySelector('[name="mode"]:checked').value;
 const accent = () => document.querySelector('[name="accent"]:checked').value;
 function status(text = '', type = '') { $('status').textContent = text; $('status').className = `status ${type}`; }
-function busy(value) { $('btn-convert').disabled = value; $('out-panel').setAttribute('aria-busy', String(value)); }
+function busy(value) { $('btn-convert').disabled = value; $('btn-connect').disabled = value; $('out-panel').setAttribute('aria-busy', String(value)); }
 function invalidate() {
   request++; bundle = null; busy(false); status();
   $('btn-copy').disabled = true; $('btn-json').disabled = true;
@@ -23,7 +23,7 @@ function invalidate() {
   $('result-state').textContent = '입력 대기'; $('result-state').className = 'state';
 }
 function addNote(text) { $('result-notes').append(el('p', text)); $('result-notes').hidden = false; }
-function render(result, renderRun) {
+function render(result, renderRun, speech = false) {
   bundle = result;
   const records = result.records;
   const ready = records.length > 0 && records.every(r => r.serialization.status === 'available');
@@ -63,11 +63,11 @@ function render(result, renderRun) {
     article.append(el('p', `/${r.source.ipa.replace(/^\/|\/$/g,'')}/`, 'word-ipa'));
     $('word-results').append(article);
     for (const msg of [...r.issues, ...r.warnings]) notes.add(`${r.source.spelling || r.source.ipa}: ${msg.message}`);
-    if (provenance.review_status === 'unreviewed') notes.add(provenance.note + '. 사전의 IPA가 올바른지는 별도로 확인해 주세요.');
+    if (provenance.review_status === 'unreviewed') notes.add(provenance.note.replace(/[.。]$/u,'') + '. 사전의 IPA가 올바른지는 별도로 확인해 주세요.');
   }
   if ($('record-details').open) renderInspectors();
   renderArticulation(records);
-  connected.start(records,{accent:accent(),tokens:result.input_tokens || []},renderRun);
+  if(speech)connected.start(records,{accent:accent(),tokens:result.input_tokens || []},renderRun);
   for (const note of notes) addNote(note);
   if (!ready) addNote('미결 단어가 포함되어 자모열 전체 복사를 제공하지 않습니다. 전체 기록에는 모든 단어의 상태가 함께 저장됩니다.');
   $('btn-copy').disabled = !ready; $('btn-json').disabled = false;
@@ -151,7 +151,7 @@ function renderInspector(r) {
   if (r.normalization_rules.length) section.append(el('p','기호 정규화: '+r.normalization_rules.map(x=>`${x.before} → ${x.after}`).join(', ')));
   $('record-inspector').append(section);
 }
-async function doConvert(event) {
+async function doConvert(event, speech = false) {
   event?.preventDefault(); const id=++request; const selectedMode=mode(), selectedAccent=accent();
   const input=(selectedMode==='english' ? $('in-english'):$('in-ipa')).value.trim();
   connected.clear();
@@ -168,11 +168,19 @@ async function doConvert(event) {
     if(id!==request)return;
     const renderRun=result.records.some(r=>r.serialization.status==='available')
       ? await prepareOpticalRenderer() : null;
-    if(id===request)render(result,renderRun);
+    if(id===request){
+      render(result,renderRun,speech);
+      if(speech){
+        const panel=$('connected-panel');
+        if(panel.hidden)status('이 입력에서 제안할 연결 발음이 없습니다. 구·문장이나 GA button·winter로 연습해 보세요.');
+        else {status('연결 후보를 준비했습니다. 추천을 살펴보고 원하는 부분을 켜세요.','ok');$('connected-title').focus({preventScroll:true});panel.scrollIntoView({behavior:'smooth',block:'start'});}
+      }
+    }
   }catch(error){if(id===request){clearArticulation();$('word-results').replaceChildren(el('p','결과를 만들지 못했습니다. 입력을 확인해 주세요.','empty-message'));$('record-inspector').replaceChildren();$('result-notes').hidden=true;$('manual-copy').hidden=true;$('result-state').textContent='입력 확인';status(error.message,'error');}}
   finally{if(id===request)busy(false);}
 }
 $('convert-form').addEventListener('submit',doConvert);
+$('btn-connect').addEventListener('click',event=>doConvert(event,true));
 for(const input of [$('in-english'),$('in-ipa')]){
   input.addEventListener('input',()=>{invalidate();document.querySelectorAll('[data-example]').forEach(b=>b.classList.remove('selected'));});
   input.addEventListener('keydown',e=>{if(e.key==='Enter' && (e.ctrlKey||e.metaKey))doConvert(e);});
@@ -182,6 +190,7 @@ for(const input of document.querySelectorAll('[name="accent"]'))input.addEventLi
 for(const button of document.querySelectorAll('[data-example]'))button.addEventListener('click',()=>{
   invalidate();document.querySelectorAll('[data-example]').forEach(b=>b.classList.toggle('selected',b===button));
   const word=button.dataset.example;
+  if(button.dataset.accent)document.querySelector('[name="accent"][value="'+button.dataset.accent+'"]').checked=true;
   if(word==='catch') {document.querySelector('[name="mode"][value="ipa"]').checked=true;$('in-ipa').value='/kætʃ/';}
   else {document.querySelector('[name="mode"][value="english"]').checked=true;$('in-english').value=word;}
   $('english-field').hidden=mode()!=='english';$('ipa-field').hidden=mode()!=='ipa';doConvert();

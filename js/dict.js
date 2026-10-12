@@ -22,7 +22,7 @@ export async function lookup(phrase, accent = 'rp') {
   if (words.length > 100) throw new Error('한 번에 100단어까지 찾을 수 있습니다.');
   const [examples, corrections] = await Promise.all([
     loadJSON('../data/examples.json'),
-    loadJSON('../data/ipa-corrections.json?v=20261012-connected'),
+    loadJSON('../data/ipa-corrections.json?v=20261012-t-variants'),
   ]);
   const needsDict = words.some(w => {
     const key = cleanWord(w).toLowerCase();

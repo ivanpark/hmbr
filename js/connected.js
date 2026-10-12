@@ -1,6 +1,7 @@
 import { convertWord } from './engine.js';
+import { tVariants, resolveTChoices } from './t-variants.js?v=20261012-t-variants';
 
-export const CONNECTED_VERSION = 'connected-speech-trial-20261012';
+export const CONNECTED_VERSION = 'connected-speech-t-variants-20261012';
 export const CONNECTED_SOURCES = {
   linking: 'https://www.teachingenglish.org.uk/professional-development/teachers/knowing-subject/connected-speech-part-2',
   weak: 'https://www.teachingenglish.org.uk/professional-development/teachers/knowing-subject/connected-speech-part-1',
@@ -32,7 +33,8 @@ export function evaluateConnected(model, options = {}, selection = []) {
   const pace = ['slow','normal','fast'].includes(options.pace) ? options.pace : 'normal';
   const emphasis = new Set(options.emphasis || []);
   const pauses = new Set(options.pauses ?? model.words.flatMap((w,i) => w.pause ? [i] : []));
-  const selected = new Set(selection);
+  const variants=tVariants(model,{pace,emphasis,pauses});
+  const selected = new Set(resolveTChoices(selection,variants));
   const words = model.words.map(w => ({ ...w }));
   const candidates = [], applied = [], joins = new Set();
   const add = (c, run) => {
@@ -74,7 +76,8 @@ export function evaluateConnected(model, options = {}, selection = []) {
     }
     // Deliberately narrow assimilation family; no guessed substitutions.
     if (a === 'n' && /[pbm]/u.test(b)) {
-      const stop = blocked || (protectedWord ? '강조한 단어 주변의 동화는 보호합니다.' : '');
+      const nasalEnding = variants.some(c=>c.index===i&&c.annotation.token_ids.length>1&&selected.has(c.id));
+      const stop = blocked || (protectedWord ? '강조한 단어 주변의 동화는 보호합니다.' : '') || (nasalEnding ? '[ʔn̩] 선택에는 마지막 n도 포함됩니다. 이 선택을 끈 뒤 n → m을 비교하세요.' : '');
       add({id:`assim:${i}`,kind:'assimilation',title:'동화 · n → m',index:i,boundary:i,label,before,
         after:`${left.ipa.slice(0,-1)}m‿${right.ipa}`,blocked:stop,recommended:!stop && pace === 'fast',
         source:CONNECTED_SOURCES.assimilation,reason:'뒤의 양순음에 맞춰 /n/의 조음 위치가 입술 쪽으로 옮겨갈 수 있습니다.',
@@ -83,20 +86,37 @@ export function evaluateConnected(model, options = {}, selection = []) {
     const preceding = [...plain(left.ipa)].at(-2);
     if (/[td]/u.test(a) && consonant.test(preceding || '') && consonant.test(b) && b !== 'h' && b !== 'j') {
       const stop = blocked || (protectedWord ? '강조한 단어 주변의 탈락은 보호합니다.' : '');
-      add({id:`elision:${i}`,kind:'elision',title:`탈락 · ${a}`,index:i,boundary:i,label,before,
+      add({id:`elision:${i}`,kind:'elision',title:`탈락 · ${a} → ∅`,index:i,boundary:i,label,before,
+        group:`t-final:${i}`,priority:1,
         after:`${left.ipa.slice(0,-1)}‿${right.ipa}`,blocked:stop,recommended:!stop && pace === 'fast',
         source:CONNECTED_SOURCES.linking,reason:'자음군 끝의 /t, d/ 뒤에 자음이 올 때 생길 수 있는 선택적 탈락입니다.',
-        practice:'가운데 /t, d/를 따로 터뜨리지 않고 앞 자음에서 다음 단어로 이동해 보세요. 또박또박 읽을 때는 원형도 자연스럽습니다.'}, () => {left.ipa = left.ipa.slice(0,-1); joins.add(i);});
+        practice:'가운데 /t, d/의 별도 폐쇄·파열을 생략하고 앞 자음에서 다음 단어로 이동해 보세요. 혀의 폐쇄를 유지한 미파열 [t̚]나 성문파열 [ʔ]과는 다릅니다. 원형을 유지하는 것도 가능합니다.'}, () => {left.ipa = left.ipa.slice(0,-1); joins.add(i);});
     }
   }
+  const edits=words.map(()=>[]),surface_annotations=[];
+  for(const c of variants)add(c,()=>{
+    edits[c.index].push(c);surface_annotations.push(c.annotation);
+    if(c.boundary!==null&&!pauses.has(c.boundary))joins.add(c.boundary);
+  });
+  words.forEach((w,i)=>{
+    w.surface_ipa=w.ipa;w.display_notes=[];
+    for(const c of edits[i].sort((a,b)=>b.offset-a.offset)){
+      w.surface_ipa=w.surface_ipa.slice(0,c.offset)+c.replacement+w.surface_ipa.slice(c.offset+c.length);
+      if(c.broad)w.ipa=w.ipa.slice(0,c.offset)+c.replacement+w.ipa.slice(c.offset+c.length);
+      if(c.displayNote)w.display_notes.push(c.displayNote);
+    }
+  });
+  // Offer only one default for competing realisations; manual choice remains reversible.
+  for(const c of candidates)if(c.recommended&&c.group&&candidates.some(other=>other.recommended&&other.group===c.group&&(other.priority||0)>(c.priority||0)))c.recommended=false;
   const phrase = values => values.map((s,i) => s + (i === values.length-1 ? '' : pauses.has(i) ? ' | ' : joins.has(i) ? '‿' : ' ')).join('');
   const records = words.map((w,i) => w.ipa === model.words[i].ipa ? model.records[i] : convertWord(w.ipa, {
     accent:model.accent,spelling:model.records[i].source.spelling,
     provenance:{kind:'connected-speech-practice',original_ipa:model.records[i].source.ipa,ref:CONNECTED_VERSION}
   }));
   return { version:CONNECTED_VERSION, accent:model.accent, pace, emphasis:[...emphasis], pauses:[...pauses],
-    candidates, applied, joins:[...joins], words, records,
-    original_ipa:model.words.map(w=>w.ipa).join(' '), connected_ipa:phrase(words.map(w=>w.ipa)) };
+    candidates, applied, joins:[...joins], words, records,surface_annotations,
+    surface_records:words.map((w,i)=>({word_index:i,ipa:w.surface_ipa,hmbr_reference_ipa:w.ipa,display_status:w.display_notes.length?'broad-reference':'derived',display_notes:w.display_notes})),
+    original_ipa:model.words.map(w=>w.ipa).join(' '), connected_ipa:phrase(words.map(w=>w.surface_ipa)) };
 }
 
 export function recommendedConnections(model, options = {}) {

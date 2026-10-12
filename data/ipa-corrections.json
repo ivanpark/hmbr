@@ -46,6 +46,15 @@
       "checked_on": "2026-10-12",
       "review_scope": "single-entry-broad-ipa",
       "note": "조동사 can의 강형을 원형으로 사용합니다. 약형 /kən/은 연결 연습에서 선택합니다. 해당 항목의 문자 IPA만 대조했으며 음성 및 사전 전체 검수는 아닙니다."
+    },
+    "winter": {
+      "ipa": "ˈwɪntəɹ",
+      "original_ipa": "ˈwɪntə",
+      "reference_ipa": "ˈwɪntər",
+      "ref": "https://www.collinsdictionary.com/dictionary/english/winter",
+      "checked_on": "2026-10-12",
+      "review_scope": "single-entry-broad-ipa",
+      "note": "Collins American English와 대조해 빠진 어말 r을 복원했습니다. r은 기존 정규화 규칙에 따라 ɹ로 적습니다. 문자 IPA만 대조했으며 사전 전수 검수는 아닙니다."
     }
   }
 }

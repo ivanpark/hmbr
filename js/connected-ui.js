@@ -1,4 +1,4 @@
-import { createConnectedModel, evaluateConnected, recommendedConnections } from './connected.js?v=20261012-connected';
+import { createConnectedModel, evaluateConnected, recommendedConnections } from './connected.js?v=20261012-t-variants';
 import { proportionalDisplayBlocks } from './display.js?v=20261012-haerye';
 
 const el = (tag,text,cls) => {const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
@@ -15,7 +15,7 @@ export function connectedController() {
     snapshot=evaluateConnected(model,options,selected);selected=snapshot.applied;
     $('connected-count').textContent=`${snapshot.applied.length}개 적용 · ${snapshot.candidates.filter(c=>c.recommended).length}개 추천`;
     $('connected-original').textContent='/'+snapshot.original_ipa+'/';
-    $('connected-ipa').textContent=snapshot.connected_ipa;
+    $('connected-ipa').textContent='['+snapshot.connected_ipa+']';
     const hasUnknown=model.words.some(w=>!w.usable);
     $('connected-warning').textContent=hasUnknown?'미결 단어가 닿는 경계는 추천하지 않습니다. 원문 IPA를 확인해 주세요.':model.records.some(r=>r.source.provenance.review_status==='unreviewed')?'사전의 미검수 IPA를 바탕으로 한 연습 제안입니다. 원문 발음도 확인해 주세요.':'추천은 강조·속도·쉼 설정을 바탕으로 한 선택지이며, 하나의 정답이 아닙니다.';
     $('connected-words').replaceChildren();
@@ -28,8 +28,8 @@ export function connectedController() {
     $('connected-candidates').replaceChildren();
     for(const c of snapshot.candidates){
       const item=el('li',undefined,'connection-card'+(c.active?' active':''));
-      const id='cs-'+c.id.replace(':','-');
-      const toggle=box(id,`${c.label} · ${c.title}`,c.active,on=>{selected=on?[...selected,c.id]:selected.filter(x=>x!==c.id);});
+      const id='cs-'+c.id.replaceAll(':','-');
+      const toggle=box(id,`${c.label} · ${c.title}`,c.active,on=>{selected=on?[...selected.filter(x=>!c.group||snapshot.candidates.find(v=>v.id===x)?.group!==c.group),c.id]:selected.filter(x=>x!==c.id);});
       toggle.querySelector('input').disabled=!!c.blocked;
       const badge=el('span',c.blocked?'보호됨':c.recommended?'추천':'선택 가능','connection-badge');
       item.append(toggle,badge,el('p',c.before+' → '+c.after,'ipa connection-change'),el('p',c.blocked||c.reason,'connection-reason'));
@@ -48,6 +48,7 @@ export function connectedController() {
         }
         part.append(display);
       }else part.append(el('span','자형 미결','artic-unresolved'));
+      for(const note of snapshot.words[i].display_notes)part.append(el('small',note,'connected-reference'));
       $('connected-hmbr').append(part);
       if(i<snapshot.records.length-1){const mark=options.pauses.includes(i)?' | ':snapshot.joins.includes(i)?'‿':'·';$('connected-hmbr').append(el('span',mark,'connected-join'));}
     });
@@ -57,15 +58,17 @@ export function connectedController() {
   $('connected-apply').addEventListener('click',()=>{if(!model)return;selected=recommendedConnections(model,options);draw();});
   $('connected-reset').addEventListener('click',()=>{selected=[];draw();});
   return {
-    clear(){model=null;snapshot=null;selected=[];$('connected-panel').hidden=true;},
+    clear(){model=null;snapshot=null;selected=[];$('connected-panel').hidden=true;$('btn-connect').setAttribute('aria-expanded','false');},
     start(records,settings,renderer){
-      this.clear();if(records.length<2)return;
+      this.clear();if(!records.length)return;
       model=createConnectedModel(records,settings);renderRun=renderer;
       options={pace:$('connected-pace').value,emphasis:[],pauses:model.words.flatMap((w,i)=>w.pause?[i]:[])};
-      $('connected-panel').hidden=false;draw();
+      if(records.length===1&&!evaluateConnected(model,options).candidates.length){model=null;return;}
+      $('connected-panel').hidden=false;$('btn-connect').setAttribute('aria-expanded','true');draw();
     },
     export(){if(!snapshot)return null;return {version:snapshot.version,accent:snapshot.accent,options:structuredClone(options),
       original_ipa:snapshot.original_ipa,connected_ipa:snapshot.connected_ipa,applied:[...snapshot.applied],
-      joins:[...snapshot.joins],candidates:structuredClone(snapshot.candidates),records:structuredClone(snapshot.records)};}
+      joins:[...snapshot.joins],candidates:structuredClone(snapshot.candidates),records:structuredClone(snapshot.records),
+      surface_annotations:structuredClone(snapshot.surface_annotations),surface_records:structuredClone(snapshot.surface_records)};}
   };
 }

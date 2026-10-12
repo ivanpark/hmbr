@@ -2,7 +2,7 @@
 
 ## [▶ 훈민바름 변환기 바로 열기](https://ivanpark.github.io/hmbr/app.html)
 
-공개 front page에서 훈민바름의 연구 범위와 네 본을 소개하고, 별도의 참조 구현에서 영어 또는 IPA를 훈민바름 음절블록으로 살펴본다. 제1·2본 교정 PDF, 46쪽 제3본 전산본과 24쪽 제4본 구현본을 함께 제공한다. 사용자 제공 `hmbr-web-v2.0(2).zip`의 사전·글꼴을 계승하고, 현재 제3본과 충돌하는 변환 엔진은 새로 구현했다.
+공개 front page에서 훈민바름의 연구 범위와 네 본을 소개하고, 별도의 참조 구현에서 영어 또는 IPA를 훈민바름 음절블록으로 살펴본다. 제1·2본 교정 PDF, 48쪽 제3본 전산본과 26쪽 제4본 구현본을 함께 제공한다. 사용자 제공 `hmbr-web-v2.0(2).zip`의 사전·글꼴을 계승하고, 현재 제3본과 충돌하는 변환 엔진은 새로 구현했다.
 
 [공개 사이트](https://ivanpark.github.io/hmbr/) · [소리 써보기](https://ivanpark.github.io/hmbr/app.html) · [문서 바로 보기](https://ivanpark.github.io/hmbr/#books)
 
@@ -10,7 +10,7 @@
 
 **[5분 검토 안내 열기](https://ivanpark.github.io/hmbr/review-brief-260916.html)** — 제안의 범위, 직접 확인할 예시, 네 본의 해당 쪽과 검증 근거를 한 페이지에 모았습니다. 별도 설치·로그인·API 키 없이 열 수 있습니다.
 
-1. **제안과 적용 범위:** [제1본 23쪽](https://ivanpark.github.io/hmbr/docs/HMBR_Book1_Seoneonbon_20261009.pdf#page=23)에서 일상 표기층과 선택적 정밀 표기층의 구분을 확인합니다.
+1. **제안과 적용 범위:** [제1본 23쪽](https://ivanpark.github.io/hmbr/docs/HMBR_Book1_Seoneonbon_20261012.pdf#page=23)에서 일상 표기층과 선택적 정밀 표기층의 구분을 확인합니다.
 2. **직접 확인:** [변환기](https://ivanpark.github.io/hmbr/app.html)에서 `boost` → `pass`의 RP·GA 비교 → `catch`의 미결 처리를 살펴봅니다.
 3. **근거 확인:** 아래 네 본과 [구현 검증 기록](docs/IMPLEMENTATION.md), [시험·배포 이력](https://github.com/ivanpark/hmbr/actions/workflows/pages.yml)을 대조합니다.
 
@@ -18,19 +18,19 @@
 
 ## 검증된 교정 출판 파일
 
-제1–4본을 각각 독립된 정식 읽기 단위로 제공합니다. 네 본 모두 2026-10-09 교정판입니다. 제3본 37쪽의 표시 상태 설명과 제4본 16쪽의 장모음 행을 바로잡고, 네 본의 문언·예시·상호 참조와 제4본의 구현 설명을 교정했습니다. 제4본에는 부록 D「2026-10-09 구현 상태 갱신」(24쪽)이 있습니다. 교정 내역은 [2026-10-09 교정 기록](docs/HMBR_Corrections_20261009.md)에 있습니다. 쪽수와 파일별 SHA-256은 [문서 색인](docs/INDEX.md)과 [체크섬 목록](SHA256SUMS.txt)에서 확인할 수 있습니다.
+제1–4본을 각각 독립된 정식 읽기 단위로 제공합니다. 네 본 모두 2026-10-12 증보판입니다. 기존 본문 쪽수를 유지하며 연결 발음과 GA t 변이의 조음법·조건·보존 구조·사용법을 각 권 개정 부록에 추가했습니다. [현재 상태](docs/BOOK_STATUS_20261012.md)를 참조합니다. 이전 10월 9일 교정에서는 다음을 반영했습니다. 제3본 37쪽의 표시 상태 설명과 제4본 16쪽의 장모음 행을 바로잡고, 네 본의 문언·예시·상호 참조와 제4본의 구현 설명을 교정했습니다. 제4본에는 부록 D「2026-10-09 구현 상태 갱신」(24쪽)이 있습니다. 교정 내역은 [2026-10-09 교정 기록](docs/HMBR_Corrections_20261009.md)에 있습니다. 쪽수와 파일별 SHA-256은 [문서 색인](docs/INDEX.md)과 [체크섬 목록](SHA256SUMS.txt)에서 확인할 수 있습니다.
 
-- [제1본 · 선언본 · 36쪽 · 2026.10.09](docs/HMBR_Book1_Seoneonbon_20261009.pdf)
-- [제2본 · 해례본 · 59쪽 · 2026.10.09](docs/HMBR_Book2_Haeryebon_20261009.pdf)
-- [제3본 · 전산본 · 46쪽 · 2026.10.09](docs/HMBR_Book3_Jeonsanbon_20261009.pdf)
-- [제4본 · 구현본 · 24쪽 · 2026.10.09](docs/HMBR_Book4_Guhyeonbon_20261009.pdf)
+- [제1본 · 선언본 · 38쪽 · 2026.10.12](docs/HMBR_Book1_Seoneonbon_20261012.pdf)
+- [제2본 · 해례본 · 62쪽 · 2026.10.12](docs/HMBR_Book2_Haeryebon_20261012.pdf)
+- [제3본 · 전산본 · 48쪽 · 2026.10.12](docs/HMBR_Book3_Jeonsanbon_20261012.pdf)
+- [제4본 · 구현본 · 26쪽 · 2026.10.12](docs/HMBR_Book4_Guhyeonbon_20261012.pdf)
 - [문서 색인](docs/INDEX.md)
 
-전체 연구 기록을 한 파일로 보관하거나 전달해야 할 때에는 [제1–4본 통합 보관판 · 165쪽](docs/HMBR_Books1-4_Combined_20261009.pdf)을 사용할 수 있습니다.
+전체 연구 기록을 한 파일로 보관하거나 전달해야 할 때에는 [제1–4본 통합 보관판 · 174쪽](docs/HMBR_Books1-4_Combined_20261012.pdf)을 사용할 수 있습니다.
 
 ## 사용
 
-- **Connected speech:** 문장 변환 후 추천을 살펴보고 연결마다 ON/OFF한다. 속도·강조·쉼에 맞춘 추천 적용, 원형과 변경된 IPA·훈민바름 비교, 조음 이동 설명을 제공한다. [지원 범위와 출처](docs/CONNECTED_SPEECH.md). 2026-10-12 자동시험 301/301 통과.
+- **Connected speech와 GA t:** 구·문장 또는 GA button·winter 입력 후 별도의 연음화 버튼을 눌러 추천을 살펴보고 연결마다 ON/OFF한다. 속도·강조·쉼에 맞춘 추천 적용, 원형과 변경된 IPA·훈민바름 비교, 조음 이동 설명을 제공한다. [지원 범위와 출처](docs/CONNECTED_SPEECH.md). 2026-10-12 자동시험 307/307 통과.
 
 - **영어로 찾기:** 문서 예시, 출처와 범위가 기록된 개별 교정(`data/ipa-corrections.json`), 첨부 사전의 원문 IPA 순서로 조회한다. 출처와 검수 상태가 결과에 표시된다. RP international의 제2강세 누락은 개별 교정으로 보완하며 전체 IPA 검수와 구별한다.
 - **IPA 직접 입력:** 넓은 표기(Broad)를 입력한다. 공백은 단어, 점(`.`)은 음절 경계다. `/ə.ˈbaʊt/`처럼 경계를 지정할 수 있다.
@@ -96,7 +96,7 @@ python3 -m http.server 8000 --directory dist
 
 음절 경계가 없는 여러 모음핵의 입력에는 명시된 최대 초성 추정 휴리스틱을 사용하고 `review-needed`를 반환한다. 이 휴리스틱은 이번 구현의 선택이며 제2본의 새 확정 규칙이 아니다. 직접 입력한 점 경계와 강세 위치는 우선 보존한다. 일부 미검수 사전 IPA는 선택한 모듈과 충돌할 수 있으며, 이를 조용히 다른 모음으로 바꾸지 않는다.
 
-/j,w/의 기저값 명시형은 제공하지만 모음과의 최종 결합형을 확정하지 않는다. 좁은 표기, 음절자음, 미등록 기호를 Broad 완성 출력으로 바꾸지 않는다. 평문에서 원철자·강세·출처를 자동 복원하는 역변환기나 영어 낭독 기능은 이 앱에 포함하지 않는다.
+/j,w/의 기저값 명시형은 제공하지만 모음과의 최종 결합형을 확정하지 않는다. 좁은 표기, 음절자음, 미등록 기호를 Broad 완성 출력으로 바꾸지 않는다. 평문에서 원철자·강세·출처를 자동 복원하는 역변환기나 영어 낭독 기능은 이 앱에 포함하지 않는다. 선택적 GA t 표면 주석은 별도 연습층에서 제공하며, TTS는 다음 단계다.
 
 ## 라이선스
 
@@ -126,9 +126,9 @@ python3 -m http.server 8000 --directory dist
 
 웹 사용법, 교사용 활동, 개발 재현 절차, 시험 결과와 미구현 범위를 설명한다.
 
-- [제4본 교정 PDF · 2026.10.09 · 24쪽](docs/HMBR_Book4_Guhyeonbon_20261009.pdf)
-- [제4본 DOCX · 2026.10.09 편집 원본](docs/HMBR_Book4_Guhyeonbon_20261009.docx)
-- [제4본 텍스트 · 2026.10.09](docs/HMBR_Book4_Guhyeonbon_20261009.md)
+- [제4본 교정 PDF · 2026.10.12 · 26쪽](docs/HMBR_Book4_Guhyeonbon_20261012.pdf)
+- [제4본 DOCX · 2026.10.12 편집 원본](docs/HMBR_Book4_Guhyeonbon_20261012.docx)
+- [제4본 텍스트 · 2026.10.12](docs/HMBR_Book4_Guhyeonbon_20261012.md)
 
 최초 공개 코드 커밋은 `1e3164ce706ad7397a7cd660e0f15f11be7e1ed7`이다. 현재 웹앱은 [GitHub Pages](https://ivanpark.github.io/hmbr/)에서 제공하며, 배포 결과는 [Actions](https://github.com/ivanpark/hmbr/actions/workflows/pages.yml)에서 확인할 수 있다.
 

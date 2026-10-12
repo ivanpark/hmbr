@@ -11,7 +11,7 @@ from pypdf import PdfReader, PdfWriter
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
-DATE = "20261009"
+DATE = "20261012"
 BOOKS = [
     ("제1본 · 선언본", DOCS / f"HMBR_Book1_Seoneonbon_{DATE}.pdf"),
     ("제2본 · 해례본", DOCS / f"HMBR_Book2_Haeryebon_{DATE}.pdf"),
@@ -37,7 +37,7 @@ def package() -> None:
         {
             "/Title": "훈민바름 영어확장판 제1–4본 교정 합본",
             "/Author": "박일환",
-            "/Subject": "제1–4본 2026-10-09 교정판",
+            "/Subject": "제1–4본 2026-10-12 연결 발음과 GA t 변이 증보판",
             "/Keywords": "훈민바름, 영어확장판, 선언본, 해례본, 전산본, 구현본",
         }
     )
