@@ -61,3 +61,17 @@ button,.segmented{font-family:HMBR,serif}
 
 /* Dedicated IPA font; Korean fallback retains the existing reading face. */
 #in-ipa,.word-ipa,.artic-ipa,.ipa{font-family:'Doulos SIL',HMBR,serif;font-weight:400;font-style:normal;font-synthesis:none}
+
+/* Connected speech is a separate, reversible practice layer. */
+.connected-panel{margin:24px 0;padding:22px;border:1px solid #a9c4cf;border-top:3px solid #285a7b;border-radius:6px;background:#f8fbfc;min-width:0}
+.connected-panel h3{margin:0;font-size:23px;font-weight:400}.connected-panel p{font-size:14px}.connected-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.connected-heading .eyebrow{margin-bottom:4px;font-size:11px}
+.connected-heading .state{white-space:nowrap}.connected-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:18px 0}
+.connected-actions button,.connected-actions select{border:1px solid #8ba6b6;background:white;border-radius:4px;color:#234d68;padding:8px 11px;font-size:14px;min-height:42px}.connected-actions label{font-size:14px}.connected-actions button:first-of-type{background:#285a7b;color:white}
+.connected-settings summary,.connected-scope summary{cursor:pointer;font-size:14px;padding:8px 0}.connected-settings p,.connected-scope p{font-size:13px;color:#526573}.connected-scope{margin-top:12px;border-top:1px solid var(--line)}.connected-scope a{font-size:12px}
+#connected-words{display:flex;flex-wrap:wrap;gap:8px}.connected-word{border:1px solid var(--line);border-radius:4px;background:white;padding:10px}.connected-word strong{display:block;font-size:15px}.connected-word .connection-choice{font-size:12px;margin-top:5px}
+#connected-candidates{list-style:none;padding:0;display:grid;gap:10px}.connection-card{border:1px solid #c8d8e0;border-radius:5px;padding:14px;background:white;min-width:0}.connection-card.active{border-color:#285a7b;background:#edf6f7}
+.connection-choice{display:flex;align-items:center;gap:9px;font-size:15px;cursor:pointer;min-height:30px}.connection-choice input{width:19px;height:19px;flex:none;accent-color:#285a7b}.connection-choice:has(input:disabled){color:#687d89;cursor:default}
+.connection-badge{display:inline-block;margin:5px 0 0 28px;padding:1px 7px;border-radius:3px;background:#e6edf1;color:#234d68;font-size:11px}.connection-card p{margin:8px 0}.connection-card .connection-change{font-size:18px;overflow-wrap:anywhere}.connection-reason{color:#526573}.connection-card details{font-size:13px}.connection-card summary{cursor:pointer}.connection-card details a{font-size:12px}
+.connected-comparison{margin-top:22px;border-top:1px solid #c0d2dc}.connected-comparison>div{padding:12px 0}.connected-comparison h4{margin:0 0 8px;font-weight:400;font-size:14px;color:#35536a}.connected-comparison .ipa{font-size:23px;line-height:1.8;overflow-wrap:anywhere;margin:0 0 12px}.connected-current{border-top:1px solid var(--line)}
+#connected-hmbr{--output-size:32px;display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:8px 0}.connected-render-word{display:inline-flex;max-width:100%}.connected-join{font-family:'Doulos SIL',serif;font-size:28px;color:#ac581f}.connected-panel .hint{font-size:12px;margin-bottom:0}
+@media(max-width:680px){.connected-panel{padding:16px;margin-inline:-8px}.connected-heading{flex-direction:column}.connected-actions button{flex:1}.connected-actions label{flex-basis:100%}.connected-panel h3{font-size:21px}#connected-hmbr{--output-size:28px}.connection-choice{font-size:14px}.connected-comparison .ipa{font-size:21px}}

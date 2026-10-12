@@ -8,7 +8,44 @@
       "checked_on": "2026-09-17",
       "review_scope": "secondary-stress-only",
       "note": "제2강세 ˌ 누락만 Oxford 표기와 대조해 교정했습니다. Oxford의 /ʃnəl/과 다른 기존 /ʃənəl/은 유지했으며, 나머지 IPA 전체를 검수한 것은 아닙니다"
+    },
+    "it": {
+      "ipa": "ɪt",
+      "original_ipa": "ɪ",
+      "reference_ipa": "ɪt",
+      "ref": "https://www.collinsdictionary.com/dictionary/english/it",
+      "checked_on": "2026-10-12",
+      "review_scope": "single-entry-broad-ipa",
+      "note": "누락된 끝 자음 /t/를 복원했습니다. 해당 항목의 문자 IPA만 대조했으며 음성 및 사전 전체 검수는 아닙니다."
+    },
+    "ten": {
+      "ipa": "tɛn",
+      "original_ipa": "ten:tɛn",
+      "reference_ipa": "tɛn",
+      "ref": "https://www.collinsdictionary.com/dictionary/english/ten",
+      "checked_on": "2026-10-12",
+      "review_scope": "single-entry-broad-ipa",
+      "note": "합쳐져 있던 두 발음 표기를 Collins British English의 넓은 표기 하나로 교정했습니다. 해당 항목의 문자 IPA만 대조했으며 음성 및 사전 전체 검수는 아닙니다."
+    },
+    "next": {
+      "ipa": "nɛkst",
+      "original_ipa": "neks",
+      "reference_ipa": "nɛkst",
+      "ref": "https://www.collinsdictionary.com/dictionary/english/next",
+      "checked_on": "2026-10-12",
+      "review_scope": "single-entry-broad-ipa",
+      "note": "Collins British English의 /nɛkst/와 대조해 모음과 누락된 /t/를 교정했습니다. 해당 항목의 문자 IPA만 대조했으며 음성 및 사전 전체 검수는 아닙니다."
     }
   },
-  "ga": {}
+  "ga": {
+    "can": {
+      "ipa": "kæn",
+      "original_ipa": "an",
+      "reference_ipa": "kæn",
+      "ref": "https://www.oxfordlearnersdictionaries.com/definition/english/can1",
+      "checked_on": "2026-10-12",
+      "review_scope": "single-entry-broad-ipa",
+      "note": "조동사 can의 강형을 원형으로 사용합니다. 약형 /kən/은 연결 연습에서 선택합니다. 해당 항목의 문자 IPA만 대조했으며 음성 및 사전 전체 검수는 아닙니다."
+    }
+  }
 }

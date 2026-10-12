@@ -8,7 +8,7 @@
   <title>소리 써보기 · 훈민바름</title>
   <link rel="preload" href="fonts/HMBR-Myeongjo-YetHangul-Full.woff2?v=20261012-ttf" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/DoulosSIL-Regular.woff2?v=7.000" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261012-doulos">
+  <link rel="stylesheet" href="css/style.css?v=20261012-connected">
 </head>
 <body>
 <a class="skip" href="#converter">변환기로 바로 가기</a>
@@ -17,13 +17,13 @@
   <nav aria-label="주요 메뉴"><a href="index.html">연구 소개</a><a href="#documents">제1–4본</a><a href="review-brief-260916.html">검토 안내</a><span class="edition">영어확장판 · 시범</span></nav>
 </header>
 <main>
-  <div class="page-title"><div><p class="eyebrow">HUNMIN BAREUM / ENGLISH</p><h1>우리 글로 담는 영어의 소리</h1></div><p>영어 발음을 음절마다 살펴보세요.<br>원문 IPA와 자모 대응을 함께 확인할 수 있습니다.</p></div>
+  <div class="page-title"><div><p class="eyebrow">HUNMIN BAREUM / ENGLISH</p><h1>우리 글로 담는 영어의 소리</h1></div><p>영어 발음을 음절마다 살펴보세요.<br>문장에서는 이어 말할 구간을 직접 골라 보세요.</p></div>
   <section id="converter" class="workspace" aria-label="영어 발음 변환기">
     <div class="input-panel">
       <form id="convert-form">
         <div class="panel-heading"><span class="step">01</span><h2>소리 입력</h2></div>
         <fieldset class="segmented"><legend class="sr-only">입력 방식</legend><label><input type="radio" name="mode" value="english" checked><span>영어로 찾기</span></label><label><input type="radio" name="mode" value="ipa"><span>IPA 직접 입력</span></label></fieldset>
-        <div id="english-field" class="field"><label for="in-english">영어 단어 또는 짧은 문장</label><textarea id="in-english" aria-describedby="english-hint input-limits status" rows="3" spellcheck="false" maxlength="5000" placeholder="boost, friend, hello world">boost</textarea><p id="english-hint" class="hint">책의 예시를 우선 조회합니다. 일반 사전은 검수 전이며, GA 선택만으로 미국식 발음의 정확도가 보장되지는 않습니다.</p></div>
+        <div id="english-field" class="field"><label for="in-english">영어 단어 또는 짧은 문장</label><textarea id="in-english" aria-describedby="english-hint input-limits status" rows="3" spellcheck="false" maxlength="5000" placeholder="pick it up, we can play">boost</textarea><p id="english-hint" class="hint">책의 예시를 우선 조회합니다. 일반 사전은 검수 전이며, GA 선택만으로 미국식 발음의 정확도가 보장되지는 않습니다.</p></div>
         <div id="ipa-field" class="field" hidden><label for="in-ipa">IPA 발음기호</label><textarea id="in-ipa" aria-describedby="ipa-hint input-limits status" rows="3" lang="en" spellcheck="false" maxlength="5000" placeholder="/buːst/ 또는 /ə.ˈbaʊt/"></textarea><p id="ipa-hint" class="hint">공백은 단어, 점(.)은 음절 경계입니다. 넓은 표기(Broad)를 입력하세요.</p></div>
         <fieldset class="accent-field"><legend>발음 기준</legend><div class="segmented"><label><input type="radio" name="accent" value="rp" checked><span>RP <small>영국식</small></span></label><label><input type="radio" name="accent" value="ga"><span>GA <small>미국식</small></span></label></div></fieldset>
         <p id="input-limits" class="hint">최대 100단어 · 5,000자. Ctrl/⌘ + Enter로 변환합니다.</p>
@@ -31,14 +31,26 @@
         <p id="status" class="status" role="status" aria-live="polite"></p>
       </form>
       <div class="examples"><h3>책 속의 예시 — RP·GA를 바꿔 보세요</h3><div class="example-list"><button type="button" data-example="boost" class="selected">boost</button><button type="button" data-example="play">play</button><button type="button" data-example="friend">friend</button><button type="button" data-example="cats">cats</button><button type="button" data-example="pass">pass</button><button type="button" data-example="hot">hot</button><button type="button" data-example="near">near</button><button type="button" data-example="about">about</button></div><h3 class="examples-sub">미결을 그대로 보이는 예</h3><div class="example-list"><button type="button" data-example="catch">catch <span>종성 /tʃ/ 미배당</span></button></div></div>
+      <div class="examples"><h3>문장 연결 연습</h3><div class="example-list"><button type="button" data-example="pick it up">pick it up</button><button type="button" data-example="we can play">we can play</button><button type="button" data-example="ten men">ten men</button><button type="button" data-example="next day">next day</button></div><p class="hint">두 단어 이상을 변환하면 연결 제안과 ON/OFF가 나타납니다.</p></div>
       <div class="input-note"><strong>표기와 발음은 다릅니다.</strong><p>보이는 자모에 한국어의 받침 발음을 적용하지 않습니다. 종성 /s/도 독립된 소리로 읽습니다.</p></div>
     </div>
     <div class="result-panel" id="out-panel" aria-label="변환 결과" aria-busy="false">
       <div class="result-heading"><div class="panel-heading"><span class="step">02</span><h2>훈민바름</h2></div><span id="result-state" class="state">입력 대기</span></div>
       <div class="output-surface"><div id="word-results" class="word-results" aria-live="polite"><p class="empty-message">단어나 IPA를 입력하면 여기에 음절블록이 나타납니다.</p></div></div>
-      <div class="output-toolbar"><label for="font-size">글자 크기 <input id="font-size" type="range" min="28" max="76" value="48"><output id="size-value" for="font-size">48</output></label><button id="btn-copy" type="button" disabled>자모열 복사</button><button id="btn-json" type="button" disabled>전체 기록 저장</button></div>
+      <div class="output-toolbar"><label for="font-size">글자 크기 <input id="font-size" type="range" min="28" max="76" value="48"><output id="size-value" for="font-size">48</output></label><button id="btn-copy" type="button" disabled>원형 자모열 복사</button><button id="btn-json" type="button" disabled>전체 기록 저장</button></div>
       <p class="result-caption">〔 〕 한 쌍이 하나의 음절입니다. 뒤 모음의 읽기용 ㅇ은 새 음소·음절이 아닙니다. 자모열 복사에는 이 표시용 ㅇ과 괄호가 들어가지 않습니다. 전체 기록(JSON)은 원문·강세·출처·미결 상태를 함께 보존합니다.</p>
       <div id="result-notes" class="result-notes" hidden></div>
+      <section id="connected-panel" class="connected-panel" aria-labelledby="connected-title" hidden>
+        <div class="connected-heading"><div><p class="eyebrow">CONNECTED SPEECH · 시범</p><h3 id="connected-title">어디를 이어 말할까요?</h3></div><span id="connected-count" class="state" role="status"></span></div>
+        <p>추천을 먼저 살펴보고 연결마다 켜거나 끄세요. 원형 변환은 위에 그대로 남습니다.</p>
+        <div class="connected-actions"><label for="connected-pace">말하기 <select id="connected-pace"><option value="slow">또박또박</option><option value="normal" selected>보통 회화</option><option value="fast">빠른 회화</option></select></label><button id="connected-apply" type="button">추천대로 적용</button><button id="connected-reset" type="button">모두 해제</button></div>
+        <details class="connected-settings"><summary>강조할 단어와 쉼 조절</summary><p>강조 보호는 약형·동화·탈락을 막습니다. 쉼은 해당 경계의 연결을 막습니다. 문장부호의 쉼도 여기서 조절하세요.</p><div id="connected-words"></div></details>
+        <p id="connected-warning" class="hint"></p>
+        <ol id="connected-candidates"></ol><p id="connected-empty">현재 조건에서 제안할 연결이 없습니다. 모든 경계를 억지로 연결하지 않습니다.</p>
+        <div class="connected-comparison"><div><h4>원형 IPA</h4><p id="connected-original" class="ipa"></p></div><div class="connected-current"><h4>선택한 흐름 · IPA</h4><p id="connected-ipa" class="ipa" aria-live="polite"></p><h4>선택한 흐름 · 훈민바름</h4><div id="connected-hmbr"></div></div></div>
+        <p class="hint">‿ 연결 · | 쉼 · 가운데점은 단어 구분입니다. 훈민바름은 단어별 조자와 강세를 유지하며 연결을 표시합니다. 문장 억양·정밀 음성 전사·음성 재생은 포함하지 않습니다. 선택 내역은 ‘전체 기록 저장’에 함께 담깁니다.</p>
+        <details class="connected-scope"><summary>추천 범위와 근거</summary><p>자음–모음 연결, RP linking r, 일부 기능어 약형, n → m 동화와 자음군의 t/d 탈락을 다룹니다. 모음 사이의 j/w·intrusive r 삽입, 미국식 flapping과 의미·문법 분석은 아직 추천하지 않습니다. 영어 철자가 없는 IPA 입력에서는 약형과 RP linking r을 추정하지 않습니다.</p><p>속도별 추천 강도와 강조 보호는 이 앱의 보수적인 연습 기준입니다. 말하는 사람과 문맥에 따라 다른 선택도 가능합니다.</p><a href="https://www.teachingenglish.org.uk/professional-development/teachers/knowing-subject/connected-speech-part-1">British Council · weak forms</a> · <a href="https://www.teachingenglish.org.uk/professional-development/teachers/knowing-subject/connected-speech-part-2">linking &amp; elision</a> · <a href="https://www.britishcouncil.org.br/sites/default/files/lesson_plan_-_eng.pdf">assimilation</a> · <a href="https://www.collinsdictionary.com/dictionary/english/linking-r">Collins · linking r</a> · <a href="docs/CONNECTED_SPEECH.md">구현·검증 기록</a></details>
+      </section>
       <section id="articulation-panel" class="articulation-panel" aria-labelledby="articulation-title" hidden>
         <h3 id="articulation-title">훈민정음식 조음법 해례</h3>
         <p class="artic-intro">자모를 입술·혀·목청의 움직임으로 읽어 보세요. <a href="docs/HMBR_Book2_Haeryebon_20261009.pdf#page=38">제2본 해례본의 현대 조음 설명</a>을 각 표기에 연결했습니다.</p>
@@ -59,7 +71,7 @@
 </main>
 <footer><p><a href="review-brief-260916.html">검토 안내</a> · <a href="legacy/index.html" title="현재 책과 다른 규칙을 사용하는 구버전">이전 앱(v2.0) 비교</a></p><p>훈민바름 · HMBR <span>가표본 연구 · 참조 실험</span></p><p>앱 개정 2026.10.12 · 조음 해례·나눔명조·바른고딕옛한글 전체본 · 제1–4본 10.09 교정판</p></footer>
 <noscript><p class="noscript">변환기를 사용하려면 JavaScript를 켜 주세요. 문서 PDF는 바로 열 수 있습니다.</p></noscript>
-<script type="module" src="js/app.js?v=20261012-doulos"></script>
+<script type="module" src="js/app.js?v=20261012-connected"></script>
 </body>
 </html>
 

@@ -47,3 +47,16 @@ test('a stress correction does not change GA or unrelated dictionary entries',as
  assert.equal(rp.entries[1].ipa,'kəˈrɪə');
  assert.equal(rp.entries[1].provenance.kind,'supplied-dictionary');
 });
+
+test('connected-speech presets resolve with corrected IPA and keep punctuation boundaries',async()=>{
+ const rp=await lookup('it ten next','rp');
+ assert.deepEqual(rp.entries.map(e=>e.ipa),['ɪt','tɛn','nɛkst']);
+ const ga=await lookup('can','ga');assert.equal(ga.entries[0].ipa,'kæn');
+ assert.ok([...rp.entries,...ga.entries].every(e=>e.provenance.review_scope==='single-entry-broad-ipa' && e.provenance.original_ipa));
+ const punct=await lookup('pick , it — up','rp');
+ assert.deepEqual(punct.missing,[]);assert.deepEqual(punct.entries.map(e=>e.input_token),['pick,','it—','up']);
+ for(const accent of ['rp','ga'])for(const phrase of ['pick it up','we can play','ten men','next day']){
+  const found=await lookup(phrase,accent);assert.deepEqual(found.missing,[]);
+  assert.ok(found.entries.every(e=>convertWord(e.ipa,{accent}).serialization.status==='available'),accent+' '+phrase);
+ }
+});

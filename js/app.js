@@ -1,11 +1,13 @@
+import { connectedController } from './connected-ui.js?v=20261012-connected';
 import { convertWord, convertPhrase } from './engine.js';
 import { proportionalDisplayBlocks } from './display.js?v=20261012-haerye';
 import { prepareOpticalRenderer } from './optical.js?v=20260917-vowel-carrier';
-import { lookup } from './dict.js?v=20260919-ux';
+import { lookup } from './dict.js?v=20261012-connected';
 import { VERSION } from './registry.js';
 import { articulationCards, ARTICULATION_SOURCE } from './articulation.js?v=20261012-haerye';
 const $ = id => document.getElementById(id);
 const el = (tag, text, cls) => { const e = document.createElement(tag); if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; };
+const connected = connectedController();
 let request = 0, bundle = null;
 const mode = () => document.querySelector('[name="mode"]:checked').value;
 const accent = () => document.querySelector('[name="accent"]:checked').value;
@@ -15,7 +17,7 @@ function invalidate() {
   request++; bundle = null; busy(false); status();
   $('btn-copy').disabled = true; $('btn-json').disabled = true;
   $('manual-copy').hidden = true; $('result-notes').hidden = true;
-  clearArticulation();
+  clearArticulation(); connected.clear();
   $('word-results').replaceChildren(el('p', '입력을 바꿨습니다. 변환하면 새 결과가 나타납니다.', 'empty-message'));
   $('record-inspector').replaceChildren(el('p', '변환 후 대응 정보를 확인할 수 있습니다.'));
   $('result-state').textContent = '입력 대기'; $('result-state').className = 'state';
@@ -35,7 +37,7 @@ function render(result, renderRun) {
     const article = el('article', undefined, 'word-result');
     const label = el('p', undefined, 'word-label'); label.append(el('span', r.source.spelling || 'IPA 직접 입력'));
     const provenance = r.source.provenance;
-    label.append(el('span', provenance.kind === 'document-example' ? '문서 예시' : provenance.kind === 'dictionary-correction' ? '사전 · 강세 교정' : provenance.kind === 'supplied-dictionary' ? '사전 · 검수 전' : '직접 입력', 'source-chip'));
+    label.append(el('span', provenance.kind === 'document-example' ? '문서 예시' : provenance.kind === 'dictionary-correction' ? '사전 · 개별 교정' : provenance.kind === 'supplied-dictionary' ? '사전 · 검수 전' : '직접 입력', 'source-chip'));
     article.append(label);
     if (r.serialization.status === 'available') {
       const display = el('div', undefined, 'hmbr');
@@ -65,6 +67,7 @@ function render(result, renderRun) {
   }
   if ($('record-details').open) renderInspectors();
   renderArticulation(records);
+  connected.start(records,{accent:accent(),tokens:result.input_tokens || []},renderRun);
   for (const note of notes) addNote(note);
   if (!ready) addNote('미결 단어가 포함되어 자모열 전체 복사를 제공하지 않습니다. 전체 기록에는 모든 단어의 상태가 함께 저장됩니다.');
   $('btn-copy').disabled = !ready; $('btn-json').disabled = false;
@@ -151,6 +154,7 @@ function renderInspector(r) {
 async function doConvert(event) {
   event?.preventDefault(); const id=++request; const selectedMode=mode(), selectedAccent=accent();
   const input=(selectedMode==='english' ? $('in-english'):$('in-ipa')).value.trim();
+  connected.clear();
   bundle=null;$('btn-copy').disabled=true;$('btn-json').disabled=true;busy(true);status('소리를 살펴보는 중…');
   try {
     if (!input) throw new Error('영어 단어나 IPA를 입력해 주세요.');
@@ -159,7 +163,7 @@ async function doConvert(event) {
       const found=await lookup(input,selectedAccent);if(id!==request)return;
       if(found.missing.length)throw new Error(`사전에 없는 단어: ${found.missing.join(', ')}. IPA 직접 입력을 이용해 주세요.`);
       if(!found.entries.length)throw new Error('영어 단어를 입력해 주세요.');
-      result={schema_version:VERSION,source_input:input,records:found.entries.map(e=>convertWord(e.ipa,{accent:selectedAccent,spelling:e.spelling,provenance:e.provenance}))};
+      result={schema_version:VERSION,source_input:input,input_tokens:found.entries.map(e=>e.input_token),records:found.entries.map(e=>convertWord(e.ipa,{accent:selectedAccent,spelling:e.spelling,provenance:e.provenance}))};
     } else result=convertPhrase(input,{accent:selectedAccent});
     if(id!==request)return;
     const renderRun=result.records.some(r=>r.serialization.status==='available')
@@ -190,6 +194,6 @@ $('btn-copy').addEventListener('click',async()=>{
   catch{if(id!==request)return;$('copy-value').value=text;$('manual-copy').hidden=false;$('copy-value').focus();$('copy-value').select();status('아래 자모열을 선택해 직접 복사해 주세요.');}
 });
 $('btn-json').addEventListener('click',()=>{
-  if(!bundle)return;const blob=new Blob([JSON.stringify(bundle,null,2)+'\n'],{type:'application/json;charset=utf-8'});const url=URL.createObjectURL(blob);const a=el('a');a.href=url;a.download='hmbr-records.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);status('기록 다운로드를 요청했습니다. 브라우저의 다운로드 목록을 확인해 주세요.','ok');
+  if(!bundle)return;const blob=new Blob([JSON.stringify({...bundle,...(connected.export()?{connected_speech:connected.export()}:{})},null,2)+'\n'],{type:'application/json;charset=utf-8'});const url=URL.createObjectURL(blob);const a=el('a');a.href=url;a.download='hmbr-records.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);status('기록 다운로드를 요청했습니다. 브라우저의 다운로드 목록을 확인해 주세요.','ok');
 });
 doConvert();
