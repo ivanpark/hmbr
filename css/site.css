@@ -1,3 +1,4 @@
+@font-face{font-family:'Doulos SIL';src:url('../fonts/DoulosSIL-Regular.woff2?v=7.000') format('woff2');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:HMBR;src:url('../fonts/HMBR-Myeongjo-YetHangul-Full.woff2?v=20261012-ttf') format('woff2');font-display:swap}
 @font-face{font-family:HMBRGothic;src:url('../fonts/HMBR-BarunGothic-YetHangul-Full.woff2?v=20261012') format('woff2');font-display:swap}
 :root{color-scheme:light;--ink:#102d3a;--ink-soft:#284550;--paper:#f5f2ea;--white:#fffefa;--blue:#2f6680;--copper:#a75d32;--line:#cfd7d5;--muted:#617076;--max:1240px}
@@ -37,3 +38,5 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--copper);outline-off
 /* Reading copy uses full Myeongjo; navigation uses full BarunGothic. */
 body{font-family:HMBR,serif}
 .site-header nav,.site-footer nav,.button,.text-link,.review-actions,.site-brand small{font-family:HMBRGothic,sans-serif}
+
+.ipa{font-family:'Doulos SIL',HMBR,serif;font-weight:400;font-style:normal;font-synthesis:none}

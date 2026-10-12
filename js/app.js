@@ -133,7 +133,7 @@ function renderInspector(r) {
   const section = el('section', undefined, 'record-inspect'); section.append(el('h3', r.source.spelling || r.source.ipa));
   const dl = el('dl');
   const pairs = [['원문 IPA',r.source.ipa],['분석 IPA',r.normalized_ipa || '미결 · 원문 참조'],['발음 기준',r.module_id],['음절 경계',r.analysis.syllabification.startsWith('inferred') ? '자동 추정 · 확인 필요' : r.analysis.syllabification === 'source-boundaries' ? '입력 경계·강세 표지' : '단일 모음핵'],['출처',r.source.provenance.ref || r.source.provenance.note || '사용자 직접 입력']];
-  for (const [k,v] of pairs) dl.append(el('dt',k),el('dd',v)); section.append(dl);
+  for (const [k,v] of pairs) dl.append(el('dt',k),el('dd',v,k.endsWith('IPA') ? 'ipa' : undefined)); section.append(dl);
   section.append(el('p', r.serialization.text === null ? '평문 unavailable · 미배당값을 대신 채우지 않았습니다.' : r.serialization.codepoints.join(' '), 'code'));
   const scroll = el('div',undefined,'table-scroll'), table = el('table');
   const caption = el('caption','음소와 자모 요소의 대응');caption.className='sr-only'; table.append(caption);
@@ -142,7 +142,7 @@ function renderInspector(r) {
   const tokens = new Map(r.canonicalModel.phonemeTokens.map(t => [t.id, t.ipa]));
   for (const m of r.canonicalModel.mappingUnits) {
     const row=el('tr');const sounds=m.token_ids.map(id=>tokens.get(id)).join(' + ') || '무음 초성';
-    row.append(el('td',sounds),el('td',m.jamo_values.join(' + ') || '미결'),el('td',m.codepoints.map(c=>c ? `U+${c}`:'미배당').join(' ') || '미결'));body.append(row);
+    row.append(el('td',sounds,'ipa'),el('td',m.jamo_values.join(' + ') || '미결'),el('td',m.codepoints.map(c=>c ? `U+${c}`:'미배당').join(' ') || '미결'));body.append(row);
   }
   table.append(body);scroll.append(table);section.append(scroll);
   if (r.normalization_rules.length) section.append(el('p','기호 정규화: '+r.normalization_rules.map(x=>`${x.before} → ${x.after}`).join(', ')));

@@ -35,3 +35,11 @@ HMBR-BarunGothic-YetHangul-Full.woff2
 23,234개 문자와 GSUB·GPOS를 보존하며, OpenType Sanitizer로 경계 상자를 정리했다.
 내부 이름은 HMBR BarunGothic YetHangul Full로 변경하고 OFL 1.1 고지를 보존한다.
 홈페이지·검토 안내·변환기의 조작부에 사용한다. 본문·해례·훈민바름 표기는 명조 전체본을 쓴다.
+
+DoulosSIL-Regular.woff2 — Doulos SIL 7.000
+
+SIL 공식 배포본의 WOFF2 파일을 수정 없이 포함한다. IPA 입력·결과·조음 해례·상세 대응표·홈페이지 IPA 예시에 사용한다.
+출처: https://software.sil.org/downloads/r/doulos/DoulosSIL-7.000.zip
+Copyright (c) 1994-2025 SIL Global (https://www.sil.org/)
+SIL Open Font License 1.1, Reserved Font Names "Doulos" and "SIL".
+라이선스 전문: DoulosSIL-OFL.txt

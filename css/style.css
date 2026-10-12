@@ -1,3 +1,4 @@
+@font-face{font-family:'Doulos SIL';src:url('../fonts/DoulosSIL-Regular.woff2?v=7.000') format('woff2');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:HMBR;src:url('../fonts/HMBR-Myeongjo-YetHangul-Full.woff2?v=20261012-ttf') format('woff2');font-display:swap}
 @font-face{font-family:HMBRGothic;src:url('../fonts/HMBR-BarunGothic-YetHangul-Full.woff2?v=20261012') format('woff2');font-display:swap}
 :root{color-scheme:light;--ink:#122d43;--navy:#102a40;--blue:#285a7b;--accent:#ac581f;--line:#dbe3e9;--muted:#526573;--paper:#fff;--bg:#f1f5f8}
@@ -57,3 +58,6 @@ body,.brand small{font-family:HMBR,'NanumMyeongjoOTF YetHangul','NanumMyeongjo Y
 button,input,textarea,select,.masthead nav,.segmented,.field label,.accent-field legend,.output-toolbar{font-family:HMBRGothic,sans-serif}
 
 button,.segmented{font-family:HMBR,serif}
+
+/* Dedicated IPA font; Korean fallback retains the existing reading face. */
+#in-ipa,.word-ipa,.artic-ipa,.ipa{font-family:'Doulos SIL',HMBR,serif;font-weight:400;font-style:normal;font-synthesis:none}
