@@ -53,5 +53,7 @@ body,.brand small{font-family:HMBR,'NanumMyeongjoOTF YetHangul','NanumMyeongjo Y
 @media(max-width:1000px){.articulation-cards{grid-template-columns:1fr}}
 @media(pointer:coarse){.articulation-word>summary{min-height:44px}}
 
-/* Controls use full BarunGothic; haerye and notation retain Myeongjo. */
+/* Inputs and navigation use BarunGothic; buttons and reading copy use Myeongjo. */
 button,input,textarea,select,.masthead nav,.segmented,.field label,.accent-field legend,.output-toolbar{font-family:HMBRGothic,sans-serif}
+
+button,.segmented{font-family:HMBR,serif}
