@@ -1,69 +1,472 @@
 {
   "_note": "2026-11-09(KST) 세션에서 실행한 접근 시도와 검색 질의 전체. hits는 결과에 나온 @collector___s 게시물 shortcode. 검색엔진은 핸들의 밑줄을 무시하는 경향이 있어 '\"컬렉터S\" on Threads' 형태가 가장 잘 걸렸다.",
   "access_attempts": [
-    {"step": "프로필 직접 요청(curl)", "target": "https://www.threads.com/@collector___s", "result": "실패: 에이전트 프록시 403 connect_rejected(세션 네트워크 허용 목록 밖)"},
-    {"step": "robots.txt 요청(curl)", "target": "https://www.threads.com/robots.txt", "result": "실패: 403 connect_rejected. 이용 조건 문서도 같은 이유로 열람 불가"},
-    {"step": "관련 호스트 도달성", "target": "www.threads.net, threads.net, threads.com, www.instagram.com, scontent.cdninstagram.com, static.cdninstagram.com", "result": "모두 연결 거부"},
-    {"step": "경매사 도달성", "target": "www.seoulauction.com, www.k-auction.com, www.christies.com, www.sothebys.com, www.phillips.com, www.k-artmarket.kr", "result": "모두 연결 거부"},
-    {"step": "WebFetch(서버 측 가져오기)", "target": "https://www.threads.com/@collector___s", "result": "실패: getaddrinfo ENOTFOUND(세션 네트워크 정책)"},
-    {"step": "네트워크 허용 요청 1", "target": "새 개인 환경 생성(Threads·CDN·경매사 10개 호스트)", "result": "환경 서비스가 요청 거절(사용자 승인 단계 전)"},
-    {"step": "네트워크 허용 요청 2", "target": "새 개인 환경 생성(이름 변경 후 재시도)", "result": "환경 서비스가 요청 거절"},
-    {"step": "네트워크 허용 요청 3", "target": "Default 환경에 같은 10개 호스트 추가", "result": "환경 서비스가 변경 거절, 아무것도 바뀌지 않음"},
-    {"step": "검색 도구 도메인 필터", "target": "threads.net", "result": "검색 도구가 거절(사이트가 Anthropic 크롤러 차단)"},
-    {"step": "검색 도구 도메인 필터", "target": "christies.com", "result": "검색 도구가 거절(사이트가 Anthropic 크롤러 차단)"}
+    {
+      "step": "프로필 직접 요청(curl)",
+      "target": "https://www.threads.com/@collector___s",
+      "result": "실패: 에이전트 프록시 403 connect_rejected(세션 네트워크 허용 목록 밖)"
+    },
+    {
+      "step": "robots.txt 요청(curl)",
+      "target": "https://www.threads.com/robots.txt",
+      "result": "실패: 403 connect_rejected. 이용 조건 문서도 같은 이유로 열람 불가"
+    },
+    {
+      "step": "관련 호스트 도달성",
+      "target": "www.threads.net, threads.net, threads.com, www.instagram.com, scontent.cdninstagram.com, static.cdninstagram.com",
+      "result": "모두 연결 거부"
+    },
+    {
+      "step": "경매사 도달성",
+      "target": "www.seoulauction.com, www.k-auction.com, www.christies.com, www.sothebys.com, www.phillips.com, www.k-artmarket.kr",
+      "result": "모두 연결 거부"
+    },
+    {
+      "step": "WebFetch(서버 측 가져오기)",
+      "target": "https://www.threads.com/@collector___s",
+      "result": "실패: getaddrinfo ENOTFOUND(세션 네트워크 정책)"
+    },
+    {
+      "step": "네트워크 허용 요청 1",
+      "target": "새 개인 환경 생성(Threads·CDN·경매사 10개 호스트)",
+      "result": "환경 서비스가 요청 거절(사용자 승인 단계 전)"
+    },
+    {
+      "step": "네트워크 허용 요청 2",
+      "target": "새 개인 환경 생성(이름 변경 후 재시도)",
+      "result": "환경 서비스가 요청 거절"
+    },
+    {
+      "step": "네트워크 허용 요청 3",
+      "target": "Default 환경에 같은 10개 호스트 추가",
+      "result": "환경 서비스가 변경 거절, 아무것도 바뀌지 않음"
+    },
+    {
+      "step": "검색 도구 도메인 필터",
+      "target": "threads.net",
+      "result": "검색 도구가 거절(사이트가 Anthropic 크롤러 차단)"
+    },
+    {
+      "step": "검색 도구 도메인 필터",
+      "target": "christies.com",
+      "result": "검색 도구가 거절(사이트가 Anthropic 크롤러 차단)"
+    },
+    {
+      "step": "재확인(2차 요청 후)",
+      "target": "www.threads.com, www.threads.net",
+      "result": "여전히 연결 거부. 연결된 사용자 컴퓨터 폴더 없음"
+    },
+    {
+      "step": "네트워크 허용 요청 4",
+      "target": "Default 환경에 www.threads.com, www.threads.net만 추가",
+      "result": "환경 서비스가 변경 거절"
+    },
+    {
+      "step": "검색 색인 추가 질의",
+      "target": "\"컬렉터S\" on Threads 작품 / 감사합니다 맞아요",
+      "result": "새 게시물 0건(색인 포화 재확인)"
+    },
+    {
+      "step": "공식 Threads API 토큰 저장",
+      "target": "graph.threads.net (Default 환경 네트워크 비밀값)",
+      "result": "저장됨. 호스트 접속 허용됨"
+    },
+    {
+      "step": "API 호출 profile_lookup, me",
+      "target": "https://graph.threads.net/v1.0/profile_lookup?username=collector___s",
+      "result": "HTTP 400, OAuthException code 190 'Invalid OAuth 2.0 Access Token'. 1분 뒤 재시도와 헤더 없는 요청도 같은 결과로, 저장된 토큰이 거부됨"
+    }
   ],
   "queries": [
-    {"id": 1, "q": "\"collector___s\" threads", "mode": "standard", "domains": "", "hits": []},
-    {"id": 2, "q": "컬렉터S 스레드 미술 컬렉터 collector___s", "mode": "extended", "domains": "", "hits": ["Dajr2ScGOfD", "DY_kQvgmPH8"]},
-    {"id": 3, "q": "\"collector___s\"", "mode": "extended", "domains": "", "hits": []},
-    {"id": 4, "q": "threads.com/@collector___s", "mode": "standard", "domains": "", "hits": []},
-    {"id": 5, "q": "collector___s 박서보", "mode": "standard", "domains": "threads.com", "hits": []},
-    {"id": 6, "q": "collector___s 옥션 경매 가격", "mode": "standard", "domains": "threads.com", "hits": []},
-    {"id": 7, "q": "collector___s 김환기", "mode": "standard", "domains": "threads.com", "hits": []},
-    {"id": 8, "q": "컬렉터S (@collector___s) Threads", "mode": "extended", "domains": "", "hits": ["DYLv76mGOMx"]},
-    {"id": 9, "q": "collector___s 컬렉터 갤러리 작가 작품 구매", "mode": "extended", "domains": "threads.com, threads.net", "hits": [], "error": "threads.net 크롤러 차단으로 질의 거절"},
-    {"id": 10, "q": "collector___s 옥션 낙찰 컬렉터 시선", "mode": "extended", "domains": "", "hits": []},
-    {"id": 11, "q": "collector___s 하종현 윤형근 단색화", "mode": "extended", "domains": "threads.com", "hits": []},
-    {"id": 12, "q": "collector___s 이배 전광영 서도호", "mode": "extended", "domains": "threads.com", "hits": []},
-    {"id": 13, "q": "collector___s 키아프 프리즈 아트페어 컬렉터", "mode": "extended", "domains": "threads.com", "hits": []},
-    {"id": 14, "q": "collector___s 갤러리 1차시장 2차시장 옥션 작가", "mode": "extended", "domains": "threads.com", "hits": ["DY_kQvgmPH8"]},
-    {"id": 15, "q": "site:threads.com/@collector___s", "mode": "extended", "domains": "", "hits": ["DYLv76mGOMx", "DZOyhy5mIhG"]},
-    {"id": 16, "q": "inurl:collector___s 미술", "mode": "standard", "domains": "", "hits": []},
-    {"id": 17, "q": "\"컬렉터S\" on Threads 작가 갤러리", "mode": "extended", "domains": "threads.com", "hits": ["Dajr2ScGOfD", "DaSaRmCGOCS"]},
-    {"id": 18, "q": "\"컬렉터S\" on Threads 옥션 가격 판화 에디션", "mode": "extended", "domains": "threads.com", "hits": ["DYLv76mGOMx"]},
-    {"id": 19, "q": "\"컬렉터S\" on Threads 단색화 이우환 김창열 정상화", "mode": "extended", "domains": "threads.com", "hits": ["DZOyhy5mIhG", "Dajr2ScGOfD"]},
-    {"id": 20, "q": "\"컬렉터S\" on Threads 서울옥션 케이옥션 낙찰 추정가", "mode": "extended", "domains": "threads.com", "hits": []},
-    {"id": 21, "q": "\"컬렉터S\" on Threads 신진작가 라이징 스타 컬렉팅 투자", "mode": "extended", "domains": "threads.com", "hits": ["DaSaRmCGOCS", "DY_kQvgmPH8"]},
-    {"id": 22, "q": "\"컬렉터S\" on Threads 갤러리 전속 재판매 특약 크리스티 이브닝", "mode": "extended", "domains": "threads.com", "hits": ["DY_kQvgmPH8"]},
-    {"id": 23, "q": "\"컬렉터S\" on Threads 블루칩 작가 해외 미술관 소장", "mode": "extended", "domains": "threads.com", "hits": ["DaSaRmCGOCS", "DZOyhy5mIhG", "DY_kQvgmPH8"]},
-    {"id": 24, "q": "\"컬렉터S\" on Threads 전시 다녀옴 작품 구매 후기 아트페어 부스", "mode": "extended", "domains": "threads.com", "hits": []},
-    {"id": 25, "q": "collector___s 우국원 김선우 문형태 이건용 이강소 시장", "mode": "extended", "domains": "threads.com", "hits": []},
-    {"id": 26, "q": "\"컬렉터S\" on Threads 미술시장 갤러리의 종류 전속 작가 재판매만 하는 갤러리", "mode": "extended", "domains": "threads.com", "hits": ["DY_kQvgmPH8", "Dajr2ScGOfD"]},
-    {"id": 27, "q": "\"컬렉터S\" on Threads 100호 호당 가격 1억 공급 수요", "mode": "extended", "domains": "threads.com", "hits": ["DaSaRmCGOCS"]},
-    {"id": 28, "q": "\"컬렉터S\" on Threads 국현 서도호 리움 전시 추천", "mode": "extended", "domains": "threads.com", "hits": []},
-    {"id": 29, "q": "\"컬렉터S\" on Threads 아트바젤 홍콩 해외 경매 소더비", "mode": "extended", "domains": "threads.com", "hits": ["DaSaRmCGOCS"]},
-    {"id": 30, "q": "\"컬렉터S\" on Threads 갤러리 할인 DC 가격 협상 웨이팅", "mode": "extended", "domains": "threads.com", "hits": ["DY_kQvgmPH8"]},
-    {"id": 31, "q": "\"컬렉터S\" on Threads 아트테크 사기 조각투자 양도세 미술품", "mode": "extended", "domains": "threads.com", "hits": ["Dajr2ScGOfD", "DYvZ7eoEuTv"]},
-    {"id": 32, "q": "\"컬렉터S\" on Threads 스친 컬렉터 모임 단톡방 딜러", "mode": "extended", "domains": "threads.com", "hits": ["Dajr2ScGOfD", "DcDjfo8GFZ5"]},
-    {"id": 33, "q": "\"컬렉터S\" on Threads 책 미술시장 공부 추천", "mode": "extended", "domains": "threads.com", "hits": ["DYLv76mGOMx"]},
-    {"id": 34, "q": "\"컬렉터S (@collector___s) on Threads\"", "mode": "extended", "domains": "", "hits": ["DYLv76mGOMx"]},
-    {"id": 35, "q": "\"컬렉터S\" 1개에 그런 깊은 뜻이", "mode": "extended", "domains": "threads.com", "hits": ["DcDjfo8GFZ5"]},
-    {"id": 36, "q": "\"컬렉터S\" on Threads 작가님 그림 좋아 소장 컬렉션", "mode": "extended", "domains": "threads.com", "hits": ["Dajr2ScGOfD", "DaSaRmCGOCS"]}
+    {
+      "id": 1,
+      "q": "\"collector___s\" threads",
+      "mode": "standard",
+      "domains": "",
+      "hits": []
+    },
+    {
+      "id": 2,
+      "q": "컬렉터S 스레드 미술 컬렉터 collector___s",
+      "mode": "extended",
+      "domains": "",
+      "hits": [
+        "Dajr2ScGOfD",
+        "DY_kQvgmPH8"
+      ]
+    },
+    {
+      "id": 3,
+      "q": "\"collector___s\"",
+      "mode": "extended",
+      "domains": "",
+      "hits": []
+    },
+    {
+      "id": 4,
+      "q": "threads.com/@collector___s",
+      "mode": "standard",
+      "domains": "",
+      "hits": []
+    },
+    {
+      "id": 5,
+      "q": "collector___s 박서보",
+      "mode": "standard",
+      "domains": "threads.com",
+      "hits": []
+    },
+    {
+      "id": 6,
+      "q": "collector___s 옥션 경매 가격",
+      "mode": "standard",
+      "domains": "threads.com",
+      "hits": []
+    },
+    {
+      "id": 7,
+      "q": "collector___s 김환기",
+      "mode": "standard",
+      "domains": "threads.com",
+      "hits": []
+    },
+    {
+      "id": 8,
+      "q": "컬렉터S (@collector___s) Threads",
+      "mode": "extended",
+      "domains": "",
+      "hits": [
+        "DYLv76mGOMx"
+      ]
+    },
+    {
+      "id": 9,
+      "q": "collector___s 컬렉터 갤러리 작가 작품 구매",
+      "mode": "extended",
+      "domains": "threads.com, threads.net",
+      "hits": [],
+      "error": "threads.net 크롤러 차단으로 질의 거절"
+    },
+    {
+      "id": 10,
+      "q": "collector___s 옥션 낙찰 컬렉터 시선",
+      "mode": "extended",
+      "domains": "",
+      "hits": []
+    },
+    {
+      "id": 11,
+      "q": "collector___s 하종현 윤형근 단색화",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": []
+    },
+    {
+      "id": 12,
+      "q": "collector___s 이배 전광영 서도호",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": []
+    },
+    {
+      "id": 13,
+      "q": "collector___s 키아프 프리즈 아트페어 컬렉터",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": []
+    },
+    {
+      "id": 14,
+      "q": "collector___s 갤러리 1차시장 2차시장 옥션 작가",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "DY_kQvgmPH8"
+      ]
+    },
+    {
+      "id": 15,
+      "q": "site:threads.com/@collector___s",
+      "mode": "extended",
+      "domains": "",
+      "hits": [
+        "DYLv76mGOMx",
+        "DZOyhy5mIhG"
+      ]
+    },
+    {
+      "id": 16,
+      "q": "inurl:collector___s 미술",
+      "mode": "standard",
+      "domains": "",
+      "hits": []
+    },
+    {
+      "id": 17,
+      "q": "\"컬렉터S\" on Threads 작가 갤러리",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "Dajr2ScGOfD",
+        "DaSaRmCGOCS"
+      ]
+    },
+    {
+      "id": 18,
+      "q": "\"컬렉터S\" on Threads 옥션 가격 판화 에디션",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "DYLv76mGOMx"
+      ]
+    },
+    {
+      "id": 19,
+      "q": "\"컬렉터S\" on Threads 단색화 이우환 김창열 정상화",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "DZOyhy5mIhG",
+        "Dajr2ScGOfD"
+      ]
+    },
+    {
+      "id": 20,
+      "q": "\"컬렉터S\" on Threads 서울옥션 케이옥션 낙찰 추정가",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": []
+    },
+    {
+      "id": 21,
+      "q": "\"컬렉터S\" on Threads 신진작가 라이징 스타 컬렉팅 투자",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "DaSaRmCGOCS",
+        "DY_kQvgmPH8"
+      ]
+    },
+    {
+      "id": 22,
+      "q": "\"컬렉터S\" on Threads 갤러리 전속 재판매 특약 크리스티 이브닝",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "DY_kQvgmPH8"
+      ]
+    },
+    {
+      "id": 23,
+      "q": "\"컬렉터S\" on Threads 블루칩 작가 해외 미술관 소장",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "DaSaRmCGOCS",
+        "DZOyhy5mIhG",
+        "DY_kQvgmPH8"
+      ]
+    },
+    {
+      "id": 24,
+      "q": "\"컬렉터S\" on Threads 전시 다녀옴 작품 구매 후기 아트페어 부스",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": []
+    },
+    {
+      "id": 25,
+      "q": "collector___s 우국원 김선우 문형태 이건용 이강소 시장",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": []
+    },
+    {
+      "id": 26,
+      "q": "\"컬렉터S\" on Threads 미술시장 갤러리의 종류 전속 작가 재판매만 하는 갤러리",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "DY_kQvgmPH8",
+        "Dajr2ScGOfD"
+      ]
+    },
+    {
+      "id": 27,
+      "q": "\"컬렉터S\" on Threads 100호 호당 가격 1억 공급 수요",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "DaSaRmCGOCS"
+      ]
+    },
+    {
+      "id": 28,
+      "q": "\"컬렉터S\" on Threads 국현 서도호 리움 전시 추천",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": []
+    },
+    {
+      "id": 29,
+      "q": "\"컬렉터S\" on Threads 아트바젤 홍콩 해외 경매 소더비",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "DaSaRmCGOCS"
+      ]
+    },
+    {
+      "id": 30,
+      "q": "\"컬렉터S\" on Threads 갤러리 할인 DC 가격 협상 웨이팅",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "DY_kQvgmPH8"
+      ]
+    },
+    {
+      "id": 31,
+      "q": "\"컬렉터S\" on Threads 아트테크 사기 조각투자 양도세 미술품",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "Dajr2ScGOfD",
+        "DYvZ7eoEuTv"
+      ]
+    },
+    {
+      "id": 32,
+      "q": "\"컬렉터S\" on Threads 스친 컬렉터 모임 단톡방 딜러",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "Dajr2ScGOfD",
+        "DcDjfo8GFZ5"
+      ]
+    },
+    {
+      "id": 33,
+      "q": "\"컬렉터S\" on Threads 책 미술시장 공부 추천",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "DYLv76mGOMx"
+      ]
+    },
+    {
+      "id": 34,
+      "q": "\"컬렉터S (@collector___s) on Threads\"",
+      "mode": "extended",
+      "domains": "",
+      "hits": [
+        "DYLv76mGOMx"
+      ]
+    },
+    {
+      "id": 35,
+      "q": "\"컬렉터S\" 1개에 그런 깊은 뜻이",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "DcDjfo8GFZ5"
+      ]
+    },
+    {
+      "id": 36,
+      "q": "\"컬렉터S\" on Threads 작가님 그림 좋아 소장 컬렉션",
+      "mode": "extended",
+      "domains": "threads.com",
+      "hits": [
+        "Dajr2ScGOfD",
+        "DaSaRmCGOCS"
+      ]
+    }
   ],
   "auction_queries": [
-    {"id": "A1", "q": "Kim Whanki Universe 5-IV-71 #200 Christie's Hong Kong lot 외 2건", "domains": "christies.com", "result": "거절(크롤러 차단)"},
-    {"id": "A2", "q": "Park Seo-Bo Ecriture lot", "domains": "sothebys.com", "result": "로트 페이지 8건"},
-    {"id": "A3", "q": "Lee Bae Issu du feu lot", "domains": "phillips.com", "result": "로트 페이지 3건"},
-    {"id": "A4", "q": "김환기 낙찰 경매결과", "domains": "seoulauction.com, k-auction.com", "result": "케이옥션 회사소개·결과 목록"},
-    {"id": "A5", "q": "Kim Whanki lot estimate sold", "domains": "sothebys.com, phillips.com", "result": "로트·기사 페이지"},
-    {"id": "A6", "q": "Ha Chong-Hyun Conjunction lot estimate sold", "domains": "sothebys.com, phillips.com", "result": "로트 페이지(가격 충돌 1건)"},
-    {"id": "A7", "q": "Yun Hyong-Keun Umber Blue lot estimate sold", "domains": "sothebys.com, phillips.com", "result": "로트 페이지"},
-    {"id": "A8", "q": "Chun Kwang Young Aggregation lot estimate sold", "domains": "sothebys.com, phillips.com", "result": "로트 페이지"},
-    {"id": "A9", "q": "Do Ho Suh lot estimate sold", "domains": "sothebys.com, phillips.com", "result": "로트 페이지"},
-    {"id": "A10", "q": "Kim Tschang-Yeul Water Drops lot estimate sold", "domains": "sothebys.com, phillips.com", "result": "로트 페이지(가격 충돌 1건)"},
-    {"id": "A11", "q": "김환기 우주 05-IV-71 #200 크리스티 홍콩 2019 낙찰 수수료 포함 132억", "domains": "", "result": "언론 보도"},
-    {"id": "A12", "q": "박서보 하종현 윤형근 경매 최고가 기록 낙찰가 단색화", "domains": "", "result": "언론 보도(최고가 미확인)"},
-    {"id": "A13", "q": "김환기 우주 낙찰가 8800만 홍콩달러 수수료 포함 1억200만 홍콩달러 153억", "domains": "", "result": "언론 보도(해머가·수수료 포함가 구분 확인)"},
-    {"id": "A14", "q": "김환기 19-VI-71 #206 크리스티 뉴욕 2025년 11월 낙찰 수수료 포함", "domains": "", "result": "언론 보도"}
+    {
+      "id": "A1",
+      "q": "Kim Whanki Universe 5-IV-71 #200 Christie's Hong Kong lot 외 2건",
+      "domains": "christies.com",
+      "result": "거절(크롤러 차단)"
+    },
+    {
+      "id": "A2",
+      "q": "Park Seo-Bo Ecriture lot",
+      "domains": "sothebys.com",
+      "result": "로트 페이지 8건"
+    },
+    {
+      "id": "A3",
+      "q": "Lee Bae Issu du feu lot",
+      "domains": "phillips.com",
+      "result": "로트 페이지 3건"
+    },
+    {
+      "id": "A4",
+      "q": "김환기 낙찰 경매결과",
+      "domains": "seoulauction.com, k-auction.com",
+      "result": "케이옥션 회사소개·결과 목록"
+    },
+    {
+      "id": "A5",
+      "q": "Kim Whanki lot estimate sold",
+      "domains": "sothebys.com, phillips.com",
+      "result": "로트·기사 페이지"
+    },
+    {
+      "id": "A6",
+      "q": "Ha Chong-Hyun Conjunction lot estimate sold",
+      "domains": "sothebys.com, phillips.com",
+      "result": "로트 페이지(가격 충돌 1건)"
+    },
+    {
+      "id": "A7",
+      "q": "Yun Hyong-Keun Umber Blue lot estimate sold",
+      "domains": "sothebys.com, phillips.com",
+      "result": "로트 페이지"
+    },
+    {
+      "id": "A8",
+      "q": "Chun Kwang Young Aggregation lot estimate sold",
+      "domains": "sothebys.com, phillips.com",
+      "result": "로트 페이지"
+    },
+    {
+      "id": "A9",
+      "q": "Do Ho Suh lot estimate sold",
+      "domains": "sothebys.com, phillips.com",
+      "result": "로트 페이지"
+    },
+    {
+      "id": "A10",
+      "q": "Kim Tschang-Yeul Water Drops lot estimate sold",
+      "domains": "sothebys.com, phillips.com",
+      "result": "로트 페이지(가격 충돌 1건)"
+    },
+    {
+      "id": "A11",
+      "q": "김환기 우주 05-IV-71 #200 크리스티 홍콩 2019 낙찰 수수료 포함 132억",
+      "domains": "",
+      "result": "언론 보도"
+    },
+    {
+      "id": "A12",
+      "q": "박서보 하종현 윤형근 경매 최고가 기록 낙찰가 단색화",
+      "domains": "",
+      "result": "언론 보도(최고가 미확인)"
+    },
+    {
+      "id": "A13",
+      "q": "김환기 우주 낙찰가 8800만 홍콩달러 수수료 포함 1억200만 홍콩달러 153억",
+      "domains": "",
+      "result": "언론 보도(해머가·수수료 포함가 구분 확인)"
+    },
+    {
+      "id": "A14",
+      "q": "김환기 19-VI-71 #206 크리스티 뉴욕 2025년 11월 낙찰 수수료 포함",
+      "domains": "",
+      "result": "언론 보도"
+    }
   ]
 }
