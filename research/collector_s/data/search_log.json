@@ -75,6 +75,16 @@
       "step": "API 호출 profile_lookup, me",
       "target": "https://graph.threads.net/v1.0/profile_lookup?username=collector___s",
       "result": "HTTP 400, OAuthException code 190 'Invalid OAuth 2.0 Access Token'. 1분 뒤 재시도와 헤더 없는 요청도 같은 결과로, 저장된 토큰이 거부됨"
+    },
+    {
+      "step": "사용자가 Default 환경에 www.threads.com, www.threads.net, scontent.cdninstagram.com 추가",
+      "target": "접속 확인",
+      "result": "robots.txt 200, 프로필 페이지 200(내용 저장 안 함), CDN 204"
+    },
+    {
+      "step": "robots.txt 확인(2026-11-09)",
+      "target": "https://www.threads.com/robots.txt",
+      "result": "첫 줄 고지: 'Collection of data on Threads through automated means is prohibited unless you have express written permission from Threads'. 'User-agent: *' Disallow: /, 'User-agent: ClaudeBot' Disallow: /. 허용 에이전트도 Meta Automated Data Collection Terms 준수 요구. 사용자 지시(이용 조건 준수)에 따라 웹 페이지 자동 수집은 하지 않음"
     }
   ],
   "queries": [
