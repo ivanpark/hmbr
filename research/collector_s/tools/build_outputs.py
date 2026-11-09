@@ -145,7 +145,7 @@ def build_workbook(meta, posts, clues, log, arts, lots):
         ["  원글(고정 글·타래 이어진 글 포함)", f"{len(originals)}건(그중 타래 이어진 글 {sum(1 for p in posts if p['type'] == '타래 이어진 글')}건, 타래 첫 글·단독 글 {len(originals) - sum(1 for p in posts if p['type'] == '타래 이어진 글')}건)"],
         ["  답글", len(replies)],
         ["  고정 글·재게시물", pin_rep],
-        ["  미술시장 관련", sum(1 for p in market)],
+        ["  미술시장 관련(규칙 기반 분류)", sum(1 for p in market)],
         ["  미술시장 관련 답글", sum(1 for p in replies if p["market_related"])],
         ["본문 확보", f"전문 {len(full_text)}건, 부분·없음 {len(posts) - len(full_text)}건"],
         ["이미지 확보", img_line],
@@ -177,6 +177,16 @@ def build_workbook(meta, posts, clues, log, arts, lots):
                           "판단 근거", "주장 유형", "게시물 URL", "경매 참고 로트 ID", "시장 현황(외부 자료, 컬렉터S 판단 아님)"],
           art_rows, [24, 12, 14, 30, 40, 36, 18, 46, 18, 70], link_cols=(7,))
 
+    if arts.get("other_artists"):
+        oa_rows = [[o["artist"], o["mentions"], o["first_date"], o["last_date"], o["excerpt"], "\n".join(o["urls"])] for o in arts["other_artists"]]
+        sheet(wb, "언급작가전체", ["작가", "언급 글 수", "첫 언급", "마지막 언급", "첫 언급 문장(자동 발췌)", "게시물 URL(최대 12)"],
+              oa_rows, [20, 10, 12, 12, 70, 50], link_cols=(5,))
+    if (ROOT / "data" / "claims.json").exists():
+        cl = load("claims.json")["claims"]
+        sheet(wb, "주장검증표", ["ID", "게시물 URL", "주장(요지)", "종류", "검증 결과", "근거·메모", "검증 출처"],
+              [[c["id"], c["url"], c["claim"], c["kind"], c["result"], c["note"], c["source"]] for c in cl],
+              [7, 46, 60, 14, 14, 60, 46], link_cols=(1, 6))
+
     lot_rows = []
     for l in lots["lots"]:
         lot_rows.append([
@@ -202,9 +212,9 @@ def build_workbook(meta, posts, clues, log, arts, lots):
             c.alignment = WRAP
 
     clue_rows = [[c["id"], c["page_url"], c["page_attribution"], "원문 인용" if c["verbatim"] else "요약 의역", c["text"],
-                  c["author"], c["why_uncertain"], c["topic"], c["search_query_id"]] for c in clues["clues"]]
+                  c["author"], c["why_uncertain"] + (" / 재확인: " + c["resolution_2026_11_09"] if c.get("resolution_2026_11_09") else ""), c["topic"], c["search_query_id"]] for c in clues["clues"]]
     for e in clues["excluded"]:
-        clue_rows.append(["제외", "", "", "", e["text"], "타 계정으로 판단", e["reason"], "", ""])
+        clue_rows.append(["정정" if e["reason"].startswith("정정") else "제외", "", "", "", e["text"], "컬렉터S" if e["reason"].startswith("정정") else "타 계정으로 판단", e["reason"], "", ""])
     sheet(wb, "미확인단서", ["ID", "페이지 URL", "페이지 귀속", "문장 성격", "문장", "작성자", "불확실 이유", "주제", "검색 질의 ID"],
           clue_rows, [7, 46, 20, 12, 70, 14, 46, 30, 10], link_cols=(1,))
 
