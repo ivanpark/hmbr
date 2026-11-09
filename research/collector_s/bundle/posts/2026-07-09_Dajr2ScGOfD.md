@@ -2,7 +2,7 @@
 
 - URL: https://www.threads.com/@collector___s/post/Dajr2ScGOfD
 - 색인에 잡힌 URL(슬러그 포함): https://www.threads.com/@collector___s/post/Dajr2ScGOfD/%EA%B9%80%EB%A6%AC%EC%95%84-%EA%B0%A4%EB%9F%AC%EB%A6%AC%EC%9D%98-11%EB%85%84%EC%A7%B8-%EB%93%B1%EC%9A%A9%EB%AC%B8-%EC%8B%9C%EB%A6%AC%EC%A6%88-%EB%A7%88%EC%A4%91%EB%AC%BC%EC%9D%B8%EB%8D%B0-%EC%9D%B4%EB%B2%88%EC%97%94-10%EB%AA%85%EC%9D%98-%EC%8B%A0%EC%9D%B8-%EC%9E%91%EA%B0%80%EA%B0%80-%ED%9A%8C%ED%99%94%EC%84%A4%EC%B9%98%EC%98%A4%EB%B8%8C%EC%A0%9C%EB%A1%9C-%ED%95%9C-%EB%B0%A9%EC%97%90-%EB%AA%A8%EC%97%AC%EC%9E%88%EC%9D%8C-%EC%84%9C%EB%A1%9C-%EC%A0%84%ED%98%80-%EB%8B%A4%EB%A5%B8-%EA%B7%B8%EB%A6%BC%EA%B3%BC-%EC%A1%B0%EA%B0%81-%EC%84%A4/
-- 게시일시: 2026-07-09 12:47:31 KST (추정, 미디어 ID 3937183345902413763 디코딩) / 2026-07-09 03:47:31 UTC
+- 게시일시: 2026-07-09 12:47:31 KST (shortcode 디코딩 추정, 미디어 ID 3937183345902413763) / 2026-07-09 03:47:31 UTC
 - 유형: 원글 추정 — 전시 소개 형식의 독립 서술.
 - 상위 글 URL: 해당 없음
 - 분류: 작가 및 갤러리; 작품 구매 과정
@@ -11,6 +11,7 @@
 - 언급 갤러리·장소: 김리아 갤러리(〈마중물〉 시리즈)
 - 언급 가격: 없음
 - 첨부 이미지: 미확보(첨부 여부 미확인)
+- 시각 출처: shortcode 디코딩 추정 · 수집 출처: 검색 색인
 - 본문 확보 상태: 전문으로 보임(색인 제목 기준). 원문 대조 불가.
 
 ## 본문

@@ -17,6 +17,19 @@ Threads 계정 [컬렉터S](https://www.threads.com/@collector___s)의 게시물
 | [data/](data/) | 원자료 JSON: posts, clues, artists, auction_refs, search_log |
 | [tools/shortcode.py](tools/shortcode.py) | Threads shortcode를 미디어 ID와 생성 시각으로 디코딩 |
 | [tools/build_outputs.py](tools/build_outputs.py) | data/*.json에서 엑셀과 자료 묶음을 다시 생성 |
+| [tools/threads_capture.js](tools/threads_capture.js) | 사용자 크롬 콘솔에서 실행하는 수집 스크립트. 프로필을 자동으로 스크롤하며 지나가는 글을 모두 기록하고 JSON으로 저장 |
+| [tools/import_capture.py](tools/import_capture.py) | 위 JSON을 data/posts.json에 합치고 사진을 내려받음 |
+| [tools/fetch_threads_api.py](tools/fetch_threads_api.py) | 공식 Threads API 수집기(일반 계정 조회에는 Meta 앱 심사가 필요해 이번에는 미사용) |
+
+## 브라우저 수집 파일 반영
+
+```bash
+python3 research/collector_s/tools/import_capture.py collector_s_threads_*.json collector_s_replies_*.json
+```
+
+```bash
+python3 research/collector_s/tools/build_outputs.py
+```
 
 ## 다시 만들기
 

@@ -2,7 +2,7 @@
 
 - URL: https://www.threads.com/@collector___s/post/DYvZ7eoEuTv
 - 색인에 잡힌 URL(슬러그 포함): https://www.threads.com/@collector___s/post/DYvZ7eoEuTv/%EC%95%84%EB%AC%B4-%EA%B2%83%EB%8F%84-%EA%B7%B8%EB%A6%AC%EC%A7%80-%EC%95%8A%EC%9D%80-%EB%B9%88-%EC%BA%94%EB%B2%84%EC%8A%A4-%EC%9C%84%EC%97%90-%EC%97%84%EC%B2%AD-%EB%86%92%EC%9D%80-%EA%B0%80%EA%B2%A9%EC%97%90-%ED%8C%94%EB%A0%B8%EB%8B%A8-%EA%B8%B0%EB%A1%9D%EC%9D%B4-%EC%A0%81%ED%98%80-%EC%9E%88%EC%9C%BC%EB%A9%B4-%EC%82%AC%EB%9E%8C%EB%93%A4%EC%9D%80-%EA%B7%B8-%EC%95%9E%EC%97%90%EC%84%9C-%EC%8B%AC%EA%B0%81%ED%95%98%EA%B2%8C-%EB%B9%88-%EC%BA%94%EB%B2%84%EC%8A%A4%EB%A5%BC-%EB%B0%94%EB%9D%BC%EB%B3%BC%EA%B1%B0%EC%95%BC-%EB%82%B4%EA%B0%80-%EC%9D%B4/
-- 게시일시: 2026-05-25 08:59:02 KST (추정, 미디어 ID 3904453440449996015 디코딩) / 2026-05-24 23:59:02 UTC
+- 게시일시: 2026-05-25 08:59:02 KST (shortcode 디코딩 추정, 미디어 ID 3904453440449996015) / 2026-05-24 23:59:02 UTC
 - 유형: 원글 추정 — 독립된 반말 서술문으로 대화 상대를 전제하지 않음.
 - 상위 글 URL: 해당 없음
 - 분류: 가격과 거래 관행; 시장 동향
@@ -11,6 +11,7 @@
 - 언급 갤러리·장소: 없음
 - 언급 가격: '엄청 높은 가격'(구체 금액 없음)
 - 첨부 이미지: 미확보(첨부 여부 미확인)
+- 시각 출처: shortcode 디코딩 추정 · 수집 출처: 검색 색인
 - 본문 확보 상태: 전문으로 보임(색인 제목 기준, 문장이 마침표로 끝남). 원문 대조 불가.
 
 ## 본문
