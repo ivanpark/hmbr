@@ -1,23 +1,24 @@
-/* 컬렉터S Threads 수집 스크립트 v1.1
+/* 컬렉터S Threads 수집 스크립트 v1.2
  * 사용법: 크롬에서 로그인한 상태로 https://www.threads.com/@collector___s 를 열고,
  * F12(맥: Cmd+Option+J) → Console 탭에 이 코드 전체를 붙여 넣고 Enter.
  * 처음 붙여 넣을 때 크롬이 막으면 "allow pasting" 을 입력하고 Enter 한 뒤 다시 붙여 넣기.
  * 사람이 읽는 속도로 아래로 스크롤하면서 지나가는 글을 모두 기록하고, 끝나면 JSON 파일을 내려받습니다.
  * 오른쪽 위 검은 상자를 누르면 언제든 멈추고 그때까지 모은 것을 저장합니다.
- * '답글' 탭(https://www.threads.com/@collector___s/replies)에서도 같은 방법으로 한 번 더 실행하세요.
+ * '답글'(/replies), '리포스트'(/reposts) 탭에서도 같은 방법으로 한 번씩 더 실행하세요.
+ * 수집 중에는 이 탭을 화면에 띄워 두세요. 탭이 가려지면 자동으로 멈췄다가, 다시 보이면 이어서 진행합니다.
  */
 (() => {
   if (window.__csCapture) { console.warn('이미 실행 중입니다. 페이지를 새로고침한 뒤 다시 붙여 넣으세요.'); return; }
-  const m = location.pathname.match(/^\/@([^/]+)(\/replies)?/);
+  const m = location.pathname.match(/^\/@([^/]+)(?:\/(replies|reposts|media))?\/?$/);
   if (!/(^|\.)threads\.(com|net)$/.test(location.hostname) || !m) { alert('Threads 프로필 페이지에서 실행하세요: https://www.threads.com/@collector___s'); return; }
   const HANDLE = decodeURIComponent(m[1]);
-  const TAB = m[2] ? 'replies' : 'threads';
+  const TAB = m[2] || 'threads';
   const FAST = window.__CS_FAST === true;
   const POST_RE = /\/@([^/?#]+)\/post\/([A-Za-z0-9_-]+)/;
   const ACTION_RE = /^(Like|Unlike|Reply|Comment|Repost|Share|좋아요|좋아요 취소|답글|댓글|리포스트|공유|공유하기)$/;
   const posts = new Map();
   const steps = [];
-  const state = { stopped: false, order: 0 };
+  const state = { stopped: false, order: 0, gaps: 0, pauses: 0, stalls: 0 };
   const startedAt = new Date().toISOString();
   const sleep = ms => new Promise(r => setTimeout(r, FAST ? Math.min(ms, 60) : ms));
   const profileHeader = ((document.querySelector('main') || document.body).innerText || '').slice(0, 1500);
@@ -142,9 +143,9 @@
     const gaps = steps.slice(1).filter((s, i) => s.visible.length && steps[i].visible.length && !s.visible.some(c => steps[i].visible.includes(c))).map(s => s.step);
     const out = {
       meta: {
-        script_version: '1.1', handle: HANDLE, tab: TAB, page: location.href, started_at: startedAt,
+        script_version: '1.2', handle: HANDLE, tab: TAB, page: location.href, started_at: startedAt,
         finished_at: new Date().toISOString(), finish_reason: reason, user_agent: navigator.userAgent,
-        total_seen: all.length, own_posts: own, steps: steps.length, gap_steps: gaps,
+        total_seen: all.length, own_posts: own, steps: steps.length, gap_steps: gaps, hidden_pauses: state.pauses, render_stalls: state.stalls,
         profile_header_text: profileHeader, og_description: ogDescription,
       },
       posts: all, steps,
@@ -153,39 +154,84 @@
     a.href = URL.createObjectURL(new Blob([JSON.stringify(out)], { type: 'application/json' }));
     a.download = `collector_s_${TAB}_${new Date().toISOString().slice(0, 16).replace(/[-:T]/g, '')}.json`;
     document.body.appendChild(a); a.click(); a.remove();
-    paint(`저장 완료: 전체 ${all.length}개(본인 글 ${own}개)${gaps.length ? `, 끊긴 구간 ${gaps.length}곳` : ''}. 내려받은 파일을 Claude에 올려 주세요.`);
+    paint(`저장 완료: 전체 ${all.length}개(본인 글 ${own}개)${gaps.length ? `, ⚠ 끊긴 구간 ${gaps.length}곳` : ''}${state.pauses ? `, 탭 가림으로 ${state.pauses}번 일시정지` : ''}. 내려받은 파일을 Claude에 올려 주세요.`);
     console.log('[수집 완료]', out.meta);
     return out;
   }
+
+  // 마지막으로 실제 화면에 그려진 글(컨테이너)을 찾는다. 스크롤은 항상 이 글을 기준으로만 움직인다.
+  function lastRendered() {
+    const cs = [...document.querySelectorAll('a[href*="/post/"] time[datetime]')]
+      .map(t => containerOf(t.closest('a'))).filter(c => c && c.getBoundingClientRect().height > 0);
+    return cs.sort((x, y) => (x.compareDocumentPosition(y) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1).pop() || null;
+  }
+
+  async function waitVisible() {
+    if (document.visibilityState !== 'hidden') return false;
+    state.pauses++;
+    console.warn('[일시정지] 탭이 가려져 수집을 멈췄습니다. 이 탭을 다시 화면에 띄우면 이어서 진행합니다.');
+    while (document.visibilityState === 'hidden' && !state.stopped) await sleep(1000);
+    paint('다시 이어서 진행합니다…');
+    await sleep(2500);
+    return true;
+  }
+
+  const sameSet = (a, b) => a.length === b.length && a.every(x => b.includes(x));
 
   async function run() {
     const s0 = scroller();
     s0.scrollTop = 0;
     await sleep(1500);
     harvest(0);
-    let idle = 0;
+    let idle = 0, sameRuns = 0, lastFreshAt = Date.now();
+    const END_MS = FAST ? 8000 : 60000; // 새 글 없이 이 시간이 지나야 끝으로 본다(탭이 가려진 시간은 제외)
     for (let i = 1; !state.stopped; i++) {
+      if (await waitVisible()) lastFreshAt = Date.now();
       const s = scroller();
+      const last = lastRendered();
       const before = s.scrollTop;
-      s.scrollTop += Math.round(innerHeight * 0.7);
-      await sleep(1600 + Math.random() * 1400);
+      if (last) {
+        // 마지막으로 그려진 글을 화면 위쪽으로 올린다. 화면 갱신이 멈춰도 그 이상 앞질러 가지 않는다.
+        const top = last.getBoundingClientRect().top;
+        s.scrollTop += Math.max(Math.min(top - 80, innerHeight * 0.9), 120);
+      } else {
+        s.scrollTop += Math.round(innerHeight * 0.5);
+      }
+      await sleep(1300 + Math.random() * 900);
+      if (await waitVisible()) { lastFreshAt = Date.now(); i--; continue; }
       const n = harvest(i);
+      if (n > 0) lastFreshAt = Date.now();
+      const cur = steps[steps.length - 1], prevStep = steps[steps.length - 2];
+      if (n > 0 && prevStep && prevStep.visible.length && !cur.visible.some(c => prevStep.visible.includes(c))) {
+        state.gaps++;
+        console.warn(`[끊김 의심] 구간 ${i}: 앞 화면과 겹치는 글이 없습니다.`);
+      }
+      // 같은 글 묶음만 계속 보이면 화면 갱신이 멈춘 것이다. 위치를 되돌리고 기다린다.
+      sameRuns = (prevStep && sameSet(cur.visible, prevStep.visible)) ? sameRuns + 1 : 0;
+      if (sameRuns >= 2 && last) {
+        state.stalls++;
+        last.scrollIntoView({ block: 'start' });
+        window.dispatchEvent(new Event('scroll'));
+        await sleep(3000);
+        if (harvest(i) > 0) { sameRuns = 0; idle = 0; lastFreshAt = Date.now(); }
+      }
       const atBottom = s.scrollTop + s.clientHeight >= s.scrollHeight - 8;
       const stuck = Math.abs(s.scrollTop - before) < 2;
-      if (n === 0 && (atBottom || stuck)) {
+      if (n === 0 && (atBottom || stuck || sameRuns >= 2)) {
         idle++;
         if (idle % 3 === 0) {
-          // 맨 아래에서 다음 묶음을 불러오도록 살짝 올렸다가 제자리로 돌아온다. 끝으로 점프하면 새로 불러온 글을 건너뛸 수 있다.
+          // 맨 아래에서 다음 묶음을 불러오도록 살짝 올렸다가 제자리로 돌아온다.
           const y = s.scrollTop;
           s.scrollTop = y - 400; await sleep(800);
           s.scrollTop = y; await sleep(2500);
-          if (harvest(i) > 0) idle = 0;
+          if (harvest(i) > 0) { idle = 0; lastFreshAt = Date.now(); }
         }
-      } else idle = 0;
+      } else if (n > 0) idle = 0;
       const own = [...posts.values()].filter(p => p.author_is_handle).length;
-      paint(`수집 중: 전체 ${posts.size}개 · 본인 글 ${own}개 (누르면 멈추고 저장)`);
+      const oldest = [...posts.values()].reduce((a, p) => (!a || p.datetime < a ? p.datetime : a), '');
+      paint(`수집 중: 전체 ${posts.size}개 · 본인 글 ${own}개 · 가장 오래된 글 ${oldest.slice(0, 10)}${state.gaps ? ` · ⚠ 끊김 의심 ${state.gaps}곳` : ''} (누르면 멈추고 저장)`);
       if (i === 5 && posts.size === 0) { paint('글을 찾지 못했습니다. 이 화면을 캡처해서 Claude에 알려 주세요.'); console.warn('[수집 실패] 글 요소를 찾지 못함'); return save('no_posts_found'); }
-      if (idle >= 12) break;
+      if (idle >= 6 && Date.now() - lastFreshAt > END_MS) break;
     }
     return save(state.stopped ? 'stopped_by_user' : 'reached_end');
   }

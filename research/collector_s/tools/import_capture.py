@@ -79,7 +79,7 @@ def main(argv):
     added = updated = 0
     for code, p in captured.items():
         own = p["author_is_handle"]
-        repost = (not own) and p["tab"] == "threads" and bool(REPOST.search(p.get("context_before", "")))
+        repost = (not own) and (p["tab"] == "reposts" or (p["tab"] == "threads" and bool(REPOST.search(p.get("context_before", "")))))
         if not own and not repost:
             continue
         parent_url, parent_text = "", ""
@@ -116,7 +116,7 @@ def main(argv):
             "url_as_indexed": rec.get("url_as_indexed", ""),
             "type": ptype,
             "type_basis": {"재게시물": "프로필 '스레드' 탭에서 다른 계정 글 위에 리포스트 표시", "답글": "프로필 '답글' 탭에서 수집",
-                           "고정 글": "프로필 '스레드' 탭에서 고정 표시", "원글": "프로필 '스레드' 탭에서 수집"}[ptype],
+                           "고정 글": "프로필 '스레드' 탭에서 고정 표시", "원글": "프로필 '스레드' 탭에서 수집"}[ptype] + ("" if p["tab"] != "reposts" or ptype != "재게시물" else "('리포스트' 탭)"),
             "original_author": p["author"] if repost else "",
             "parent_url": parent_url or ("" if ptype != "답글" else "미확인"),
             "parent_text": parent_text,
