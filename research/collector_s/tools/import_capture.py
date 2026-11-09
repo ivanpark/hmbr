@@ -27,8 +27,9 @@ sys.path.insert(0, str(HERE))
 from shortcode import KST, created_at  # noqa: E402
 
 HANDLE = "collector___s"
-NOISE = re.compile(r"^(번역하기|Translate|See translation|더 보기|See more|Read more|수정됨|Edited|·|\d+(\.\d+)?[천만KkMm]?|\d+\s*(초|분|시간|일|주)|\d+[smhdw]|\d{2}/\d{2}/\d{2,4}|\d{4}-\d{2}-\d{2})$")
+NOISE = re.compile(r"^(번역하기|Translate|See translation|더 보기|See more|Read more|수정됨|Edited|·|/|\d+(\.\d+)?[천만KkMm]?|\d+\s*(초|분|시간|일|주)|\d+[smhdw]|\d{2}/\d{2}/\d{2,4}|\d{4}-\d{2}-\d{2})$")
 REPOST = re.compile(r"(리포스트|reposted|Reposted)")
+THREAD_PART = re.compile(r"(?:^|\n)\s*(\d{1,2})\s*\n\s*/\s*\n\s*(\d{1,2})\s*(?:\n|$)")
 
 
 TIME_TOKEN = re.compile(r"^(\d+\s*(초|분|시간|일|주)|\d+[smhdw]|\d{2}/\d{2}/\d{2,4}|\d{4}-\d{2}-\d{2})$")
@@ -52,6 +53,12 @@ def clean_text(post, names):
             continue
         parts.append(t)
     return "\n".join(parts).strip()
+
+
+def ptype_hint(p):
+    """Replies (replies tab) and thread continuations hang under the post shown just above them."""
+    part = THREAD_PART.search(p.get("text_raw", ""))
+    return p["author_is_handle"] and (p["tab"] == "replies" or (p["tab"] == "threads" and part and int(part.group(1)) > 1))
 
 
 def kst(iso):
@@ -101,13 +108,16 @@ def main(argv):
         if not own and not repost:
             continue
         parent_url, parent_text = "", ""
-        if p["tab"] == "replies" and own and p.get("prev_code"):
+        if ptype_hint(p) and p.get("prev_code"):
             par = p["_by_code"].get(p["prev_code"])
             if par:
                 parent_url = par["url"]
                 parent_text = clean_text(par, names | {par["author"]})[:300]
+        part = THREAD_PART.search(p.get("text_raw", ""))
         if repost:
             ptype = "재게시물"
+        elif part and int(part.group(1)) > 1 and p["tab"] == "threads":
+            ptype = "타래 이어진 글"
         elif p["tab"] == "replies":
             ptype = "답글"
         elif p.get("pinned"):
@@ -134,12 +144,14 @@ def main(argv):
             "url_as_indexed": rec.get("url_as_indexed", ""),
             "type": ptype,
             "type_basis": {"재게시물": "프로필 '스레드' 탭에서 다른 계정 글 위에 리포스트 표시", "답글": "프로필 '답글' 탭에서 수집",
-                           "고정 글": "프로필 '스레드' 탭에서 고정 표시", "원글": "프로필 '스레드' 탭에서 수집"}[ptype] + ("" if p["tab"] != "reposts" or ptype != "재게시물" else "('리포스트' 탭)"),
+                           "고정 글": "프로필 '스레드' 탭에서 고정 표시", "원글": "프로필 '스레드' 탭에서 수집",
+                           "타래 이어진 글": "프로필 '스레드' 탭, 본문 끝 타래 번호 k/m에서 k>1"}[ptype] + ("" if p["tab"] != "reposts" or ptype != "재게시물" else "('리포스트' 탭)"),
             "original_author": p["author"] if repost else "",
-            "parent_url": parent_url or ("" if ptype != "답글" else "미확인"),
+            "parent_url": parent_url or ("미확인" if ptype in ("답글", "타래 이어진 글") else ""),
             "parent_text": parent_text,
             "text": text,
             "topic": topic_of(p, names | {p["author"]}),
+            "thread_part": f"{part.group(1)}/{part.group(2)}" if part else "",
             "text_raw": p.get("text_raw", ""),
             "text_status": "전문(브라우저 화면 기준)" if text else "본문 없음(이미지·링크만 있거나 추출 실패, text_raw 참조)",
             "images": images,

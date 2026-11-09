@@ -111,7 +111,7 @@ def build_workbook(meta, posts, clues, log, arts, lots):
     wb.remove(wb.active)
     acct = meta["account"]
     replies = [p for p in posts if "답글" in p["type"]]
-    originals = [p for p in posts if p["type"].startswith("원글") or p["type"] == "고정 글"]
+    originals = [p for p in posts if p["type"].startswith("원글") or p["type"] in ("고정 글", "타래 이어진 글")]
     pinned = [p for p in posts if p["type"] == "고정 글"]
     reposts = [p for p in posts if p["type"] == "재게시물"]
     market = [p for p in posts if p["market_related"]]
@@ -142,7 +142,7 @@ def build_workbook(meta, posts, clues, log, arts, lots):
         ["프로필 상단 텍스트", acct.get("profile_header_text", "")[:600]],
         ["계정 전체 게시물 수", acct["total_posts"]],
         ["실제 확인한 게시물(URL 기준 중복 제거)", len(posts)],
-        ["  원글(고정 글 포함)", len(originals)],
+        ["  원글(고정 글·타래 이어진 글 포함)", f"{len(originals)}건(그중 타래 이어진 글 {sum(1 for p in posts if p['type'] == '타래 이어진 글')}건, 타래 첫 글·단독 글 {len(originals) - sum(1 for p in posts if p['type'] == '타래 이어진 글')}건)"],
         ["  답글", len(replies)],
         ["  고정 글·재게시물", pin_rep],
         ["  미술시장 관련", sum(1 for p in market)],
