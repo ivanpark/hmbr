@@ -85,6 +85,11 @@
       "step": "robots.txt 확인(2026-11-09)",
       "target": "https://www.threads.com/robots.txt",
       "result": "첫 줄 고지: 'Collection of data on Threads through automated means is prohibited unless you have express written permission from Threads'. 'User-agent: *' Disallow: /, 'User-agent: ClaudeBot' Disallow: /. 허용 에이전트도 Meta Automated Data Collection Terms 준수 요구. 사용자 지시(이용 조건 준수)에 따라 웹 페이지 자동 수집은 하지 않음"
+    },
+    {
+      "step": "공식 Threads API 토큰 재입력 후 호출(me, profile_lookup)",
+      "target": "https://graph.threads.net/v1.0/",
+      "result": "HTTP 400, OAuthException code 190. 입력값이 API 액세스 토큰이 아니어서 거부됨(사용자 확인). 호출 중단, 저장된 비밀값은 사용자가 환경 설정에서 삭제하도록 안내. 이후 수집은 사용자가 직접 저장한 화면·페이지를 받는 방식으로 전환"
     }
   ],
   "queries": [
