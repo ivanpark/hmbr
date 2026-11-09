@@ -93,7 +93,7 @@ def post_row(p, n):
         p["summary"], j(p["categories"]), j(p["artists"]), j(p["works"]), j(p["galleries"]),
         j(p["prices"]), imgs(p), p["page_meta"], p["type_basis"],
         ", ".join(str(x) for x in p["found_by"]), p["created_utc"], p["media_id"],
-        p["time_source"], p["source"], p["original_author"], p["parent_text"],
+        p["time_source"], p["source"], p["original_author"], p["parent_text"], p.get("topic", ""),
     ]
 
 
@@ -101,9 +101,9 @@ POST_HEADER = [
     "No", "게시일시(KST, ID 디코딩 추정)", "유형", "URL", "상위 글 URL", "본문", "본문 확보 상태",
     "요약", "분류", "언급 작가", "언급 작품", "언급 갤러리·장소", "언급 가격", "첨부 이미지",
     "페이지 메타(검색 요약)", "유형 판단 근거", "발견 질의 ID", "게시일시(UTC)", "미디어 ID",
-    "시각 출처", "수집 출처", "재게시 원작성자", "상위 글 본문(앞부분)",
+    "시각 출처", "수집 출처", "재게시 원작성자", "상위 글 본문(앞부분)", "Threads 주제 태그",
 ]
-POST_WIDTHS = [5, 20, 14, 46, 30, 70, 30, 50, 22, 28, 26, 22, 26, 30, 30, 30, 14, 22, 22, 16, 20, 18, 50]
+POST_WIDTHS = [5, 20, 14, 46, 30, 70, 30, 50, 22, 28, 26, 22, 26, 30, 30, 30, 14, 22, 22, 16, 20, 18, 50, 14]
 
 
 def build_workbook(meta, posts, clues, log, arts, lots):

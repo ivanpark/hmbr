@@ -31,8 +31,26 @@ NOISE = re.compile(r"^(번역하기|Translate|See translation|더 보기|See mor
 REPOST = re.compile(r"(리포스트|reposted|Reposted)")
 
 
+TIME_TOKEN = re.compile(r"^(\d+\s*(초|분|시간|일|주)|\d+[smhdw]|\d{2}/\d{2}/\d{2,4}|\d{4}-\d{2}-\d{2})$")
+TAIL = re.compile(r"\s*\n?(Translate|번역하기|See translation)\s*$")
+
+
+def topic_of(post, names):
+    """Threads shows an optional topic tag between the author name and the timestamp."""
+    parts = [t for t in post.get("text_parts", []) if t not in ("Pinned", "고정됨")]
+    if len(parts) >= 3 and parts[0] in names and TIME_TOKEN.match(parts[2].strip()) and not TIME_TOKEN.match(parts[1].strip()):
+        return parts[1].strip()
+    return ""
+
+
 def clean_text(post, names):
-    parts = [t for t in post.get("text_parts", []) if t not in names and not NOISE.match(t.strip())]
+    topic = topic_of(post, names)
+    parts = []
+    for t in post.get("text_parts", []):
+        t = TAIL.sub("", t).strip()
+        if not t or t in names or t in ("Pinned", "고정됨") or NOISE.match(t) or (topic and t == topic and not parts):
+            continue
+        parts.append(t)
     return "\n".join(parts).strip()
 
 
@@ -121,6 +139,7 @@ def main(argv):
             "parent_url": parent_url or ("" if ptype != "답글" else "미확인"),
             "parent_text": parent_text,
             "text": text,
+            "topic": topic_of(p, names | {p["author"]}),
             "text_raw": p.get("text_raw", ""),
             "text_status": "전문(브라우저 화면 기준)" if text else "본문 없음(이미지·링크만 있거나 추출 실패, text_raw 참조)",
             "images": images,
